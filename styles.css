@@ -183,3 +183,98 @@ body {
 .footer .social-links a:hover {
     color: #0073e6;
 }
+/* Tabs Section */
+.tabs-section {
+    background-color: #f5f5f7;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.tabs-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.tabs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2列布局 */
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.tab-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+
+.tab-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tab-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.tab-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+.tab-item p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+/* Button Styles */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button.primary {
+    background-color: #0073e6;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button.primary:hover {
+    background-color: #005bb5;
+}
+
+.button.secondary-hover {
+    background-color: transparent;
+    color: #0073e6;
+    border: 2px solid #0073e6;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.button.secondary-hover:hover {
+    background-color: #0073e6;
+    color: #fff;
+}
