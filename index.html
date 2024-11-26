@@ -11,13 +11,28 @@
             padding: 0;
         }
         header {
-            background-image: url('logo.jpg'); /* 替换成你的图片路径 */
-            background-color: black; /* 如果没有背景图时显示绿色 */
-            background-size: cover;
-            background-position: center;
+            background-color: #4CAF50;
             color: white;
-            padding: 3em 0;
+            padding: 1em 0;
             text-align: center;
+            position: relative;
+            overflow: hidden; /* 隐藏溢出的图片部分 */
+        }
+        header .image-container {
+            display: flex;
+            animation: slide 10s linear infinite; /* 设置动画效果，让图片滑动 */
+        }
+        header .image-container img {
+            width: 1000px;
+            height: 653px;
+        }
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-1000px); /* 图片向左滑动 */
+            }
         }
         nav {
             background-color: #333;
@@ -49,55 +64,22 @@
         .main-title {
             font-size: 3em;
             margin: 0.5em 0;
-            color: #fff;
-        }
-
-        /* Carousel styles */
-        .carousel {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-            background-color: black; /* 可选，增加背景色 */
-        }
-
-        .carousel-images {
-            display: flex;
-            overflow: hidden;
-        }
-
-        .carousel-images img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-
-        .carousel-nav button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        .carousel-nav button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            color: #333;
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="image-container">
+            <img src="logo1.jpg" alt="Slideshow Image">
+            <img src="image1.jpg" alt="Slideshow Image">
+            <img src="image2.jpg" alt="Slideshow Image"> <!-- 复制一张图片，确保滑动无缝 -->
+            <img src="image3.jpg" alt="Slideshow Image"> 
+            <img src="image4.jpg" alt="Slideshow Image"> 
+            <img src="image5.jpg" alt="Slideshow Image"> 
+        </div>
         <h1 class="main-title">MEC</h1>
-        <p>Your one-stop destination for amazing content</p>
+        <p>Your best technological survice</p>
     </header>
 
     <nav>
@@ -110,21 +92,6 @@
         <section id="home">
             <h2>Home</h2>
             <p>Welcome to the homepage! Here you'll find the latest updates and news.</p>
-
-            <!-- Carousel for multiple images in the header (replacing green background) -->
-            <div class="carousel">
-                <div class="carousel-images">
-                    <img src="image1.jpg" alt="Image 1"> <!-- 图片 1 -->
-                    <img src="image2.jpg" alt="Image 2"> <!-- 图片 2 -->
-                    <img src="image3.jpg" alt="Image 3"> <!-- 图片 3 -->
-                    <img src="image4.jpg" alt="Image 4"> <!-- 图片 4 -->
-                    <img src="image5.jpg" alt="Image 5"> <!-- 图片 4 -->
-                </div>
-                <div class="carousel-nav">
-                    <button id="prevBtn">&#10094;</button>
-                    <button id="nextBtn">&#10095;</button>
-                </div>
-            </div>
         </section>
 
         <section id="contact">
@@ -134,40 +101,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 MEC Website. All rights reserved.</p>
+        <p>&copy; 2024 MEC Offical Website. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Carousel functionality
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel-images img');
-        const totalImages = images.length;
-
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        function showImage(index) {
-            if (index >= totalImages) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalImages - 1;
-            }
-            const offset = -currentIndex * 100;
-            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-        }
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex--;
-            showImage(currentIndex);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex++;
-            showImage(currentIndex);
-        });
-
-        // Initialize the carousel
-        showImage(currentIndex);
-    </script>
 </body>
 </html>
