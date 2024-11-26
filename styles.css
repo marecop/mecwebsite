@@ -278,3 +278,9 @@ body {
     background-color: #0073e6;
     color: #fff;
 }
+@media (max-width: 768px) {
+    .tabs-container {
+        grid-template-columns: 1fr; /* 小屏幕显示单列 */
+    }
+}
+
