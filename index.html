@@ -20,11 +20,12 @@
         }
         header .image-container {
             display: flex;
-            transition: transform 1s ease-in-out; /* 设置平滑过渡效果 */
+            transition: transform 1s ease-in-out; /* 平滑过渡 */
         }
         header .image-container img {
             width: 1000px;
             height: 653px;
+            display: none; /* 默认隐藏所有图片 */
         }
         nav {
             background-color: #333;
@@ -63,12 +64,12 @@
 <body>
     <header>
         <div class="image-container">
-            <img src="logo1.jpg" alt="Slideshow Image">
-            <img src="image1.jpg" alt="Slideshow Image">
-            <img src="image2.jpg" alt="Slideshow Image"> <!-- 复制一张图片，确保滑动无缝 -->
-            <img src="image3.jpg" alt="Slideshow Image"> 
-            <img src="image4.jpg" alt="Slideshow Image"> 
-            <img src="image5.jpg" alt="Slideshow Image">
+            <img src="logo.jpg" alt="Image 1">
+            <img src="image1.jpg" alt="Image 2"s>
+            <img src="image2.jpg" alt="Image 3">
+            <img src="image3.jpg" alt="Image 1">
+            <img src="image4.jpg" alt="Image 2">
+            <img src="image5.jpg" alt="Image 3">
         </div>
         <h1 class="main-title">MEC</h1>
         <p>Your one-stop destination for amazing content</p>
@@ -101,20 +102,27 @@
         let currentIndex = 0;
 
         function showNextImage() {
-            currentIndex++;
-            if (currentIndex >= images.length) {
-                currentIndex = 0;
-            }
+            // 隐藏所有图片
+            images.forEach((img) => img.style.display = 'none');
+            
+            // 显示当前图片
+            images[currentIndex].style.display = 'block';
 
+            // 滑动到下一张图片
             const offset = -currentIndex * 1000; // 图片宽度为1000px
             document.querySelector('header .image-container').style.transform = `translateX(${offset}px)`;
 
-            // 等待5秒后再切换到下一张
+            // 等待5秒后切换到下一张
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0; // 循环回到第一张图片
+            }
+
             setTimeout(showNextImage, 5000);
         }
 
-        // 初始显示
-        setTimeout(showNextImage, 5000);
+        // 初始化时，展示第一张图片
+        showNextImage();
     </script>
 </body>
 </html>
