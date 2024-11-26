@@ -9,9 +9,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: white; /* 页面背景设置为白色 */
         }
         header {
-            background-color: #4CAF50;
+            background-image: url('your-image.jpg'); /* 设置背景图片 */
+            background-size: 1024px 1024px; /* 设置背景图片的大小为 1024x1024 */
+            background-position: center; /* 背景居中 */
+            background-repeat: no-repeat; /* 防止背景图片重复 */
             color: white;
             padding: 1em 0;
             text-align: center;
@@ -55,24 +59,29 @@
             width: 100%;
         }
         .main-title {
-            font-size: 3em;
+            font-size: 100px; /* 设置标题字号为100 */
             margin: 0.5em 0;
-            color: #333;
+            color: #fff; /* 设置标题文字颜色为白色 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(0, 0, 0, 0.5); /* 添加边缘阴影效果 */
+        }
+        .sub-title {
+            font-size: 43px; /* 设置副标题字号为43 */
+            color: #fff; /* 设置副标题文字颜色为白色 */
         }
     </style>
 </head>
 <body>
     <header>
         <div class="image-container">
-            <img src="logo.jpg" alt="Image 1">
-            <img src="image1.jpg" alt="Image 2"s>
-            <img src="image2.jpg" alt="Image 3">
-            <img src="image3.jpg" alt="Image 1">
-            <img src="image4.jpg" alt="Image 2">
-            <img src="image5.jpg" alt="Image 3">
+            <img src="logo.jpg" alt="logo">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+            <img src="image4.jpg" alt="Image 4">
+            <img src="image5.jpg" alt="Image 5">
         </div>
         <h1 class="main-title">MEC</h1>
-        <p>Your one-stop destination for amazing content</p>
+        <p class="sub-title">Your best electrical technology survice</p>
     </header>
 
     <nav>
@@ -89,7 +98,7 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>If you have any questions, feel free to <a href="mailto:example@example.com">email us</a>.</p>
+            <p>If you have any questions, feel free to <a href="yellowairlines@outlook.com">email us</a>.</p>
         </section>
     </main>
 
