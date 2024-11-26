@@ -330,14 +330,17 @@ body {
 }
 
 .team-member {
-    max-width: 240px; /* Adjusted for bigger layout */
+    width: 280px; /* Increased width for wider layout */
+    height: 450px; /* Maintain the consistent box size */
     text-align: center;
     background-color: #fff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
-    height: 450px; /* Added height to maintain a consistent box size */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the content is spaced between */
 }
 
 .team-member:hover {
@@ -354,12 +357,20 @@ body {
 
 .team-member h3 {
     font-size: 22px; /* Increased font size for better readability */
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .team-member p {
     font-size: 16px; /* Increased font size for better readability */
     color: #666;
+    margin-top: auto; /* Pushes the paragraph text to the bottom of the container */
+}
+
+/* Active Navigation Item */
+.nav-links .active {
+    color: #0073e6;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 /* Active Navigation Item */
