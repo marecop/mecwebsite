@@ -29,7 +29,7 @@
         header .image-container img {
             width: 1000px;
             height: 653px;
-            display: none; /* 默认隐藏所有图片 */
+            display: block; /* 显示所有图片 */
         }
         nav {
             background-color: #333;
@@ -63,10 +63,20 @@
             margin: 0.5em 0;
             color: #fff; /* 设置标题文字颜色为白色 */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -2px -2px 4px rgba(0, 0, 0, 0.5); /* 添加边缘阴影效果 */
+            position: absolute;
+            top: 20%; /* 将标题放置在幕布的上方 */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; /* 确保标题显示在图片上方 */
         }
         .sub-title {
             font-size: 43px; /* 设置副标题字号为43 */
             color: #fff; /* 设置副标题文字颜色为白色 */
+            position: absolute;
+            top: 40%; /* 副标题位置设置为略低于标题 */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10; /* 确保副标题显示在图片上方 */
         }
     </style>
 </head>
@@ -81,7 +91,7 @@
             <img src="image5.jpg" alt="Image 5">
         </div>
         <h1 class="main-title">MEC</h1>
-        <p class="sub-title">Your best electrical technology survice</p>
+        <p class="sub-title">Your one-stop destination for amazing content</p>
     </header>
 
     <nav>
@@ -93,17 +103,17 @@
     <main>
         <section id="home">
             <h2>Home</h2>
-            <p>Welcome to the homepage! Here you'll find the latest updates and news.</p>
+            <p>Welcome to Marcus Elam Corporation</p>
         </section>
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>If you have any questions, feel free to <a href="yellowairlines@outlook.com">email us</a>.</p>
+            <p>If you have any questions, feel free to <a href="mailto:yellowairlines@outlook.com">email us</a>.</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 MEC Website. All rights reserved.</p>
+        <p>&copy; 2024 MEC Offical Website. All rights reserved.</p>
     </footer>
 
     <script>
