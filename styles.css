@@ -48,7 +48,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 60px 40px;
+    gap: 20px;
+    padding: 50px;
     background: linear-gradient(to right, #f0f0f0, #dcdcdc);
 }
 
@@ -69,6 +70,14 @@ body {
     line-height: 1.5;
     margin-bottom: 30px;
     color: #555;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 500px; /* 限制图片最大宽度 */
+    height: auto; /* 高度自动调整 */
+    object-fit: cover; /* 填充容器并保持比例 */
+    border-radius: 10px; /* 可选 */
 }
 
 .button-group {
@@ -281,6 +290,15 @@ body {
 @media (max-width: 768px) {
     .tabs-container {
         grid-template-columns: 1fr; /* 小屏幕显示单列 */
+    }
+    .hero {
+        flex-direction: column; /* 小屏幕时垂直排列 */
+        text-align: center; /* 居中对齐文字和图片 */
+    }
+
+    .hero-image {
+        max-width: 100%; /* 图片占满容器 */
+        height: auto; /* 高度按比例调整 */
     }
 }
 
