@@ -324,54 +324,10 @@ body {
 
 .team-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 上面三列 */
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* 默认上面三列 */
+    gap: 5px; /* 框之间的间距 */
     flex-wrap: wrap;
     justify-content: center;
-}
-
-@media (max-width: 768px) {
-    /* 手机或小屏幕设备时，每行显示 2 个框 */
-    .team-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.team-member {
-    width: 100%; /* 自动适应父容器 */
-    height: 450px; /* 保持统一高度 */
-    text-align: center;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* 将文字内容推到框底 */
-}
-
-.team-member:hover {
-    transform: scale(1.05);
-}
-
-.team-member img {
-    width: 222px; /* 图片宽度 */
-    height: 333px; /* 图片高度 */
-    object-fit: cover; /* 图片自适应盒子 */
-    border-radius: 10px;
-    margin-bottom: 15px; /* 图片和文字之间的间距 */
-}
-
-.team-member h3 {
-    font-size: 22px;
-    margin-bottom: 5px;
-}
-
-.team-member p {
-    font-size: 16px;
-    color: #666;
-    margin-top: auto; /* 将描述文字推到最下方 */
 }
 
 /* Active Navigation Item */
@@ -394,5 +350,46 @@ body {
         max-width: 100%; /* 图片占满容器 */
         height: auto; /* 高度按比例调整 */
     }
+    team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.team-member {
+    width: 100%; /* 自动适应父容器宽度 */
+    height: 400px; /* 保持统一高度 */
+    text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 将文字内容推到框底部 */
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+}
+
+.team-member img {
+    width: 200px; /* 图片宽度，缩小 */
+    height: 300px; /* 图片高度，缩小 */
+    object-fit: cover; /* 图片自适应盒子 */
+    border-radius: 10px;
+    margin-bottom: 10px; /* 图片和文字之间的间距 */
+}
+
+.team-member h3 {
+    font-size: 20px; /* 更小的字体 */
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 14px; /* 更小的字体 */
+    color: #666;
+    margin-top: auto; /* 将描述文字推到最下方 */
+}
 }
 
