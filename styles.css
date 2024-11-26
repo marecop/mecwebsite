@@ -323,15 +323,23 @@ body {
 }
 
 .team-container {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 上面三列 */
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    /* 手机或小屏幕设备时，每行显示 2 个框 */
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .team-member {
-    width: 280px; /* Increased width for wider layout */
-    height: 450px; /* Maintain the consistent box size */
+    width: 100%; /* 自动适应父容器 */
+    height: 450px; /* 保持统一高度 */
     text-align: center;
     background-color: #fff;
     padding: 15px;
@@ -340,7 +348,7 @@ body {
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Ensures the content is spaced between */
+    justify-content: space-between; /* 将文字内容推到框底 */
 }
 
 .team-member:hover {
@@ -348,38 +356,23 @@ body {
 }
 
 .team-member img {
-    width: 222px; /* Set width of the image */
-    height: 333px; /* Set height of the image */
-    object-fit: cover; /* Ensures image scales proportionally within the box */
+    width: 222px; /* 图片宽度 */
+    height: 333px; /* 图片高度 */
+    object-fit: cover; /* 图片自适应盒子 */
     border-radius: 10px;
-    margin-bottom: 15px; /* Space between image and text */
+    margin-bottom: 15px; /* 图片和文字之间的间距 */
 }
 
 .team-member h3 {
-    font-size: 22px; /* Increased font size for better readability */
+    font-size: 22px;
     margin-bottom: 5px;
 }
 
 .team-member p {
-    font-size: 16px; /* Increased font size for better readability */
+    font-size: 16px;
     color: #666;
-    margin-top: auto; /* Pushes the paragraph text to the bottom of the container */
+    margin-top: auto; /* 将描述文字推到最下方 */
 }
-
-/* Active Navigation Item */
-.nav-links .active {
-    color: #0073e6;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-/* Active Navigation Item */
-.nav-links .active {
-    color: #0073e6;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
 
 /* Active Navigation Item */
 .nav-links .active {
