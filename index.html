@@ -11,9 +11,11 @@
             padding: 0;
         }
         header {
-            background-color: #4CAF50;
+            background-image: url('logo.jpg'); /* 替换成你的图片路径 */
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 1em 0;
+            padding: 3em 0;
             text-align: center;
         }
         nav {
@@ -46,7 +48,47 @@
         .main-title {
             font-size: 3em;
             margin: 0.5em 0;
-            color: #333;
+            color: #fff;
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .carousel-images {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .carousel-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
@@ -66,6 +108,20 @@
         <section id="home">
             <h2>Home</h2>
             <p>Welcome to the homepage! Here you'll find the latest updates and news.</p>
+
+            <!-- Carousel for multiple images -->
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="index1.jpg" alt="Image 1"> <!-- 图片 1 -->
+                    <img src="index2.jpg" alt="Image 2"> <!-- 图片 2 -->
+                    <img src="index3.jpg" alt="Image 3"> <!-- 图片 3 -->
+                    <img src="index4.jpg" alt="Image 4"> <!-- 图片 4 -->
+                </div>
+                <div class="carousel-nav">
+                    <button id="prevBtn">&#10094;</button>
+                    <button id="nextBtn">&#10095;</button>
+                </div>
+            </div>
         </section>
 
         <section id="contact">
@@ -77,5 +133,38 @@
     <footer>
         <p>&copy; 2024 MEC Website. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Carousel functionality
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+        const totalImages = images.length;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function showImage(index) {
+            if (index >= totalImages) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalImages - 1;
+            }
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            showImage(currentIndex);
+        });
+
+        // Initialize the carousel
+        showImage(currentIndex);
+    </script>
 </body>
 </html>
