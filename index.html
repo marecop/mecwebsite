@@ -20,19 +20,11 @@
         }
         header .image-container {
             display: flex;
-            animation: slide 10s linear infinite; /* 设置动画效果，让图片滑动 */
+            transition: transform 1s ease-in-out; /* 设置平滑过渡效果 */
         }
         header .image-container img {
             width: 1000px;
             height: 653px;
-        }
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-1000px); /* 图片向左滑动 */
-            }
         }
         nav {
             background-color: #333;
@@ -76,10 +68,10 @@
             <img src="image2.jpg" alt="Slideshow Image"> <!-- 复制一张图片，确保滑动无缝 -->
             <img src="image3.jpg" alt="Slideshow Image"> 
             <img src="image4.jpg" alt="Slideshow Image"> 
-            <img src="image5.jpg" alt="Slideshow Image"> 
+            <img src="image5.jpg" alt="Slideshow Image">
         </div>
         <h1 class="main-title">MEC</h1>
-        <p>Your best technological survice</p>
+        <p>Your one-stop destination for amazing content</p>
     </header>
 
     <nav>
@@ -96,12 +88,33 @@
 
         <section id="contact">
             <h2>Contact</h2>
-            <p>If you have any questions, feel free to <a href="mailto:yellowairlines@outlook.com">email us</a>.</p>
+            <p>If you have any questions, feel free to <a href="mailto:example@example.com">email us</a>.</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 MEC Offical Website. All rights reserved.</p>
+        <p>&copy; 2024 MEC Website. All rights reserved.</p>
     </footer>
+
+    <script>
+        const images = document.querySelectorAll('header .image-container img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+
+            const offset = -currentIndex * 1000; // 图片宽度为1000px
+            document.querySelector('header .image-container').style.transform = `translateX(${offset}px)`;
+
+            // 等待5秒后再切换到下一张
+            setTimeout(showNextImage, 5000);
+        }
+
+        // 初始显示
+        setTimeout(showNextImage, 5000);
+    </script>
 </body>
 </html>
