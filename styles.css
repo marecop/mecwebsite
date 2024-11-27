@@ -343,6 +343,58 @@ body {
     height: auto;  /* 保持图片比例 */
 }
 
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 500px; /* 调整轮播区域高度 */
+    overflow: hidden;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.swiper-slide img {
+    width: 100%; /* 图片宽度适应 */
+    height: 100%; /* 图片高度适应 */
+    object-fit: cover; /* 保持图片比例，不变形 */
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    z-index: 10;
+}
+
 
 @media (max-width: 768px) {
     .tabs-container {
