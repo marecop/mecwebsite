@@ -337,6 +337,13 @@ body {
     text-decoration: underline;
 }
 
+/* Logo Image */
+.logo img {
+    width: 50px;  /* 设置宽度，根据需要调整 */
+    height: auto;  /* 保持图片比例 */
+}
+
+
 @media (max-width: 768px) {
     .tabs-container {
         grid-template-columns: 1fr; /* 小屏幕显示单列 */
