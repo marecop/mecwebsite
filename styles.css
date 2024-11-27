@@ -404,107 +404,43 @@ body {
     padding: 0;
 }
 
-/* Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+
+body.learn-more-page {
+    background-color: #000; /* Black background for Learn More page */
+    color: #fff; /* White text color for Learn More page */
+}
+
+body.learn-more-page .hero {
     background-color: #000;
 }
 
-.navbar .logo img {
-    width: 150px; /* 设置logo大小 */
+body.learn-more-page .hero-content h1, body.learn-more-page .hero-content p {
+    color: #fff; /* Ensure white text for the hero section */
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+body.learn-more-page .features h2, body.learn-more-page .features ul, body.learn-more-page .features li {
+    color: #fff; /* Ensure white text for features section */
 }
 
-.nav-links li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.nav-links li a:hover {
-    color: #0073e6;
-}
-
-/* Hero Section */
-.hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
-    background-color: #222;
-}
-
-.hero-content {
-    max-width: 50%;
-}
-
-.hero h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-.hero-image {
-    max-width: 50%;
-    height: auto;
-}
-
-/* Features Section */
-.features {
-    padding: 40px;
-    background-color: #333;
-    text-align: center;
-}
-
-.features h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.features ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.features li {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-/* Footer Styles */
-.footer {
-    background-color: #000;
-    color: #fff;
+/* Footer Styles for Learn More Page */
+body.learn-more-page .footer {
+    background-color: #000;  /* Black background for footer */
+    color: #fff;             /* White text color */
     padding: 20px;
     text-align: center;
 }
 
-.social-links {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+body.learn-more-page .footer-content p {
+    margin: 0;
+    font-size: 14px;
 }
 
-.social-links li a {
-    color: #fff;
-    text-decoration: none;
+body.learn-more-page .footer-content .social-links a {
+    color: #fff;             /* Ensure links are white on black background */
 }
 
-.social-links li a:hover {
-    color: #0073e6;
+body.learn-more-page .footer-content .social-links a:hover {
+    color: #0073e6;          /* Add hover effect for links */
 }
 
 
