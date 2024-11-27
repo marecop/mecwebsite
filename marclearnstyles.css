@@ -64,10 +64,16 @@ body {
 .scroll-item {
     max-width: 800px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    opacity: 0; /* 初始透明 */
+    transform: translateY(50px); /* 初始位置偏移 */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* 动画效果 */
 }
+
+.scroll-item.fade-out {
+    opacity: 0; /* 淡出状态 */
+    transform: translateY(-50px); /* 向上滑动偏移 */
+}
+
 
 .scroll-item img {
     width: 100%;
