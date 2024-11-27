@@ -5,21 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowHeight = window.innerHeight;
 
         scrollItems.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            const itemBottom = item.getBoundingClientRect().bottom;
+            const rect = item.getBoundingClientRect(); // 获取元素位置
+            const itemMiddle = rect.top + rect.height / 2; // 元素的中间位置
 
-            if (itemTop < windowHeight - 100) {
-                // 当滚动到元素进入视口时，淡入效果
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            } else if (itemBottom < 0) {
-                // 当元素完全离开视口上方时，淡出效果
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(-50px)';
-            }
+            // 根据元素与视口中间位置的距离计算透明度
+            const distanceFromCenter = Math.abs(windowHeight / 2 - itemMiddle);
+            const maxDistance = windowHeight / 2;
+            const opacity = 1 - Math.min(distanceFromCenter / maxDistance, 1);
+
+            item.style.opacity = opacity;
         });
     };
 
+    // 监听滚动事件
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // 触发初始状态检查
+    handleScroll(); // 页面加载时检查
 });
