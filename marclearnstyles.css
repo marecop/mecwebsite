@@ -1,0 +1,55 @@
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333; /* 默认导航栏颜色 */
+}
+
+.navbar .logo img {
+    width: 120px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.nav-links .active {
+    color: #0073e6;
+    font-weight: bold;
+}
+
+/* 针对marclearn.html页面的特定样式 */
+body.learn-more-page {
+    background-color: #000;
+    color: #fff; /* 确保页面的所有文字是白色 */
+}
+
+/* Hero Section */
+body.learn-more-page .hero {
+    background-color: #000;
+    color: #fff;
+}
+
+.hero-content h1, .hero-content p {
+    color: #fff;
+}
+
+/* Features Section */
+body.learn-more-page .features h2 {
+    color: #fff;
+}
+
+body.learn-more-page .features ul {
+    list-style: none;
+    color: #fff;
+}
