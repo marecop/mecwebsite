@@ -350,7 +350,7 @@ body {
         max-width: 100%; /* 图片占满容器 */
         height: auto; /* 高度按比例调整 */
     }
-    team-container {
+    .team-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -366,7 +366,8 @@ body {
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* 将文字内容推到框底部 */
+    justify-content: center; /* 让内容垂直居中 */
+    align-items: center; /* 让内容水平居中 */
 }
 
 .team-member:hover {
@@ -374,8 +375,8 @@ body {
 }
 
 .team-member img {
-    width: 200px; /* 图片宽度，缩小 */
-    height: 300px; /* 图片高度，缩小 */
+    width: 200px; /* 图片宽度 */
+    height: 300px; /* 图片高度 */
     object-fit: cover; /* 图片自适应盒子 */
     border-radius: 10px;
     margin-bottom: 10px; /* 图片和文字之间的间距 */
@@ -391,5 +392,10 @@ body {
     color: #666;
     margin-top: auto; /* 将描述文字推到最下方 */
 }
-}
 
+/* Active Navigation Item */
+.nav-links .active {
+    color: #0073e6;
+    font-weight: bold;
+    text-decoration: underline;
+}
