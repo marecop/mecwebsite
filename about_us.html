@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - MEC</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
     <header class="navbar">
@@ -21,15 +23,36 @@
         </ul>
     </nav>
 </header>
-
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>About Us</h1>
-            <p>Discover the story behind TechBrand, our mission, and the values that drive us forward.</p>
-            <a href="#team" class="button primary">Meet Our Team</a>
+        <div class="swiper">
+            <!-- Swiper Wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <img src="image1.jpg" alt="About Us Hero Image 1" class="hero-image">
+                </div>
+                <div class="swiper-slide">
+                    <img src="image2.jpg" alt="About Us Hero Image 2" class="hero-image">
+                </div>
+                <div class="swiper-slide">
+                    <img src="image3.jpg" alt="About Us Hero Image 3" class="hero-image">
+                </div>
+                <div class="swiper-slide">
+                    <img src="image4.jpg" alt="About Us Hero Image 3" class="hero-image">
+                </div>
+                <div class="swiper-slide">
+                    <img src="image5.jpg" alt="About Us Hero Image 3" class="hero-image">
+                </div>
+            </div>
+    
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+    
+            <!-- Navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-        <img src="about-hero.jpg" alt="About Us Hero Image" class="hero-image">
     </section>
 
     <!-- Our Mission Section -->
@@ -81,5 +104,24 @@
             </ul>
         </div>
     </footer>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Custom Swiper Initialization -->
+    <script>
+        const swiper = new Swiper('.swiper', {
+            loop: true, // 循环滚动
+            autoplay: {
+                delay: 10000, // 自动播放间隔
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
 </html>
