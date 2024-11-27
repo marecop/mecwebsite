@@ -1,0 +1,69 @@
+body {
+  background-color: black;
+  margin: 0;
+}
+
+/* 
+ * set to a very very large value to ensure
+ * that the page can be scroll very far
+ */
+
+body.loaded {
+  height: 5000px;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#sticky-block {
+  height: 100vh;
+  width: 100vw;
+  /* position: sticky; */
+  position: fixed;
+  top: 0;
+  /* display: flex; */
+  /* overflow: hidden; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.hide {
+  visibility: hidden;
+}
+
+canvas.scrollAnimation {
+  position: relative;
+  margin-top: -100px;
+}
+
+.whitespce {
+  background-color: white;
+  height: 400px;
+}
+
+#copyExample {
+  color: white;
+  position: sticky;
+  top: 0;
+  font-size: 50px;
+}
+.section-remaster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#remaster {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1500px;
+  min-width: 700px;
+  position: fixed;
+  margin: auto;
+  font-weight: bold;
+  color: white;
+  font-size: 4rem;
+  z-index: 100;
+  opacity: 0;
+}
