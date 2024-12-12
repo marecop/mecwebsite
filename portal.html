@@ -3,49 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEC Employee Portal</title>
+    <title>Employee Portal</title>
     <link rel="stylesheet" href="portalstyle.css">
 </head>
 <body>
-    <header>
-        <h1>MEC Employee Portal</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Schedule</a></li>
-                <li><a href="#">Tasks</a></li>
-                <li><a href="#">Notifications</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="schedule">
-        <h2>Your Schedule</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Task</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="schedule-list">
-                <!-- Schedule items will be injected here by JavaScript -->
-            </tbody>
-        </table>
-    </section>
-
-    <section id="tasks">
-        <h2>Your Tasks</h2>
-        <ul id="task-list">
-            <!-- Task items will be injected here by JavaScript -->
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 MEC Technologies</p>
-    </footer>
-
+    <div class="login-container">
+        <h2>Employee Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+        </form>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
