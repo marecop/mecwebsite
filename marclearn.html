@@ -1,79 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarcBook - Marcus Elam Corporation</title>
-    <link rel="stylesheet" href="marclearnstyles.css">
-    <script src="scripts.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>员工门户</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 10px;
+      color: red;
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="navbar">
-        <div class="logo">MEC</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">products</a></li>
-                <li><a href="#">Support</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="container">
+    <h2>员工门户登录</h2>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="用户名" required>
+      <input type="password" id="password" placeholder="密码" required>
+      <button type="submit">登录</button>
+      <p class="message" id="message"></p>
+    </form>
+  </div>
+  <script>
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('message');
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>The All-New MarcBook</h1>
-        <p>Redefining innovation. Experience the future of performance and design.</p>
-    </section>
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
-    <!-- Scroll Animation Sections -->
-    <section class="scroll-section">
-        <div class="scroll-item">
-            <img src="marcbook-top-view.jpg" alt="MarcBook Top View">
-            <h2>Unparalleled Design</h2>
-            <p>The sleek and lightweight design of MarcBook sets a new standard.</p>
-        </div>
-        <div class="scroll-item">
-            <img src="marcbook-screen.jpg" alt="MarcBook Screen">
-            <h2>Stunning Display</h2>
-            <p>Immerse yourself in a vibrant and crystal-clear display.</p>
-        </div>
-        <div class="scroll-item">
-            <img src="marcbook-performance.jpg" alt="MarcBook Performance">
-            <h2>Next-Level Performance</h2>
-            <p>Powered by cutting-edge technology for unparalleled efficiency.</p>
-        </div>
-        <div class="scroll-item">
-            <img src="marcbook-connectivity.jpg" alt="MarcBook Connectivity">
-            <h2>Seamless Connectivity</h2>
-            <p>Stay connected with advanced wireless technology and ports.</p>
-        </div>
-    </section>
-        <!-- Showcase Cards Section -->
-    <section class="showcase-cards">
-        <div class="card">
-            <img src="card-image-1.jpg" alt="Card 1">
-            <p>Explore the sleek design of MarcBook that inspires elegance.</p>
-        </div>
-        <div class="card">
-            <img src="card-image-2.jpg" alt="Card 2">
-            <p>Experience stunning visuals on a crystal-clear display.</p>
-        </div>
-        <div class="card">
-            <img src="card-image-3.jpg" alt="Card 3">
-            <p>Feel the power of cutting-edge technology.</p>
-        </div>
-        <div class="card">
-            <img src="card-image-4.jpg" alt="Card 4">
-            <p>Stay connected with advanced wireless capabilities.</p>
-        </div>
-    </section>
+      try {
+        const response = await fetch('https://mportalm-07a8f9406d21.herokuapp.com/', {  // 替换为你的 Heroku 应用地址
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
 
+        const data = await response.json();
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Marcus Elam Corporation. All rights reserved.</p>
-    </footer>
+        if (data.success) {
+          message.style.color = 'green';
+          message.textContent = `欢迎, ${data.name}`;
+        } else {
+          message.style.color = 'red';
+          message.textContent = data.message;
+        }
+      } catch (error) {
+        message.style.color = 'red';
+        message.textContent = '网络错误，请稍后重试';
+      }
+    });
+  </script>
 </body>
 </html>
