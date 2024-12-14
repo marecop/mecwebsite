@@ -3,25 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>员工门户</title>
-  <link rel="stylesheet" href="style.css">
+  <title>员工主页</title>
+  <link rel="stylesheet" href="portalstyle.css">
 </head>
 <body>
   <div class="container">
     <h2>欢迎, <span id="employee-name"></span></h2>
     <p id="employee-position"></p>
-    <button id="logout-btn">退出登录</button>
-
     <div class="time-table">
-      <h3>员工时间表</h3>
+      <h3>时间表</h3>
       <ul id="schedule">
         <!-- 动态填充 -->
       </ul>
     </div>
-
     <div id="extra-content">
       <!-- 动态填充 -->
     </div>
+    <button id="logout-btn">退出登录</button>
   </div>
   <script src="dashboard.js"></script>
 </body>
