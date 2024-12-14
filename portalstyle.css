@@ -1,39 +1,116 @@
-/* style.css */
+/* 通用样式 */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.login-container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
+/* 输入框和按钮的样式 */
 input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
+}
+
+/* 消息显示 */
+.message {
+  margin-top: 10px;
+  color: red;
+}
+
+/* 员工主页（Dashboard）样式 */
+#dashboard {
+  display: none;
+}
+
+#dashboard.visible {
+  display: block;
+}
+
+#dashboard h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+#employee-name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* 员工职位显示 */
+#employee-position {
+  color: #555;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* 时间表和额外内容样式 */
+.time-table {
+  margin-top: 20px;
+}
+
+.time-table h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.time-table ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.time-table li {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+#extra-content {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#logout-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#logout-btn:hover {
+  background-color: #c82333;
 }
