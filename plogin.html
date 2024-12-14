@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>登录 - 员工门户</title>
-  <link rel="stylesheet" href="portalstyle.css">
+  <title>Staff Portal Login</title>
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
-  <div class="container">
-    <h2>登录到员工门户</h2>
-    <form id="login-form">
-      <input type="text" id="username" placeholder="用户名" required>
-      <input type="password" id="password" placeholder="密码" required>
-      <button type="submit">登录</button>
-      <p class="message" id="message"></p>
-    </form>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Staff Portal Login</h2>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+        <p class="message" id="message"></p>
+      </form>
+    </div>
   </div>
   <script src="login.js"></script>
 </body>
