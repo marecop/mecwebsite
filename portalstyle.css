@@ -1,116 +1,92 @@
 /* 全局样式 */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* 顶部导航栏 */
-.navbar {
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  height: 100vh;
+  background-image: url('background.jpg'); /* 替换为你自己的背景图片 */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.9); /* 背景色透明白 */
+  padding: 40px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #007bff;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
   background-color: #007bff;
   color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar .logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.navbar .menu {
-  display: flex;
-  gap: 20px;
-}
-
-.navbar .menu a {
-  color: white;
-  text-decoration: none;
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
-}
-
-.navbar .menu a:hover {
-  text-decoration: underline;
-}
-
-/* 用户信息 */
-.navbar .user-info {
-  position: relative;
-}
-
-.navbar .user-info img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   cursor: pointer;
 }
 
-.navbar .user-info .dropdown {
-  position: absolute;
-  right: 0;
-  top: 50px;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  display: none;
-  text-align: left;
+button:hover {
+  background-color: #0056b3;
 }
 
-.navbar .user-info:hover .dropdown {
-  display: block;
-}
-
-.navbar .user-info .dropdown a {
-  padding: 10px 20px;
-  display: block;
-  text-decoration: none;
-  color: #333;
+.message {
+  margin-top: 10px;
   font-size: 14px;
-}
-
-.navbar .user-info .dropdown a:hover {
-  background-color: #f4f4f4;
-}
-
-/* 内容布局 */
-.container {
-  flex: 1;
-  padding: 20px;
-}
-
-.card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 16px;
-  color: #555;
+  color: #e63946; /* 错误消息为红色 */
 }
 
 /* 响应式设计 */
-@media (max-width: 600px) {
-  .navbar .menu {
-    flex-wrap: wrap;
-    gap: 10px;
+@media (max-width: 500px) {
+  .login-box {
+    width: 90%;
+    padding: 20px;
   }
 
-  .navbar .menu a {
+  h2 {
+    font-size: 20px;
+  }
+
+  input, button {
     font-size: 14px;
   }
 }
