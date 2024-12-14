@@ -1,116 +1,117 @@
-/* 通用样式 */
+/* 全局样式 */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
 }
 
+/* 容器样式 */
 .container {
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
 
-/* 输入框和按钮的样式 */
+/* 标题样式 */
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 输入框样式 */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
+input:focus {
+  border-color: #007bff;
+}
+
+/* 按钮样式 */
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #0056b3;
 }
 
-/* 消息显示 */
+/* 消息提示 */
 .message {
-  margin-top: 10px;
-  color: red;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #e63946; /* 错误消息为红色 */
 }
 
-/* 员工主页（Dashboard）样式 */
-#dashboard {
-  display: none;
-}
-
-#dashboard.visible {
-  display: block;
-}
-
-#dashboard h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-
-#employee-name {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-/* 员工职位显示 */
-#employee-position {
-  color: #555;
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-/* 时间表和额外内容样式 */
+/* 时间表和内容块样式 */
 .time-table {
   margin-top: 20px;
 }
 
 .time-table h3 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .time-table ul {
   list-style-type: none;
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .time-table li {
-  padding: 5px;
+  padding: 10px 0;
   border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  color: #555;
 }
 
 #extra-content {
   margin-top: 20px;
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
 }
 
-#logout-btn {
-  margin-top: 20px;
-  padding: 10px 15px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
 
-#logout-btn:hover {
-  background-color: #c82333;
+  h2 {
+    font-size: 20px;
+  }
+
+  input,
+  button {
+    font-size: 14px;
+  }
 }
