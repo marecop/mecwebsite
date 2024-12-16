@@ -13,8 +13,8 @@ body {
 
 /* 导航栏样式 */
 .navbar {
-  background-color: #007bff;
-  color: white;
+  background-color: #f4f4f4; /* 灰色背景 */
+  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@ body {
 }
 
 .navbar .nav-links li a {
-  color: white;
+  color: #333;
   text-decoration: none;
   font-size: 16px;
 }
@@ -54,9 +54,9 @@ body {
 .navbar .user-info img {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 50%; /* 圆形头像 */
+  border: 2px solid #ddd; /* 边框颜色 */
   cursor: pointer;
-  border: 2px solid white;
 }
 
 .navbar .user-info .dropdown {
@@ -66,12 +66,14 @@ body {
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  display: none;
+  display: none; /* 默认隐藏 */
   text-align: left;
+  width: 150px;
 }
 
-.navbar .user-info:hover .dropdown {
-  display: block;
+.navbar .user-info:hover .dropdown,
+.navbar .user-info .dropdown:hover {
+  display: block; /* 鼠标悬停头像或菜单时显示 */
 }
 
 .navbar .user-info .dropdown a {
