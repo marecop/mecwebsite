@@ -338,7 +338,7 @@ var _hdnUnsavedDataWarningClientID = 'ctl00_hdnUnsavedDataWarningEnabled';
                 LoadingImage.startRequest();
                 $.ajax({
                     type: 'POST',
-                    url: '../Services/NoticesService.asmx/GetCorrectPushNoticeID',
+                    url: 'https://ulinkcollege.engagehosted.cn/Services/NoticesService.asmx/GetCorrectPushNoticeID',
                     contentType: 'application/json; charset=utf-8',
                     data: JSON.stringify({ 'noticeID': nid }),
                     dataType: 'json'
@@ -511,7 +511,7 @@ var _hdnUnsavedDataWarningClientID = 'ctl00_hdnUnsavedDataWarningEnabled';
                 {
                     title: '工人',
                     element: document.querySelector('.pupilDetails [id$="imgInfoLink"]'),
-                    intro: '要访问您孩子的记录，您可以单击“查看详细信息”。',
+                    intro: '要访问工人的记录，您可以单击“查看详细信息”。',
                     key: '.pupilDetails [id$="imgInfoLink"]',
                     beforeAction: function () {
                         var menuStartClosed = $('.menuSideBar').hasClass('min');
@@ -782,7 +782,7 @@ Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm'
                                 <li id="loggedInAs">
    
                                     <span id="ctl00_lblUserName"><div class="hideForMobile flexBox alignItemsCenter">
-<span id="text">当前用户:  冼炜轩-Wilson Xian</span><i class="fa fa-chevron-down userMenu"></i>
+<span id="text">当前用户:  谢雨钿-Haden Xie</span><i class="fa fa-chevron-down userMenu"></i>
 </div>
 <div class="showForMobile">
 <span class="profileAvatar">CH</span>
@@ -872,7 +872,7 @@ Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm'
 <a class="js-NavGroupHeader" href="#">
 <div class="navItemContainer" id="Pupils_Pupil3373">
 <div class="navItem navItem20Percent js-PupilNav "><i class="  ignoreFaStyle"></i></div>
-<div class="navItem navItem70Percent js-PupilNav ">冼炜轩-Wilson Xian</div>
+<div class="navItem navItem70Percent js-PupilNav ">谢雨钿-Haden Xie</div>
 <div class="navItem navItem10Percent js-PupilNav ">
 <i class="fa dropDownUp fa-chevron-down"></i>
 <i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
@@ -1068,9 +1068,9 @@ Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm'
         <div class="siblingContainer">
 				<div class="siblingDetails">
 					<div class="photoHolder">
-						<img id="ctl00_PageContent_ctl03_ctl00_ctl01_imgPupilImage" class="left" src="mecwebsite/wilsonxian.jpg" style="border-width:1px;border-style:solid;width:50px;">
+						<img id="ctl00_PageContent_ctl03_ctl00_ctl01_imgPupilImage" class="left" src="hadenxie.jpg" style="border-width:1px;border-style:solid;width:50px;">
 					</div><div class="sibilingInfo">
-						<h1>Xianweixuan 冼炜轩 Wilson</h1><div>
+						<h1>Xiyutian 谢雨钿 Haden</h1><div>
 							<strong>当前工人</strong>
 						</div><div>
 							1145/3/31
