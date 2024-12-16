@@ -17,7 +17,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
       // 登录成功，将用户信息存储到 localStorage
       localStorage.setItem('loggedInUser', JSON.stringify(data));
       // 跳转到员工主页
-      window.location.href = 'dash.html';
+      window.location.href = 'dashboard.html';
     } else {
       // 显示错误消息
       document.getElementById('message').textContent = data.message;
