@@ -5,8 +5,8 @@ if (!loggedInUser) {
 } else {
   // 设置用户信息
   document.getElementById('user-avatar').src = loggedInUser.avatar;
-  document.getElementById('user-name').textContent = loggedInUser.name;
-  document.getElementById('user-role').textContent = loggedInUser.role;
+  document.getElementById('user-name')?.textContent = loggedInUser.name;
+  document.getElementById('user-role')?.textContent = loggedInUser.role;
 
   // 退出登录
   document.getElementById('logout').addEventListener('click', () => {
