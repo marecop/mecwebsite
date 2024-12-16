@@ -3,40 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>员工门户</title>
-  <link rel="stylesheet" href="portalstyle.css">
+  <title>员工门户 - 仪表盘</title>
+  <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-  <!-- 顶部导航栏 -->
-  <div class="navbar">
-    <div class="logo">MEC</div>
-    <div class="menu">
-      <a href="#reports">报告评论</a>
-      <a href="#schedule">周时间表</a>
-      <a href="#activities">活动</a>
-    </div>
-    <div class="user-info">
-      <img id="user-avatar" src="" alt="用户头像">
-      <div class="dropdown">
-        <a href="#profile">用户信息</a>
-        <a href="#settings">设置</a>
-        <a href="plogin.html" id="logout">退出登录</a>
-      </div>
-    </div>
+  <div class="header">
+    <h1>员工门户</h1>
+    <button id="logout-btn">退出登录</button>
   </div>
-
-  <!-- 主体内容 -->
   <div class="container">
-    <div class="card">
-      <h3>欢迎, <span id="user-name"></span>!</h3>
-      <p>您的职位: <span id="user-role"></span></p>
-    </div>
-    <div class="card" id="content">
-      <!-- 动态填充的门户功能内容 -->
-      <p>这是一个示例门户功能。根据您的需求定制内容。</p>
+    <h2>欢迎, <span id="username"></span>!</h2>
+    <div class="settings">
+      <h3>个人设置</h3>
+      <p>姓名: <span id="settings-name"></span></p>
+      <p>用户名: <span id="settings-username"></span></p>
+      <button id="update-settings-btn">更新设置</button>
     </div>
   </div>
 
-  <script src="dashboard.js"></script>
+  <script>
+    const sessionId = localStorage.getItem('sessionId');
+    const usernameSpan = document.getElementById('username');
+    const settingsName = document.getElementById('settings-name');
+    const settingsUsername = document.getElementById('settings-username');
+    const logoutBtn = document.getElementById('logout-btn');
+    const updateSettingsBtn = document.getElementById('update-settings-btn');
+
+    fetch(`https://<your-heroku-app-name>.herokuapp.com/settings?sessionId=${sessionId}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          usernameSpan.textContent = data.settings.name;
+          settingsName.textContent = data.settings.name;
+          settingsUsername.textContent = data.settings.username;
+        } else {
+          alert('未授权，请重新登录');
+          window.location.href = 'index.html';
+        }
+      });
+
+    logoutBtn.addEventListener('click', () => {
+      fetch('https://<your-heroku-app-name>.herokuapp.com/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId })
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('退出登录成功');
+            localStorage.removeItem('sessionId');
+            window.location.href = 'index.html';
+          } else {
+            alert('退出失败，请重试');
+          }
+        });
+    });
+
+    updateSettingsBtn.addEventListener('click', () => {
+      alert('设置更新功能正在开发中！');
+    });
+  </script>
 </body>
 </html>
