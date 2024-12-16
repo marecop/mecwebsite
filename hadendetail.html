@@ -1,0 +1,1216 @@
+<html id="ctl00_MasterPageHtmlTag" dir="居留权" class=" js canvas canvastext draganddrop rgba multiplebgs svg inlinesvg svgclippaths t-chrome t-chrome131"><head id="ctl00_MasterPageHeadTag"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.json"><title>
+	我的资料
+</title><link href="https://ulinkcollege.engagehosted.cn/introjs/introjs.css" rel="stylesheet">
+        <script src="https://ulinkcollege.engagehosted.cn/introjs/intro.js"></script>
+
+   <link href="https://ulinkcollege.engagehosted.cn/css/main?v=w-XiJcu4u7Q2RflMb9LXT6cqJLM4lamQDJtmzxR4z9s1" rel="stylesheet">
+<link href="https://ulinkcollege.engagehosted.cn/css/mainnew?v=gX9AQ8dOB88CxLAPKyc2lYqspJJwwYn-QulxEhMsfFk1" rel="stylesheet">
+<link rel="stylesheet" href="https://ulinkcollege.engagehosted.cn/CSS/flipswitch.css"><link href="https://ulinkcollege.engagehosted.cn/CSS/font-awesome/all.css" rel="stylesheet"><link href="https://ulinkcollege.engagehosted.cn/CSS/font-awesome/v4-shims.css" rel="stylesheet"><link href="https://ulinkcollege.engagehosted.cn/Skins/Style/ComboBox/ComboBox.Style.css" rel="stylesheet"><link href="https://ulinkcollege.engagehosted.cn/Skins/StyleWhite/ComboBox/ComboBox.StyleWhite.css" rel="stylesheet"><link href="https://ulinkcollege.engagehosted.cn/Skins/StyleFilter/ComboBox/ComboBox.StyleFilter.css" rel="stylesheet"><script language="javascript" type="text/javascript">
+var _hdnUnsavedDataWarningClientID = 'ctl00_hdnUnsavedDataWarningEnabled';
+</script><script src="https://ulinkcollege.engagehosted.cn/JS/jquery-3.6.0.min.js"></script>
+
+        <script src="https://ulinkcollege.engagehosted.cn/JS/staffregister.js?v=2024.43.206"></script>
+
+       
+        <!-- Javascript that needs to be included before jQueryUI -->
+        <script src="https://ulinkcollege.engagehosted.cn/js/main?v=CsJ824xMfjgt0bX1q8Euud1L2DVSZKrpee5wX5fJCLs1"></script>
+
+        
+        
+        <script src="https://ulinkcollege.engagehosted.cn/JS/extensions.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/globalResources.axd?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/AjaxHelpers.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/TelerikHelpers.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/functions.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/freezeHeaders.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/validation.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/floatyScrollbar.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/AutoKillAjax.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/moment.min.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/DMSEvents.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/resizesensor.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/JS/qrcode.min.js?v=2024.43.206"></script>
+        <script src="https://ulinkcollege.engagehosted.cn/serviceWorkerInit.js?v=2024.43.206"></script>
+
+        
+        <script src="https://ulinkcollege.engagehosted.cn/JS/pwa/PushNotifications.js?v=2024.43.206"></script>
+        
+
+        <script>
+            var userAccountType = 'User'
+
+            
+
+            //$(window).on('beforeunload', function () {
+            //    $("body").fadeOut(300);
+
+            //});
+
+            
+
+            var walkThroughResources = {};
+            $(document).ready(function () {
+                walkThroughResources["done"] = '已完成';
+                walkThroughResources["next"] = '下一步';
+                walkThroughResources["back"] = '返回';
+
+                if ($('.js-navClose').hasClass('min')) {
+                    $('body').removeClass('navOpen').addClass('navMin');
+                } else {
+                    $('body').removeClass('navMin').addClass('navOpen');
+                }
+
+
+                /*   USER FILTER CONTROLS */
+
+                $('.userFilterControl').on('mouseover', function (e) {
+
+                    var e = $(e.currentTarget).children('label');
+
+                    if (e !== undefined) {
+
+                        if (e.attr('title') === undefined) {
+                            var $c = e
+                                .clone()
+                                .css({ display: 'inline', width: 'auto', visibility: 'hidden' })
+                                .appendTo('body');
+
+                            if ($c.width() > e.width()) {
+
+                                    console.log('Filter Label ellipsis - tooltip added');
+                                    e.attr('title', $c.text());
+                            }
+
+                            $c.remove();
+                        }
+                    }
+                });
+                /* ***************************************** */
+                window.addEventListener('resize', function (event) {
+
+
+                    if ($(window).width() < 1000) {
+                        $('.js-navClose').addClass('min');
+                        $('.js-navClose').removeClass('open');
+
+                        $('body').addClass('navMin');
+                        $('body').addClass('mobile');
+                        $('body').removeClass('navOpen');
+
+                        $('.js-phoneButton').removeClass('fa-arrow-left-to-line').addClass('fa-bars');
+
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').removeClass('fa-arrow-left-to-line');
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').addClass('fa-arrow-right-from-line');
+                    } else {
+                        $('body').removeClass('mobile');
+                    }
+                }, true);
+
+                var d = {
+                    'preferenceName': 'MasterPage.MenuStatus',
+                    'defaultValue': ''
+                };
+
+                if ($(window).width() < 1000) {
+                    var allowShrinkItem = !$('.menuSideBar').hasClass('min');
+                    $('body').addClass('mobile');
+                    if (allowShrinkItem) {
+                        expandShrinkNav(true);
+                    }
+                }
+
+                $('.js-NavGroupHeader').on('click', function () {
+                    var allowShrinkItem = !$('.menuSideBar').hasClass('min');
+
+                    expandShrinkNav(false);
+
+                    if ($(this).parent().children('ul').is(':visible') && allowShrinkItem) {
+                        $(this).parent().children('ul').slideUp();
+                        $(this).parent().removeClass('opened');
+                        $(this).find('.fa-chevron-down').show();
+                        $(this).find('.fa-chevron-up').hide();
+                    }
+                    else {
+                        $(this).parent().children('ul').slideDown(function () {
+                            setTimeout(function () {
+                                this.parentElement.scrollIntoView({ behavior: "smooth", block: "end" })
+                            }.bind(this), 100)
+                        });
+                        $(this).parent().addClass('opened');
+                        $(this).find('.fa-chevron-down').hide();
+                        $(this).find('.fa-chevron-up').show();
+
+                    }
+                });
+
+                $('.js-portalNavigationToggle').on('click', function () {
+                    var pref = '';
+                    if ($('.menuSideBar').hasClass('min') !== true) {
+                        pref = 'min';
+                    }
+
+                    if ($(window).width() > 1000) {
+                        setPreference('MasterPage.MenuStatus', pref);
+                    }
+                    expandShrinkNav(true);
+                });
+
+                $('.js-NavItemOpen').on('click', function () {
+                    expandShrinkNav(true);
+                });
+
+
+
+                function expandShrinkNav(allowShrink) {
+                    if ($('.menuSideBar').hasClass('min') === true) {
+                        //closed -> open
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').removeClass('fa-arrow-right-from-line');
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').addClass('fa-arrow-left-to-line');
+                        $('.js-navClose').removeClass('min').addClass('open');
+                        $('body').removeClass('navMin').addClass('navOpen');
+
+                        $('.js-phoneButton').removeClass('fa-bars').addClass('fa-arrow-left-to-line');
+
+                        //tooltipCenterBottom($('.menuSideBar'))
+
+                    }
+                    else if (allowShrink === true) {
+                        $('.js-navClose').removeClass('open').addClass('min');
+                        $('body').removeClass('navOpen').addClass('navMin');
+
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').removeClass('fa-arrow-left-to-line');
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').addClass('fa-arrow-right-from-line');
+
+                        $('.js-phoneButton').removeClass('fa-arrow-left-to-line').addClass('fa-bars');
+
+                        //tooltipCenterRight($('.menuSideBar'));
+                    }
+                   
+                    modifyFilterClassesForQueryWidths();
+                    //wait for 2.5 secs so animations can resolve before fixing telerik widths
+                    setTimeout(function () {
+                        $('.rsContentWrapper').width('100%');
+                        $('.rsContentScrollArea').width('100%');
+                        $('.rsTopWrap').width('100%');
+                        $('.rsHorizontalHeaderWrapper').children('div').width('100%');
+                        $('[id^="tblTimeTable"]').width("100%");
+                    }, 2500);
+
+                }
+
+                new ResizeSensor($('.menuSideBar'), function () {
+                    setTimeout(modifyFilterClassesForQueryWidths, 200);
+                });
+
+                var subscribeButton = document.getElementById('subscribe');
+                if (subscribeButton !== null) {
+                    subscribeButton.onclick = function (event) {
+                        event.preventDefault();
+                        subscribeUser();
+                    };
+                }
+
+                var unsubscribeButton = document.getElementById('unsubscribe');
+                if (unsubscribeButton !== null) {
+                    unsubscribeButton.onclick = function (event) {
+                        event.preventDefault();
+                        unsubscribeUser();
+                    };
+                }
+            });
+
+            function setPreference(name, value) {
+                var postData = {
+                    "preferenceName": name,
+                    "preferenceValue": value
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://ulinkcollege.engagehosted.cn/Services/UserServices.asmx/SetPreference",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+            }
+        </script>
+    <script language="javascript" type="text/javascript">window.onbeforeunload = closeIt;</script>
+    <script src="https://ulinkcollege.engagehosted.cn/JS/MyDetails.js?v=2024.43.206" type="text/javascript" language="javascript"></script>
+    <script>
+        function openPwaQrCodeModal() {
+
+            var modal = $('[id$="PortalModal_modal"]');
+            modal.width(320);
+            modal.height(420);
+            modal.find('#btnSave').hide();
+            modal.find('#qrcode').html('');
+            modal.find('.portalModalHeading h2').text('Scan QR Code with your device camera');
+
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                width: 300,
+                height: 280
+            });
+            qrcode.makeCode('https://ulinkcollege.engagehosted.cn/Login.aspx?ReturnUrl=%2fDefault.aspx&pwainstall=1');
+
+            var left = Math.max($(window).width() - modal.outerWidth(), 0) / 2;
+
+            modal.css({
+                'position': 'fixed',
+                'top': '80px',
+                'left': left + 'px'
+            });
+
+            modal.show();
+        }
+    </script>
+<link href="/Telerik.Web.UI.WebResource.axd?d=Db2ZRa0u9QJnOGajvtH9pwvryMpaD29q_EoAYiS7hvavwEaWDPLuYKD3X903Kvyy-mcASVPptCsT-U4fzuElGm64Muvy_4uL8mOIbvlDfUNmRZkTCGVG5W_rPNQL5cry0-cDdw2&amp;t=638628495619626917&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bTelerik.Web.UI%2c+Version%3d2021.3.1111.45%2c+Culture%3dneutral%2c+PublicKeyToken%3d121fae78165ba3d4%3azh-CN%3ab406acc5-0028-4c73-8915-a9da355d848a%3a1c2121e" type="text/css" rel="stylesheet"></head>
+<body id="ctl00_MasterPageBodyTag" class="mobile navMin">
+<div id="refresh-indicator">Pull down to refresh...</div>
+
+    <div id="disablingDiv"></div>
+    <form name="aspnetForm" method="post" action="./MyDetails.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm" class="fullHeight js-form">
+<div>
+<input type="hidden" name="ctl00_ctl13_TSSM" id="ctl00_ctl13_TSSM" value=";Telerik.Web.UI, Version=2021.3.1111.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:zh-CN:b406acc5-0028-4c73-8915-a9da355d848a:1c2121e">
+<input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value="">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="xZ1k/mteU/lQR/zGJ66iyxGhqLis22rUR+ug6d22QRFuyJDZb0Yh8jXzIPEgJDm95q6R74p9cXBsbfKGaFYvzGwyjspHO5LV7IxYuMfIWcF7Ub1LcAvOz4gv9Qh9N53kcMD/PstqprvB5D8Lji++/cTJz0+CXkNO1S+HtqcaaU+pbXDaKn00hmDx2wBGxnattTiNSZCOK3aJqGONPtEka4W0UjRMGk88XgIIRzAF+KfPyVKzNPuG1VLqa7zC+EVuLlpyWXg+S/0pFQFlKSP1v6iIKEWnI7T4It2EnoLPeMV8F9+bjdEcEoU3fRVbvb4KSN35q+Ok5GhZ212V1c7flxrPBPPXg6z0vWNg0MOYm6jQjfv9nzDaGQIMgZJZ2awRPr9cAOMMt2xVn2n/GMmfP9afE/ICH+1INt7eDB1jO5VBCGrfHsvZHxF0NKV7fxVofK8P3pMNknQNTpWgNiYs8rrIUXEO8fWQITQV3gaiLv+r9DY6upLxcee+Jkh3vhELJLBm+/vMup6Fk0wPWxppBv674U3cH+3hfI6/Mi4hFVRwFnQn4QnCD66JNpO0jhES6Wc4zMqEzqPDAS+A8HAAQp1AssRg/O4OHAC75RtT+li4I0wHyfQwXczeZGt2lExjxiKwtjVGqqyVI8sQ5feHYKwHlgNMXWzQ5aPbgZ8/+XRyZLzXB8++ek0rAb+m9go6Jv8lbDF2600V2yFwPQFiXp2F437+oqLDaXcseEOR2BNUqc8bMIGFTFWHJyocHaPYmEEGz0N1k+2YBuaLI8P84SC2KGOqTHHEmuwjUKUElEbgAa+2ozNptZybTBhrRCPV4HL+IfqEdBGFPjvcOCffmCu/ErLQZrLiGwoTP5cHvesOWzaIeJnKxIviYLbY6EeVYVTJGdDpoxAf1kXz1ov7fJVO+u0/f7lDB1w7kikfnq9fNtwDwIWhr03nHqBDaMzjaXBL13qRtXtsnmomfp2ValPB/p/89JDYhU33KAd4dZ3PZP501P1kCUgJpiFTkLbVCiEcRwR46m4E/c6yscuoKEAidCRpea47/LPS66aJrN1z1tjquZb8ViiV/bqKfF/3LvpObmbR0WR15csfup8q735vpb6S1DuzXo9COPwV8/NnkUaDA1AU4v8Ri0ekR4qeNBAk3OLVQ8SQNwEDyGNVYlRTLByz3C2LcchaYARc62I8l3IJ5hqcu7jquI4XhTP+DoYKEWQnLik1ltTGk4w9GD7gMPnGDaWpMnDCwT2bd7ydEGy9p4vqcDCUig9S7rOzc//Ktia4Yx6ySwneeJerbKiB7i8a8AmK7/lBuikK1yrDfHSnuK9N0S56my/QiMDnERhbPjEBctyawF5DjVQN/WRaibXlaggYK5OwbjSsyDaojMklnlsWB++uceUQg/MyQ2h0qp5+CioBU/LTOdMiWE78SCpMxIp6nQkMH5IEEm6V+bOuawKRXzYjncYsngkGHQYChmfmDhovkPMGH6z73PJaeSJ/lkEI3sq7aIAiHktvAh4ydBqi7iBtOG03ixDAFofFJ3QSrti+u2/yXhzw7UBx3vR9lq61B9h6EZw7IhaH9dYkpU4NcOPAmLJvaODtH0yyc4e1l8E4CiVDhk+zTBwNT53+4EGl6ZPCBhEitpL+vxKhHRNbW7KHA2C6TkvegnVO968uY/jIbtGEsvyy/NQPdC7hGsbRzA+JDOpryqxlrUxdHCVcC18ZPE8dpz2SsVlCnMcGmC45TXbf3jbB06cKAHrZ3dbLXWtj0Tc3KlwaewUvT77Nsg31wmY89qlyrN944kJ8bHhF2/MB3IgVF8Sf0EIHVQWnYJXoASMhaIh61i/ZveTNP2E55CL7INdH497e7jn48TXHZAb1eG2PdPsEQHQPYk81QkhK4neFjRVb8cdreynR82O6XifnNQApnU7jvo9Oms0s76Hh9hKG2ZJLJU2yATh3oHmAgEqQyrb2Op9shGgUpXcliWA7LBI2gfTmP7B25O0ZqTdXj/N6IYQMPF1iX37Pfrnx2P2T+mwWTxUjSbBhzP3RfPS6uaSvp3pYiZddJ4RDhG/0SaZNc8xZ3X8hktj0L/TQhW3OYyfCb34Si3gznrH3IA7fSxVZMWI0kMq1dTIR0N0RnZ8dbryNUkKoS11Ymr9zu0zLSaKMZeQYePbvjmYIOrdeBxS9vqwChmD4+RP3AvHPse7ZpwrYzrYD3gg4pprONECT+cGVtFN0LHkQcIBJX03Ke4nYM130xZM9FCfmyEVFosM7m760JKYPIQYf+nN5G7Yt62DPkRceLrEYS8hl4su6OZsIx/uxfxo6HtNl1DNtAwaQOHiiwbwpMfFxGSkflVxcW7Ln4Ee9NChKZo7dYCQVpoKLb6RpauMXnbzQq8Qpo6Ixc9DwgAkorRboyiqbyNyi1DBWwkkatquGwKstwuGcqIOeCtDdq+wdmeGEiChdGTYqoLISdpz1pY54HbmDpzwinkU69mCSu6HhvpH7lyFGA4Bg7e4s0d8r1Y1wU9631JpyvTZcihyHHmC5aFCHV4MoCRonfhOIuaHH3XECkuPMP73wLG9SqQgqvQHIOblrZ9YJhEnb9MxcUO48nvlUmU9mhaTBG0F+PyUC2lZNUhrUoMEL4Axpfij5sehwNWBoZeGpM2gUgVRVm7a93S/6ySoxzOZqsexSN25QFdqwIsBJarCopHY3n6XKqGWLWkA3F+Jjg6hhfNcVOdffCTYlhvpZwGTwz7UpM/bjuRfVnAocbtJ/lABfRqOxAJfSKpNKznWeZgFLMZuIyAtQRnJ7CoGe55SPB4KpXxklBG5m54/t5NY2eWwg83IB1RamFToJT1Igp7hc/uFsaj5kGK88G4yrTjt63sapBjFeZtuVMnGIVK/dPZMcMrSYZa6rbd8EMhPryxWN9r8qiWy3gVrgbpgQsVOtqcWsJrS0JV6JvMkaxdwGQbYJp5nafo8xkxpDiIm0EkokhGviYlZwpo2qUev87HHeimzYQAeCpF5TUn1gLYV3Pp/vFtR4gXvwci+A9ss943jREoVpENukuou4aocoUlwmE8tK7t+6CjHSJUB7OTWbNTKkjURAxcjXmr1AQ5t0MsjqdNPrHJ6/kWgAD63BQydMfrIZP2ldKTKraRzWqlCY8+tfnesFDlj+RAKEOBoRFqGZiVh7L/VShh37k6ohPJvMhNlKq2eRdFai4ScpEP1GURnIOWd8KyYgjZpKSfxDizgi0Qr/VwYbPHqxKEYGT0LM3MwFs1sqW7AK+wJVFvFrRo1i1P/l7w2zKmcMMK7zT7cgZ0USALMPjImmNYXnW09vege5HMm4sNf9/0NQja+hK4ywx459fsUEgEaygIRAqDvP1eCSpOwoajFViqSOAwCX1yqiv7r0q12qTM24hDXGJybcQEB9t96AAzqQnpCMvXN5wwxxTRnGau++S0a6aXAQBPWreEomeBOEDiUPugHlLnLDfjdHZb3QWq4S9PPsuqTqR/laNhl4DNx55dns4iME7BZIQVyj1Z6PMB1QHKdtf1Y+7Y6uni06a4oe6Bqp2T+e+I+cd0fK1gbNrEzbhNeqfjwHwVXvoO3sLMe97IbVuWFMSgu04JNzR/B8putfD/tetKrbidAJPdYx+roP5YnBx0AbIGtI+8dy7hQdIPgMt5xuw9ceaJn3LurkVfvtfE1sZaM6FyXfwRU0nmcufRXEYrkYceH3afIXm6LMwzwK0AWln/awO61UE1aUVJZm3MU/zBL565XkU/qm6qkKbt6nZoGe2zlv7/7HVFgucAMD0IcGshbRuIhz3W0hJVq55Xlo2XztJsBRrQX1EZPTmGI/PxZA3e86AfUhBx+KPWVdcD8v8Q8A420uecze0T6uTv3xpsv9U9XuC9QaHbjo2a8yF+0Qbz4NSzV5BWD1ehZqsT4N19UlkX9kAudY1Vt9fBihAmhcjqEQ4jTbcEE8CluCairjjJFYhl0G2E8f63CULi+0dJN4Fbyn0D7uNpxwIuWqUHSOeOriv9P9OIMbSYZHYtujXZiS+vAlUDki+Hc2/WyauWC8ZLAWMspCXKnwevp9Ip1Nk/BViLFFK8VLu43VdljCXQA/YuCXX8mAck9IVFUZ6PbqVbcQaqs1t2txXn38OC+hODv6R7EmO1eefe33N7w2xDu4SAlDOf2HiBT0z+l0UJHN7eFepLqOPBM4P+9KjXSSxbX1+PB4nOq7nmeyJjSiBapqAE/STlx7eyG2XPmtrPYtb6SsBNuv6jHdWDX1zj+eVQzvaTm4Cj1P52aPDPYgZaJR5m8uJGLTNG7jeeQNACUB9L2wafCXQoSFqUUgwPh8C5XKdk+DXey2nSM8oC1nK96Y30Q7I6ZQTZ1oGdJVen9gnqWsTwFKieIMEXO35m0Jl+kiBA6CwQIzDbZGRKOvWt3nfklikUZfcH8L7YQ3SHgZFht6EhalLPlHOHyfnMDr5jEEGPHgQ977sDbs/ZRoPcNNd8l2Z/N4Jxm+UaywEmcBfjKwvPumfugyntd32nOFXb6i18by+gKOY0HvQ1YYRdIf36chp09FcfrJWZw0vGaf4JstahXuFARtbW/CVYX4ieiicK1XK8okcU6B8dWx4O0QAwTb0liz2qGhaeQQ9vXaI4WEG/6tazU5hVmML41kBwnsatPABXM2YYtLHvHV8I463VWmA1lB+lU4ityg6XwJMaLVEVWiqYgx4oTYl2ZtTxT7NldYjLYRXIrib2tyx69q2CBOmFGyVqMkf3JBIAstE077ChmaIUjPThvtMaeW9d7D4zAi0IcR69rKsVYKxKPzTdhMNIcLrVmrdAgt/iLRVZRX3i3iydpQ2FetzZeKnf8byK23ij7yt8m7j9FrWLpiCh378rqM6NXutYmbtHbnyvG8/jVIltsm4iLJTURfGYl9QpMewwYj0Pu8cUky3GpuxuNghC6CJ6ggAQzraZesk7j04KgmuCXGERjCLYz/DlIom39lLFU6SjtdydPqwB5M/zqNAX1ulmKoInPHcN+WVjwpOXBTXIKbevh7e+0DUvwngaJkUn7jPk3kI3Xp8LQURD4yYYym6zCZcNW/QBFq0BNis792xOJH0q97/UqPRPJP8bDAf1RJQcsNW6jNSjkBP+pOWLXCc6gWcM6ztIym5deSZ8mCEelmNkJXJTY1u8VbOUUnh7SlAVFqyWEZX61r0MyPEsqQO/UunCFIcr2I+Lxn6mhgXZSSLdQtvzR4F3xe0n4P12no+C9j7eiebhxlpFvFgYJzpBamjVmhLtvZfu0J16+/YdaYjesbP7agFHSxsULs+elTjoKoEq5fLQQ/bd6/aRRTpdvHXXz0IGrEbgGM0fD4NlKw73tw/usamzq+kYDh/RtFKTwfsdcRYMBYGPwVBopCGc3wuE3oKLpbRWusfmxwX3iS+qx8PJbZBTSu9ViazJEsTH7Lpdw8bjWl+494qiXb53yNMXz74CnES8xC33ghu+/FCO49wpW5/TJ9BRhlJIjIsh3PxoYIkIToW1Gm6036IzNAQSsRTSCtDZJDMCbZYE0vMFosdYJL1iKgpNh2eMUoQgrJDLvVG9268N/UTs0R5YWVJTqZ+IgUu/RKPQyNXQkHNdo/pMilqp/97VHeSiyvxPCVCYAzdRg7+Zb7JP49PNSOy09hw8kqW9+AEbXGe0OI/L3fHl7VaBmd8xpXeQgTWJqqq3j3ghzos8O4yDz82ZqcznoekOEnYsosjVgUDgxpwfVeuTwG2OIzIipNfK1dUo1YUGiBZQHkvGrs+1tVcCb9iqwPYpJ6Vx/Zf0kXuJo1E888wp9kqeUlyaSMekVA+qOJ2JfSoi3knH2bHi6FNdA1CcAxMBtRs5QLTE9+pWi2JY32o75Im97Gd5/bWsrLMqujTo5tKx86q97j25GCQImKell/nWBuZ7hYKqtkRZ64PjhEddU9qKJz1n4N19DfXd1qo9G98EeyJMX6gw6bP+TcllXpPKuUTtj7tl6dYiIL6f2nfliRR22Ar0S8YjqHH9whg01yqJYTWutYItJ9zViPAwm1saA2A0GweugWCQbO5tYFcmN0Ga4NzVZUHklwN7osl7MetB/+Lg+aFzs0sW1j/iWockqys7EOtCdnzKgeuxJm1xis2F7C8zU4wEZ43WMdQ+F59aswdB4AitlBayqbWL9L1Vp8inx84gUOhGBw3iVgtxyh5Txetc/hTGW3Lg03bHF8+jJaUPYlS4GWiiE+4MQCzDXjGj3qTgszDYhhn8diNe2Wax7nf2rFylegcTI47Klb5oOJdesTXSyBoORiYMLWu1Cx0dcnb9qfgG/I2j5aldjcvPF1ZjaJ2dspCK8sL0RAQF7t5/a60/l4BwEfGViEzUPTm+WA1Y5pqzOhGm2Hhji2Q1uYTfhZrTMm7IFfRr0T1G97JSpjdlAs3jlOb7NrUjKQREiUAlMtvx7ypaurBOJ4bbuz+OEBv/NaimC5gpwQlz727f0IO8/ZT9lcZX15o1Q2H6aqXbBvUUGQ0NAE8mxaDR4XIZsu25ZzmTddFyCG6+nsgxx4+MEpHDvtNoVcZKQ8Txuc5WyWyizJRd9GCL6el0Ixq1IPcIT023XK/3w2CuV9bY4nJgdIW6Js0dWwsdCu4ILkqErkJ/I4FALRihK6jwbwk+GNo+e8xtopK1ROoMnlMR8yqdD/SzETSpZm6ccMxaC7U9xlnd+Hk7gWM5/YAWh1Y7RmxbxyFrMUcIVOCLRIsBvnETtOcgK3jOntF+GYhgaeVcS85KgLWOBW1VWHvlPxtrH4mvSjDnL7gGIHFmh+2zQA0FJwvf/REaUQXXpjgUP1CnQAlp6PCDooxIiJfne08aMk2xaq1wArjfPYF62+cHw+Ib9jTEDhNv71IzOsNZDDLOJQw2k3EJGALMOXgCKY7fg+iedcEfvltPtbeWhxthjZMPpkEpDTMa82pGapq7YizjNrp9lsGeWCycmt919A/wTRK1C2NCSMXyGxQRJmRe9kkXuQJeor0fxg7KrBM6xasVJqMEzG1fITRF4bctlakwwnHNvkxhkyabbumgMSm6+v19V/uuIIIYSfM/lgTft/ovSpLJeAAzS4BAMEmuZCrn2WnaLmCKcPM9A1+SkyVZ2EJsoEKE9X93JUCaYi/z2X4wlYUYOQyeGZpa1lo8Wa+Odkgyo4l7TODgS/J6+auG8Eq4sbKD4xuzOZAjVk7N46CzbJzLANgsyvKaTH0LiEIFfaDytaNsH7PUVuaiyENfB7zXZ33/gs3NQGJ0YWpghF8h7vmlY7gYNepWsXdNfrMF8yyRRJv/unTKG61Qyg9O3Yel1lfTd5lj0tdIl6pcy8jwrS3+mG9fRSEtM6+2td+RmEz7vU0v+FKwQLPscGak6raDU5AFBJrOqOuKD11C10MBBwaTXoiX9EJMZtWoFeon1xmsBmv7ISo7pEVuvtjRMWYwXtIXYrzaoIHogPk83nXss1znKvDMQb2mtBfjaX0gxBg7PBcix8mDP6Xs2p1OZa+L//0BAlnAluxtN7N62O7rdCrEx4sp8lBGu4OmTdBQnJnBV+X/+BzZ+/hBUxBd+ZlZ9ozo8i2+qGBgXDQIHP/x3dWUV/MvNAgZcqX8B9BHSV5J1TWLDVzUIIbx/6wmhY8y2OBShK6VJMa2rhn3u3KbtNgF4Q/iTm4zTVbq7DSclOxO2Fs2YPmDqQqe4OSe5GM8tahSaVaPaZaY6RHUxeTfhrXsSftDzRm89X/II3kpX3OaLlXAlsiCsvtVAaL/xT9beH6ELNkJ1y8eEV+JEGsLqTJ6eXd41C4ZC4I1A9v3lUMZYybuVjmJ2JZJvoEnh0dJfpLL00+8/5vXDrauYiJM6tORGG3w1xKRH6xc+/K81B7OhcktV9bKCv8oo0ef79VQT8N9vaC9WSNOAdpQ1qeReFVXMMl5yRumnk8vsuegJlIVkwxPNCS6SUDAEW93sNSxmAqbYQE8Qkj8UQP4CRv4cJoIfNppO8gs4/eRgT4hr4PYnK3hRY9PPImI3sfPkLU2LbgLsucsMLPDflmDBjmTaf1m8mconxFL6aiQeYLtI6VlLOGbkJ1F9Lh3HMjijBr8h0bUrPXE4puhrj37/kuNNNlg8GyqIsBpDsD5VXmLFY4m4CqYPUxUkWOHGSUmIz6HxYvpo2TO136hrP9v7xRZYGfdJh3U6BZc5xrpha++yLoA0Iq141GUSfjWYtpkyoMQfBCy7IA6qyIErybaipzL8pNmLrWEpUgsTpMwNCyY5m+zIFRSN9WnEWxKXCTLNszZHQaWKvsXy9l2kFopifNmTe3XrSMCnQlhlaZtVIh+XSh9l8Ic1gqbdZoi5TIiODQNbq2I1mMtrjsTQCZm56fI6ks4fHC9DDPAD+L3w389jsstgqJWRycwxTOqN5x0OesJX7p99glP+CXVMw9EpgP5Cbaxw2b/4tNKjkelFbOfd1o1SvLuZBj2L4v+FKM7gKWIqm7riEkqZOzg+9FSECzzx5v2PRFhkDQ2NMqNX3gwdF2tWGdJOgqUnw9Pfo5xwIY0G1A3wAId1PDMKvR/uPE1SBZFQNgFi66CxDqQOt7hfPyz4yMnE26c1sCW5VLZ2L4A/oeFY3cVCKNdkA8Zeg4McPEV3w6CdbPWmgAyiu/ag+inLDBp0uAbHEIrXQIKhNChZ0+NZQH2tX4mH7kMGsOR/daih2w8J1ScjYY7VAT2eMcN5Qg/MhLc4CAZmW+qdQPayK5zrYrISBMpsf0tQANNH8zS/HD4KY/8fEbobDTUhbNHUewtOcXlGBeqMUBJ+1N5wH24siuTV27vk28I/Iz1U5bu+Ih4t0FaBs0uvEVH4njJR0AdQ7EKmpokrJxuI2Osn+iktUiWKwn9VH1iDmTkieXg7FdkyPunkjakP7YSBDZxlWElnLW0bJiZJToqDJsu7y/tGRgPUxUDhzE3o+tRUpXyRCeq75vfguA4Pvi5xPpF/nf3VjRSomoJsCnsbJ79/Ml7cSBcr5U6B6hViNv5qynzvpPGJ/fck44oqssWXEMsbQE8SE+oSy7pGo/+gCCxpgJcEKjPjfJRe03YytKuuUp+msTBg2d0y00ae4o8hgACCxldceX1Q68YuTmPVTvSNyVFP4wUDS8wbTrWDTN8Q39BDDTJJBTv8flROIRL+mG7/Ztq6xp8d42tHQBVA2SnIPjFaYFBqe6H2vfExrsgkvYPF4AafxttqqbW1fP1QSsSIoAJjsSbtzrkoo9SLTTUqhKO8blL8xKkSl27qzRr/GohSWby4igL+dUwRr9SBLZhf9r1ZUSQrsoCpd02zGctchfW9GCWjTMDKOnBGNbDFe1VwF/3uP88ERHGuMxIudqjJrOtKdvLHHvmndjOU/0FIjBcjCJE9f2We0uIXLTT3wmbcrVCR6oHJx8c1cD8cMNGOwnWkzX3pO5tqf8hMTEJ5DuG6LZWqcpbzwEfmRPLkITCtACGWC0gWXh5oxNiRhq86LHr0COIFyendLT9pnlERGnpIIG7CM9vq/9Us+moIRBtjlEIOwGcLCpz3EDdZIzAF+EI3FpzWYzVv9/BHZGot4sKvOHHbptGik9wblLUGY2ykaGSyWhAbMiOvV/f9D9ozUxM3QIzpHjdxifNG66jaFyBJmpWfGL5pAgdOvZgIsFIccVbXTTVzJEjLF3XIg2oCgR5ih68wiR7nKTIJuTCqu7Hp2hMxsyH+30h3GqKBr4chpBSO+9Iq3tLDdJPNEilYip0xWxR7AsN5SXEmgcy1LG080fXNIXdLURHk3ngsQprp2P7CtUyo4zZOVTVwlCq3tTKCfIII6fXlV0cuIF2DVLDNfaH5HaMxmq4WtsBafFAHvCNoXaHIQjq4M9NV4mnzQn8cFKpoVu4Mc+8W3OpSxPn/XSvDgPCKVlakxe+pFnyQoXpgYuY7l5e9Wv61YmJ3AU1qeX3v+YbxdSa4ZpnhLp50wzzflVDsVsjOB83FP73m0jQg5SszAf2LWlWz1inJRoqySesH2PxaEFeefAYwgp79qlwup9Ho/X9ZARNSa5WJdZvstJ13TDwCFs06JW14KizSqC94lV1wJN9RhxqyL9qxjlDh8vYhny9E8ndca1+efSH/LQhPhOP8CP4KuidK5/47fRs02AuloeaN62GbtVXn5UWfu77n0zsGzUYmBLXC+ToLB1+pUj1vm3dj29CbjyobGsMYAVSpUlqh58rFK5kL6f3VKc4LGKfh2+intZcvb2OUzS55nKrwnwLoCFlJ7ToLjyh6aqwATcSif3OnMX1gb2t97IoVCgw2bmjda8A79oqSAWOJ/BusE6RnCIOJvYfcr/x6UFPPduf2XM5oE0q5nRZiIDWMG/WRB7kqQsJImAGGetTXXc342ZoQnx/Y4qu5W2U59KTgToB4EVXyiIxy2eUrDWnNA0c0omRAqYCVaSFTTDaD1Fp3qq3nw98AFIXb5t+TV/rizdUlrslAuIqnifzx/XRGemNc5TrTIJ2EnjUtQEuXHLn6URNQbWrjo7cTdTbwF5N5OGzSekpWrCUeLHqtZTAhugY8QICi7gcy3R6r/k86HCjrIABZo1J7RFV0AV7w1BoOWHPxWZXVNbztyE0Ko8u9UdXuAbmofxusv62f4mkfGjqeu9ucglsmPbqjmqXh8rXunP/++qREIQuzq1s5kYZhOZsbaowsuM2ZwdDYvq6xBNeq2Ce2+oOA9icAv2wu86nlAKM71gNqrIytHk3Sl+WXyLL/XRAN0A4AZlHOpQkhmys4Y/RzezU94sLlJSs1gwdUdVP8gQCbtl/TqAevSmqIBa9Xr/K/1pFvz8Gf7NhrkmxntLbpiLizmrwcMRWYy5qgaVbGIwDE6Cu0LaqgIEWCqtGR+ilBHrFUPlq88EWtplk8GobW0JPfDXfufuMIky7PS8WevraotgpFG/iTHn24/m6jgt2As3u4/FLtqra4jQetAT71XoEMDxxh+Mp2LhioKW5SFPCTg7lH1YPbeFbeeKkPOrfcNzV+xeYeKYY18BuGjm34Y034HH+p9/1b0Nj2lDNLK2vo3JTmmfWVQF25+1M/pK33XZwA6lPgp2oMwQ1sfkCi5msi5qAK9Uf9HQcIJrDvnWZH0xRhJPfXS6PV2y8A8paRIaeft5gqS/hUYEDJQX6zdHSK01kZ3iyMvT8s7lQ3hurkRpusERDEUWXP168lmYeYGW0mzbHnv8W8LSpbHcq/S8JLmTrNZiRHAYOO+gfp9gcLFDXyRenRBkkvBuWhg01ONmPna8J6QXpe2TaMG/31auPr7sJbGJ9jdJdTMSOImV9fOGqemkzy+0qHTUoPvmoyu+RiQTF8jGCH6EaaJVKB7joD5VVFWo5HHm/k0+2cXsleprYA0Q7JT6ZKjirO2+sORPBgWT99UzWAERk3ETfS625P7lSddcNKxdXQ4rQmgh75wp/Cn8f0jWyac5v9q9g47YW+/bOQgwumXy4fYtENY11BbAuWpDQWKrChH5iwc3otlV6X5W2HUKlB2cVd6ThgV7aBcQ7KV9x5SiIN025jS03DRK8dNGYh6UgyF37/bHFxnEvE8KsB/QAMCOr/Hi+h/CsSxS7yPSEbd4V5+DegI/bPL43Qko1hSnaWEArz0FxSpKZhZmtENuvVqZrPiEu5sjadLLeDYePTMHM5Q6vwo61tAjGCdbwmNnJPR87xHAuPVzvlOF9qld2qyYGgDstepJakzbY1olN2ss3uoCWTPXC/2LbvK+TG0bFqDpya0zw5csV6rCRqkrgUnEISjkRQ4BwLrtKEjm/bVxu2nFLXS+kDAaWJ1+8Q8ssfYBFWz2Hz++BuWFwZWF6YWScoH8ax/MWJXftWhdH932Dgzh/zMAESphQ6ZDVCecD77RhAieI5cffF5uEw8hHkNwUHdofNukau4tt5kuteCu1/Z3ButKS/gXww0qmVW7BeLZQfvhBJLG973Ypw4kd44fE05IMOcZ7E/5pd+af+Zxw0qMSxYNNTwMbTH8eG4ax0OdlKLdUTNpTBKwGYNI1DhLOk5Ek1wtfGR+uLZBLfjws1CQQaj9e7T4v3ncucoDfaW/UzgGcOdb+5uAS4TPQCY+pDJwKYFlCTux3h95L8qq+Y+F8yh36dmyFss+8EUCLmQtbUWJ6EEk6asVrDGWUtVhmR/idmLKmeEfqGMJEDnB37/iAyrOSCflnxdENAHgK5+updEyP15mMtUJzgwC2MZGiQJUIccN64Y5nVnQtyc9osPbYXfpU7UJITliCdYn8CBQjA0RpSWbFDrOrzXLgXEA2dguU8H+Cx7/6q/YXPSfZ0EZVypIoeOAbRZ2Jjv0YVD2yt8CFdvcpViKJvO/so78yb4YP7v607t5CB647ney5hUudBnLWQK5I/rRJrJoZ6DjwQdPYvW+SGA33pocbsQz+lBcbHs7byX84lUOEBOfvRJTpFmiv5fqiFqjEd6UNt8hRnJ87pX1mSvnqQAorSIAAT5uq8t1M7J5SRQ/PDvxDM2QazhGkomMaDjc78S/F9Pbl3BxCfG5WMWmS2hhKECmkSEPhIMkGenuDh78ilW6yEx9kHdLSxIr3UdSaBNsdUBDc7hrl8HCboPA/UdfFyMfqQt0i1ck526YW7P17W7t+9BmwE1+OCcA6vRGZaoYaSjjIsgNuQaaZMaETVXhyqG8AOoDrBuBt+WVhKNl0qpL/gAKEg04S5yiFDpxptiSavO28Kjl+RqrYhoIxbwJq8itvzSvdBJn1L/PH6LwKgCCmWEOUAjI85JGfGlWqC4re0bBCqTDOmvekrHdGII9viKJnFLqnzj7UsFEdb9kcZiEMQP1sloMx1PybwuyHY7lrL+s5zt689ajR1yZKzuJGgkI5nVK7fc20zxpkoWADs+SqLtz642qgJ++mvuSQcpwxsHBwlvb29f6uh/2k9GzJjzeNSWrbJPqX/vCAvR2rZBfCMqApd02OR9sytxgyrVsE7Y0kliiARFoaGP01ZzNOdQ8qSDpKMwF4uC+7F1hoRU9OZ93BsBAmwmfARbUNRpOdzGrGkoImfWsBOB1RajCh4okWImN/K/bV6zwqCA7fb0r0jFLs9K8eB1LvFxGyodgsQDdKRcrtaFAVxrynquJvo9kGKr0BHfncaa6aoiLkR5hipUapewrgBfB5I9eJxGth1xj6AfFNUQ1x/R1uYE20FdlYJWn7mAvrgRrxiuoKogtRf5rgsQQJFnlA93Q8YO+VvwSeoHCVWMdzOA6UY3//4k1KHyjTwINRGsnoh6/ga3uHG78aUUR8cgYtdW5A8bDTaG/BHbZwthz+pVSA9oFabSCqxwelMP0NYhXYNbIqQm+yQxIZ/5hhL6fdHfaXw5XkvIG8VbuVzVoahsMWuOdhcdw3E/4+T2KtfGLRVMcZMPJXL+ux6TmTu8le5CjMWAaTrxmYbjYElh2+6RB6scetkJYwaL/rU3pJ3dmWucDtQQ9zGEuzs++gB61lNUvN1OCZuX6nhaAcfxFolQrfyD4hdgGZUe5duJev4W+XTWXzrDO+FqjRk5pfyp9KjL8bAG0rxe8pirBai7qGlG6G4456MntH6m/61Wdt/rin1a7SCQBziTV1Q6bLyTx2/KNlkrF416C+B/xTalJ8C/j3Jdt5LqBN2DFS3ZG6o6hI6X3tNqD21r9cQ5PH4lwQRFnTlmtzhuowcjlNu6i6qbw39c9tlkz0VEBp4qTXpVaAiPdKr5gkRe5NYRLp9h5mn5fO4mCJZH/Y1is3EAbfuGW351TB+eoa3hDjBUjskrVrlH7V4rpl9VoDD2vj9ngwrS9blqwTbbFRHDI0D8K5I45GuFLX+RXP3dLHMNXTPd10TPjWEbloL0pHBVs+FT8cAFuK0nYRZm7gTWNhL2bfieVwHxis6CFZ0ssxg/5OGUvwipxMmZYo/47fkSbRkHFhYMfYXfKBhiFzhd09BoGv8VjvC+WehPYtJnOy1xxinKSCzHm2uSnURNO3tYJw+ewbsTNY1fUPqjY35q3AEGCk+jSRQSfAlYFcGKKOsUmX+TyNmT/ZCujKN7ZBuKKm3iDEnwuIM68CEze4TN//LN0GB5l/DFzXAF5fbxSREBYY0So936Rx6623AdTGrLSjliirMp2Hg6Hl1W5ftDoSoutCRZu1uWVVwyxlQ5rZPVnJJqx7stHBbZoY3qN1UQMYfKYs0LJhTxzl02QdxeFd6kvIFXmRlYdizaLpZVMeJd2NAXp7qOPz7tST3YV/FQomVS05wIrIHM+n1v21K+OfgnOiR3PJ0ee2k/qU75ja6Hob4lMEyXuxIDImiIKGwgJxbjeL4vAbssEZY3qmJsNxIIs1ACUv4iRrA7j0HfJkf2F1hB+9H25duhW5etG4ux5sZB3uHblEacdVVcCJlj0QsGuPnNS965pMv10xNAC4YpellCUYaGSkDT8by+OkcPlaHWjeF3upf9viwQCTIzTe+cGkWqfqyIFvpAgCK5I8IkgdaVJshm01rXVCNT5T9dtFCPxVh5nqP4+rgNAhGONdtH56NEG1wyloCBM5yV3TqjObJu1XZwYMTimgV5Yc3F7lJhVTNVTqKTTOksWkCxFT9+bFdqxXwXYtNEEhmQo0BVTGKurWqw4+M2gYkLWqe9VjbdHXftjHezxtNzIbidrRk53cMeE3VvlI60rqcvhIR5fvqrKZpWwfJFAeDHsKyMMjwzCb6i4KDPm9M9yU5L4knqrwKqVEH4Ccmq8Zos8NFJgh0+LZxbkw1fF2T7e7t9XXPqDXhGpFUToGLCQ1oAKxwaZBp+QHMU7uQNxwVEVs2Py4oTkXLIcf6wzlcSH00+4zmMbUGC+LDFBOyOMWKVyk5ZyJ/cBnT3BlgnZ5b1DxABfP2A9bwMmhpelFF8wuYU+CBWN5aDLIG1PcHHHRRvFRIJ3C5ecq56moY/vgVtYMtKYKroJU0h5MeopovD0XThFu+mvyGIvkvqjbbcTHiP5P7pc4ZmTudNxaM6ICoNU1ciEm5V4w+EJpeL2ySVpZrMdqLmHsY8q0LZYP95r9+Jx8FY4HfkAnf9e9vUByQ8Mp6dztbT3gk+/e8LNBFBYc52HI2RBnys9YfsmoHzj95l0PVHAKnN1eV/JJ+qvAz6uKAnFVFwoUXWja9Rw8qz+jcaVFbgpK5vnBhOWSnu3NexPL9Hk2R0HQZSu/IKFhPfmK37CpkLIkFFnRN6vq+m6U8QuF6dNDbZZxyXz2ZDpHmdhfNImLjrtt51FaqyV61AiWK1ZCsxPCc43x0=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="https://ulinkcollege.engagehosted.cn/WebResource.axd?d=C83_LzTupU-pWoTqss1Zzm8JI9cpoWNyQzlFRH_99EJdsU8_nog4uW9iXzBVUSHK92IJ4sBasEZpVYsgCeYjtHIn7hA1&amp;t=638628495619783110" type="text/javascript"></script>
+
+
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=pLYtjDPptEqngCkWJl6S73FLXTzQQNhZZuB9iMKQTN50G35vjjFj_Y14Fd8E6YrMbuIIRPRC1T5zviFRB4BPbV07KwhHN-vhTaWgp-dJOeCIL8BcNO7S0GDZfDG7OJX7Rd3TwQzqSZ0Rv9qD9ozNbj2lsqk1&amp;t=ffffffffc7a8e318" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var __cultureInfo = {"name":"zh-CN","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"¥","NaNSymbol":"NaN","CurrencyNegativePattern":2,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"-∞","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"∞","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"上午","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402271999999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":false},"DateSeparator":"/","FirstDayOfWeek":1,"CalendarWeekRule":0,"FullDateTimePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027 H:mm:ss","LongDatePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027","LongTimePattern":"H:mm:ss","MonthDayPattern":"M月d日","PMDesignator":"下午","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"yyyy/M/d","ShortTimePattern":"H:mm","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"yyyy\u0027年\u0027M\u0027月\u0027","AbbreviatedDayNames":["周日","周一","周二","周三","周四","周五","周六"],"ShortestDayNames":["日","一","二","三","四","五","六"],"DayNames":["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],"AbbreviatedMonthNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"MonthNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""],"IsReadOnly":false,"NativeCalendarName":"公历","AbbreviatedMonthGenitiveNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"MonthGenitiveNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""]},"eras":[1,"公元",null,0]};//]]>
+</script>
+
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=pfW1IV8j9tIMhIRwwo3TLAJKSVJG5-lVtqb2sUK4gr2UnprzRpGeZUI4AiG3LUZaDJV_HzundSXcMKipyEkXr9Rqx2mwHRuZrVFG0WLkmSoNllkP0&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=G4p4AucxW2umanS7OY4J9wVURzT41WC4HSjbjPUc3ZX6OLZv0ylb7R9chRLVh52RtRkAxUFpSVJnOejYz_01dRbsPxrHP_p6kZ2tSK9Kil8fa8iAp-kyNGMjoTlpRsbP0dd2ug2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=yVvW8OW8C0lAKRKguWdXQWJnTQYKtg8TM1sWOzhx9NgOJMiZc9RGlAHGq1g04Gm_3Q88XLgvtoPbItgMsQXLzJJ2HfoItdR63ycGO4cF1ivKoIJsQStVTeImnuYWjAd4RfVDnA2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=nOUGVAvtVk2o7UcQ3EtZp3jfMvAPbahDCzNIvDmkkZdsL_3UQqVGGCXm102mX1GvOUbAOmbXMdhzRLbfvce4fGQ-dlH64BY7d3oud7zCEekWmJpHSXWhKwxihT-SJa4feealggClDF_jvpfnYjvhubGnzZdjXOMvfKu0XUf-Ce-uhck20&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=RrBZh0rZSxWmU2VDL9YaLk-CTWWswDIGgBiZx76PKkK4S7Pq8AXD5V_lRDN802hmkiqsqrd-XZcPI-ZCYh9rarl8IDot3M7v9j0ISGA7VipfqG2xUKWnyVxhhxl40Gr7QSs0_A2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=lYHy62PK0PcaA341uRAwEKD_nRwgsTErWKGyimy424h2JkFHRzgERdju76QiK1wpHXeoC9GJiFiGPQtdmJ6cMCXUeFYseaV7iijOtfsDUC5RA_-2jFxx6rIeL0GTSnuQ-o2Z4A2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=zD_O4ws5_ryF22aH3Az13vP53qhoiXEii-FWsFsOeHDZxK8b8lOhpjE__M0EtaDV-4e7QOUDqkHC3l6bAmHTs81pKJ9DmfaZFKg7JOQU5PwMtA1oaKcPixDZiIRu6xUSPoTYao6eiB-I3DHpijBHRPuub8o1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=Xf_ct_jMAVZWfGjHMENr5Ak8dEg4T-ppZ1LD7VmIl3IbOqFX6bGb2G-VeKtIh_69ei8O6ZShZNn7_eBg9pwphnVJZ8gRF8Y3LxMjtdwp0a_OsJ7xkE-g1ClmgjBoBt-z0_KWKaIuM3QdVyf8GwmZttop0A81&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=jW05OQIKmjNfapCCKyciIZtf4tupyyXj_hNnR7mMAb1KPtW8TbFN34Iu5RJ6TNOaoqHq4_C4C1bhN-oZig77IWJ5Ss8aj68r8G1r29VLucTZ-VoncT9UC9ITOIMW9kgKlUymbrccQ8_asjaFj8AnYxylSlnuZYMoF3o21RZbaoPkag_b0&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=mE9HOs4rfKDUFfne3XM4ErNmHYOVVNnaDXmGlxk9CRX3Pd2ApYRaU7WJ93KKtxP7oBxCxkDsboKBbAztwfgV7KtdSlMP0vES2SSYYLYsE_bCwDCbKUGBlhcZORosWc20iFgfEIIA-rWjZfSQk0LN2-advFo1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=_BMEIENXn0oAdFuX2G11XkmkTrGUVZmrzegR6tOxkN5IGIYEDnAEyeuYVq_xfys7raOKAfOnJxkeli8dZ5kUnodYzphhPVOTViJ8dY2MFXZshrHtDdsB7ksf8oWtjBK6zbmVT_j0VAMFaRmXvteGBt3MTdk1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=P8mNXkaODBdnyTVYzy25gsgGVux7GsU_5pZ30pXXToSn0nHLmVXxA7eyZGsNhrwTlfJ6EUkVl-zv_3Ga4EpPcFZx6jIHT6i0FawsWl7ohp2csGjQsJIzCmn9vYRnQYB050FfJ-Y4ITmDznf0beKfKKrVd7E1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=Y5TtWL6_Uav-FhILkr_DkPkHQb2RZGNWMFAu0gm5PP7faVbfrX3anDARQealErD0BiP5Wuiiq32zlWB6CvnHVEX_HexdShErKfYrh-lQlAE109A3PjJjvG21XdHOYK7rFg6Quv9aMd7SQ4Uk6SdRfHAsk181&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1170D151">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="GuOpYi1clACOlXUwnLcRuPMPpTwZouBZ6ltGDin6TyXsOVpYJk6PXX6/t/MitlCZ0WPvZwj0YTCMF1vQ7OQ57TU79na2ORZpTy3dBLzkvenyHm79BoXfcr99UxW1cswMMogrP39caDhOYxr+Y934TcErxAeumC44qR5hx5hHyrnkzbVLv/JNWv3W9VHB3i0D2X9Xqfs8KR2rbsSjIyVfnLqDg/52o9X4CUoQG8TbWrUT1hb6JJtsEJhTEmafeYXhr+QzqxgCoQsYRtRDJGRcwFjfNvOhn/LryIkye/yTDhGTisLvr0JVrwpNUNcRg6HWhftK93Ink35NSYuWC8ZMnGg3vW8XNS18M8KvO8Y1zR4gq8OdCKV3MSNYF6v6wPoUo4NswKKuVuyKqD0b0c7GlrOtQjS9yIsdi0LSttxatptc1mMutqxiAFpYSb3t2RSyXKn8uWhljTbyhOlfMJ/M7AOtrcYpsZIzrba+9sVF9xkJNGKYo101JxeGBBE1hnplqp53GlTz+vvtJs/E7JZnHqkM8veMs9G2X5wT7II1KA5B0X8YRZ6y8SWMIhCCaRwWA8aEARS1v6jWPCKRakmJm/0eF7N8T63cksjPly86T0E+dy1/bCj+xjT0t+22hWD3l09maA==">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$upnlFailedEmail',''], [], [], 300, 'ctl00');
+//]]>
+</script>
+
+
+    <input type="hidden" name="ctl00$hdnUnsavedDataWarningEnabled" id="ctl00_hdnUnsavedDataWarningEnabled" value="false">
+    <input type="hidden" name="ctl00$hdnHorizontalScrollPosition" id="ctl00_hdnHorizontalScrollPosition">
+    <input type="hidden" name="ctl00$hdnVerticalScrollPosition" id="ctl00_hdnVerticalScrollPosition">
+    <input type="hidden" name="ctl00$hdnStaffRegisterInFlag" id="ctl00_hdnStaffRegisterInFlag" value="in">
+
+        <div class="progressContainer" style="display: none;">
+            <div class="progress-container">
+                <div class="top-border">
+                    <div class="top-border-color"></div>
+                </div>
+            </div>
+        </div>
+        
+    <header class="pageHeader">
+    <div id="page-header" class="printHide clearfix pageHeader">
+        <div class="portalHeaderInfo clearfix">
+                   
+                <div class="schoolLogo js-navClose min">
+                    <a href="hadenmain.html">
+                        <img alt="MEC Portal" title="MEC Portal" src="logo-removebg.png" onerror="$('.schoolLogo').find('img').hide()">
+                    </a>
+                </div>
+                <div class="portalNavigationToggleContainer">
+                    <div class="portalNavigationToggle js-portalNavigationToggle hand">
+                        <i class="fa-solid js-desktopButton fa-arrow-right-from-line"></i>
+                        <i class="fa-solid fa-bars js-phoneButton"></i>
+                         
+                    </div>
+                </div>
+
+            <div class="portalTypeContainer">
+                <span class="portalType">
+                    Staff Portal
+                </span>
+            </div>
+
+
+            <div class="portalInfoContainer">
+                <div class="portalHeaderSearch"><input type="text" style="width: 200px;"> </div>
+                
+                
+                <div class="logInInfo">
+                <div class="right">
+                    <div class="clearfix">
+                        <nav class="site-navigation sub-navigation nav">
+                            <ul>
+                                <li id="loggedInAs">
+   
+                                    <span id="ctl00_lblUserName"><div class="hideForMobile flexBox alignItemsCenter">
+<span id="text">当前用户:  Haden Xie</span><i class="fa fa-chevron-down userMenu"></i>
+</div>
+<div class="showForMobile">
+<span class="profileAvatar">CH</span>
+</div>
+</span>
+                                    <ul class="userNav rightMenu">
+                                        <li id="liCloseRightMenu" class="showForMobile">
+                                            <div class="flexToEnd flexBox">
+                                                <i class="fa-regular fa-xmark-large ignoreFaStyle" title="关闭"></i>
+                                            </div>
+                                        </li>
+                                        
+                                        
+                                        
+
+                                         <li id="liWalkthough" style="display:none;" title="重播此屏幕的介绍">
+                                           <div style="width:30px; display:inline-block"><i class="fa-solid fa-play"></i></div>
+                                           <div style="width:120px; display:inline-block">  介绍</div>
+                                        </li>
+                                        <li id="ctl00_liLogOut">
+                                            <a href="/Login.aspx?action=logout" onclick="javascript:sessionStorage.setItem('AutomatedLoginDone', 'no');sessionStorage.setItem('IsLoggedIn','');sessionStorage.removeItem('SRReasonText');sessionStorage.removeItem('SRNotesText');sessionStorage.removeItem('loginWith');">
+                                                <div style="width:30px; display:inline-block"> <i class="fa fa-sign-out"></i></div>
+                                                     <div style="width:120px; display:inline-block">登出</div>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="clearfix lastLoginInfo" style="padding-right:15px">
+                      <p>
+                          上一次登入: 醒的时候
+                      </p>
+                    </div>
+                </div>
+        </div>
+                                
+                
+              
+            </div>
+
+            </div>
+        </div>
+    </header>    
+        
+        
+    <section class="pageSection">
+    
+            <div class="menuSideBar js-navClose printHide min" style="position: relative;">
+                <nav class="site - navigation main - navigation portalnav clearfix mainNavigation">
+                    <div id="ctl00_menu" class="menuHolder"> <ul class="">
+<li class="">
+<a href="hadenmain.html">
+<div class="navItemContainer" id="Root_Home" title="主页">
+<div class="navItem navItem20Percent "><i class=" fa-regular fa-house-chimney ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">主页</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class=" active">
+<a href="hadendetail.html">
+<div class="navItemContainer" id="Root_MyDetails" title="我的个人资料">
+<div class="navItem navItem20Percent  active"><i class=" fa-solid fa-address-card ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent  active">我的个人资料</div>
+<div class="navItem navItem10Percent  active">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Root_Pupils" title="我的孩子们">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-people ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">我的孩子们</div>
+<div class="navItem navItem10Percent ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="">
+<li class="js-PupilNav ">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Pupils_Pupil3373">
+<div class="navItem navItem20Percent js-PupilNav "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent js-PupilNav ">Jason Huang</div>
+<div class="navItem navItem10Percent js-PupilNav ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="js-PupilNav ">
+<li class="">
+<a href="/PupilDetails/PupilDetails.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_PupilDetails">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">学生详情</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/PupilDetails/PupilSubjectsAndTeachers.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_PupilSubjectsAndTeachers">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">学生科目及老师</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/PupilDetails/Timetable.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_Timetable">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">时间表</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/PupilDetails/AttendanceDetails.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_AttendanceDetails">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">出勤率</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/PupilDetails/PupilAssessments.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_Assessments">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">成绩</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/PupilDetails/AssessmentReports.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_AssessmentReports">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">成绩报告</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/PupilDetails/PupilDMS.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d">
+<div class="navItemContainer" id="Pupil3373_DMS">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">DMS</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+ </li>
+</ul>
+ </li>
+<li class="">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Root_Daybook" title="日记簿">
+<div class="navItem navItem20Percent "><i class=" fa-regular fa-table-tree ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">日记簿</div>
+<div class="navItem navItem10Percent ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="">
+<li class="">
+<a href="/ViewDaybook.aspx?tt=zeGGsHJ%2f4n2wAp3GENe%23ww%3d%3d">
+<div class="navItemContainer" id="Daybook_PupilDaybook">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">学生日记簿</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+ </li>
+<li class="">
+<a href="/MyCalendar.aspx">
+<div class="navItemContainer" id="Root_ParentMyCalendar" title="我的日历">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-calendar-days ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">我的日历</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Root_Websites" title="网站">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-globe ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">网站</div>
+<div class="navItem navItem10Percent ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="">
+<li class="">
+<a target="_blank" href="https://ulinkcollege.sharepoint.com/sites/parent">
+<div class="navItemContainer" id="Websites_家长专用窗口">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">家长专用窗口</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a target="_blank" href="https://www.ulinkcollege.com/">
+<div class="navItemContainer" id="Websites_学校官网">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">学校官网</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+ </li>
+<li class="hidden js-mnuInstallPWA">
+<a href="#">
+<div class="navItemContainer" id="Root_InstallPWA" title="Install Engage App">
+<div class="navItem navItem20Percent hidden js-mnuInstallPWA"><i class=" fa-solid fa-mobile-screen-button ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent hidden js-mnuInstallPWA">Install Engage App</div>
+<div class="navItem navItem10Percent hidden js-mnuInstallPWA">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+</div>
+                </nav>
+          <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 10px; height: 706px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 200%; height: 200%;"></div></div></div></div>
+        
+
+        <div class="mainContent">
+            <div id="outerHolder">
+                <div id="contentHolder">
+                    
+                    <div id="contextMenuHolder" style="position: relative;"></div>
+                    
+    <style>
+        .ui-tooltip-content {
+            position: relative;
+            padding: 5px 5px;
+            text-align: left;
+            word-wrap: break-word;
+            width: 250px;
+        }
+        .portalModal {
+            min-width: 320px !important;
+            max-height: 420px !important;
+        }
+        @media (max-width: 768px) {
+            .right {
+                display: flex;
+                flex-direction: column;
+            }
+            .js-deviceManagementTable .buttonBase {
+                position:relative;
+                margin-bottom: 10px;
+            }
+            .js-deviceManagementTable .buttonBase label {
+                margin-right: 10px;
+            }
+            .js-deviceManagementTable .buttonBase i {
+                position: absolute; top: 6px; right: 6px;               
+            }
+        }
+    </style>
+    <div style="">
+        <h1>
+            我的个人资料
+        </h1>
+        <div id="ctl00_PageContent_pnlNoContact">
+	
+            <h2>
+                </h2>
+        
+</div>
+
+        <div id="ctl00_PageContent_pnlGotContact">
+	
+            <div class="contentContainer">
+                <div class="flexBox">
+                    
+                </div>
+
+                <div id="myDetails" class="flexTable">
+
+                    <div class="column">
+                        <h2>
+                            我的个人资料
+                        </h2>
+
+                        <div id="details">
+                            <div class="field">
+                                <div class="item label">
+                                    地址
+                                </div>
+                                <div class="item">
+
+                                    <span id="ctl00_PageContent_lblAddress">广东省广州市白云区白云大道南397号天健云山府A8栋1102<br></span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="item label">
+                                    首选语言
+                                </div>
+                                <div class="item">
+                                     
+                                </div>
+                            </div>
+
+                            <div id="ctl00_PageContent_divLanguage2" class="field">
+                                <div class="item label">
+                                    语言2
+                                </div>
+                                <div class="item">
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="column">
+                        <h2>邮件地址</h2>
+                        <div id="ctl00_PageContent_rptEmail_ctl01_ctl00" class="field">
+		<div id="ctl00_PageContent_rptEmail_ctl01_ctl01" class="item label">
+			<span id="ctl00_PageContent_rptEmail_ctl01_rowHeader">Personal</span>
+		</div><div id="ctl00_PageContent_rptEmail_ctl01_ctl02" class="item ">
+			<div id="ctl00_PageContent_rptEmail_ctl01_ctl03" class="inlineBlockScreenOnly">
+				<span id="ctl00_PageContent_rptEmail_ctl01_ctl04" title="huangmonkey@126.com" class=" js-mydetailsemailtooltip"><input name="ctl00$PageContent$rptEmail$ctl01$editableTextBox" type="text" value="huangmonkey@126.com" maxlength="254" id="ctl00_PageContent_rptEmail_ctl01_editableTextBox" disabled="disabled" class="baseTextbox marginLeft10 marginRight10"></span><span class="none"><input id="ctl00_PageContent_rptEmail_ctl01_cbPrimary" type="checkbox" name="ctl00$PageContent$rptEmail$ctl01$cbPrimary" checked="checked"></span><div id="ctl00_PageContent_rptEmail_ctl01_pnlPrimary" style="display:inline;">
+					<span id="ctl00_PageContent_rptEmail_ctl01_imgPrimary" title="任何电子邮件地址标记为主要将使用当你通过电子邮件联系。" class="fa-regular fa-check"></span>
+				</div>
+			</div><div id="ctl00_PageContent_rptEmail_ctl01_pnlbuttons" class="flexGrow0px flexToEnd mobileTopPaddiing inlineFlex">
+				<div id="ctl00_PageContent_rptEmail_ctl01_pnlEdit" class=" paddingLeft5">
+					<a id="ctl00_PageContent_rptEmail_ctl01_lnkEdit" title="编辑" class="fa-solid fa-pen-to-square" href="javascript:EnableEditing('ctl00_PageContent_rptEmail_ctl01_editableTextBox', 'ctl00_PageContent_rptEmail_ctl01_pnlConfirm', 'ctl00_PageContent_rptEmail_ctl01_pnlCancel', 'ctl00_PageContent_rptEmail_ctl01_cbPrimary', 'ctl00_PageContent_rptEmail_ctl01_pnlPrimary');"></a>
+				</div><div id="ctl00_PageContent_rptEmail_ctl01_pnlCancel" class="none  paddingLeft5">
+					<a id="ctl00_PageContent_rptEmail_ctl01_lnkCancel" title="取消" class="fa-solid fa-rotate-left" href="javascript:DisableEditing('ctl00_PageContent_rptEmail_ctl01_editableTextBox', 'huangmonkey@126.com', 'ctl00_PageContent_rptEmail_ctl01_pnlConfirm', 'ctl00_PageContent_rptEmail_ctl01_pnlCancel', 'ctl00_PageContent_rptEmail_ctl01_cbPrimary', 'True', 'ctl00_PageContent_rptEmail_ctl01_pnlPrimary');"></a>
+				</div><div id="ctl00_PageContent_rptEmail_ctl01_pnlConfirm" class="none  paddingLeft5">
+					<a onclick="CheckPrimaryAddresses('ctl00_PageContent_rptEmail_ctl01_btnConfirm');" id="ctl00_PageContent_rptEmail_ctl01_btnConfirm" title="保存" class=" fa-solid fa-floppy-disk" href="javascript:__doPostBack('ctl00$PageContent$rptEmail$ctl01$btnConfirm','')"></a>
+				</div>
+			</div>
+		</div><input type="hidden" name="ctl00$PageContent$rptEmail$ctl01$hdnFld" id="ctl00_PageContent_rptEmail_ctl01_hdnFld" value="FYC5#3PiT5a7YbaEp/RHb4NZMq4XPTiooBEi8mFm7Ss=|SHmUkuon78cwO2MKlWdxiQeptTLz1/kiItFR5fZ1brY=">
+	</div>
+                        <h2>电话号码</h2>
+                        <div id="ctl00_PageContent_rptTelephone_ctl01_ctl00" class="field">
+		<div id="ctl00_PageContent_rptTelephone_ctl01_ctl01" class="item label">
+			<span id="ctl00_PageContent_rptTelephone_ctl01_rowHeader">Mobile</span>
+		</div><div id="ctl00_PageContent_rptTelephone_ctl01_ctl02" class="item ">
+			<div id="ctl00_PageContent_rptTelephone_ctl01_ctl03" class="inlineBlockScreenOnly">
+				<input name="ctl00$PageContent$rptTelephone$ctl01$editableTextBox" type="text" value="+86 15915801039" maxlength="25" id="ctl00_PageContent_rptTelephone_ctl01_editableTextBox" disabled="disabled" class="baseTextbox marginLeft10 marginRight10"><span class="none left"><input id="ctl00_PageContent_rptTelephone_ctl01_cbSMS" type="checkbox" name="ctl00$PageContent$rptTelephone$ctl01$cbSMS"></span>
+			</div><div id="ctl00_PageContent_rptTelephone_ctl01_pnlbuttons" class="flexGrow0px flexToEnd mobileTopPaddiing inlineFlex">
+				<div id="ctl00_PageContent_rptTelephone_ctl01_pnlEdit" class=" paddingLeft5">
+					<a id="ctl00_PageContent_rptTelephone_ctl01_lnkEdit" title="编辑" class="fa-solid fa-pen-to-square" href="javascript:EnableEditing('ctl00_PageContent_rptTelephone_ctl01_editableTextBox', 'ctl00_PageContent_rptTelephone_ctl01_pnlConfirm', 'ctl00_PageContent_rptTelephone_ctl01_pnlCancel', '', '');"></a>
+				</div><div id="ctl00_PageContent_rptTelephone_ctl01_pnlCancel" class="none  paddingLeft5">
+					<a id="ctl00_PageContent_rptTelephone_ctl01_lnkCancel" title="取消" class="fa-solid fa-rotate-left" href="javascript:DisableEditing('ctl00_PageContent_rptTelephone_ctl01_editableTextBox', '+86 15915801039', 'ctl00_PageContent_rptTelephone_ctl01_pnlConfirm', 'ctl00_PageContent_rptTelephone_ctl01_pnlCancel', '', 'False', '');"></a>
+				</div><div id="ctl00_PageContent_rptTelephone_ctl01_pnlConfirm" class="none  paddingLeft5">
+					<a id="ctl00_PageContent_rptTelephone_ctl01_btnConfirm" title="保存" class=" fa-solid fa-floppy-disk" href="javascript:__doPostBack('ctl00$PageContent$rptTelephone$ctl01$btnConfirm','')"></a>
+				</div>
+			</div>
+		</div><input type="hidden" name="ctl00$PageContent$rptTelephone$ctl01$hdnFld" id="ctl00_PageContent_rptTelephone_ctl01_hdnFld" value="FYC5#3PiT5a7YbaEp/RHb4NZMq4XPTiooBEi8mFm7Ss=|0/AUzTsCMaeitdQTkhIIQg==">
+	</div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="clearboth paddingTop10"></div>
+                <div id="ctl00_PageContent_pnlResetLink" class="gridStatus inprogress marginLeft5 marginRight5">
+		
+                    <i class="fa-solid fa-circle-info inprogress ignoreFaStyle"></i>信息全部正确？ <a href="#" onclick="ToggleMyDetailsPanel();">更新信息</a>
+                
+	</div>
+                <div id="pnlDetailsChangedWrapper">
+                    <div id="ctl00_PageContent_pnlDetailChanged" class="none">
+		
+
+                        
+
+                        <div id="ctl00_PageContent_pnlChangeDetails" class="padding10">
+			
+                            <label for="ctl00_PageContent_tbChangeDetails">请告诉我们您详细信息的改动。</label>
+                            <textarea name="ctl00$PageContent$tbChangeDetails" rows="2" cols="20" id="ctl00_PageContent_tbChangeDetails" class="inputFullWidth height150"></textarea>
+                            <div class="paddingTop10">
+                                <input type="submit" name="ctl00$PageContent$btnUpdateDetails" value="发送更新请求" id="ctl00_PageContent_btnUpdateDetails" class="buttonBase buttonSecondary">
+                                <input type="submit" name="ctl00$PageContent$btnDetailsAreCorrect" value="I confirm that my details are correct" id="ctl00_PageContent_btnDetailsAreCorrect" class="buttonBase buttonSecondary">
+                            </div>
+                        
+		</div>
+
+                        
+                    
+	</div>
+                </div>
+            </div>
+
+            
+
+            <div class="contentContainer">
+                <div class="flexTable">
+
+                    <div class="column">
+                        <h2>登陆历史</h2>
+                        <div id="loginHistory" class="">
+                            <table border="0" width="100%" class="datatable"><tbody><tr>
+		<th id="ctl00_PageContent_rptrLoginHistory_ctl00_number" style="width:5%;">号码</th><th id="ctl00_PageContent_rptrLoginHistory_ctl00_date">登录日期</th><th id="ctl00_PageContent_rptrLoginHistory_ctl00_ip" style="width:30%;">IP地址</th>
+	</tr><tr>
+		<th scope="row" style="width:5%;">1.</th><td>2024年12月16日 20:11</td><td>183.62.59.250</td>
+	</tr><tr>
+		<th scope="row" style="width:5%;">2.</th><td>2024年12月16日 19:07</td><td>183.62.59.250</td>
+	</tr><tr>
+		<th scope="row" style="width:5%;">3.</th><td>2024年12月16日 16:39</td><td>183.62.59.250</td>
+	</tr><tr>
+		<th scope="row" style="width:5%;">4.</th><td>2024年12月16日 16:38</td><td>183.62.59.250</td>
+	</tr><tr>
+		<th scope="row" style="width:5%;">5.</th><td>2024年12月16日 16:37</td><td>120.234.200.124</td>
+	</tr></tbody></table>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h2>重设密码</h2>
+
+                        
+
+<div id="ctl00_PageContent_ResetPassword_pnlStaffPortal" class="paddingTop10">
+		
+    <div id="loginDiv">
+
+        
+   
+        <div id="ctl00_PageContent_ResetPassword_pnlReset">
+			
+            <div class="paddingLeft10 primaryOnly"><h2>重设密码</h2></div>
+            <div class="staffPortalOnly" style="padding: 3px;"></div>
+            <div class="batchPanel">
+                <span id="ctl00_PageContent_ResetPassword_lblPasswordStrength">您的密码必须包括:<ul class="passwordStrengthList"><li>至少8个字符</li><li>至少一个数字</li><li>至少一个小写字母</li><li>至少一个大写字母</li></ul></span>
+            </div>
+
+            <table border="0" cellspacing="5" cellpadding="5" class="">
+                <tbody><tr style="height: unset;">
+                    <td colspan="2">
+                        <div id="ctl00_PageContent_ResetPassword_vsLogin" style="color:Red;display:none;">
+
+			</div>
+                    </td>
+                </tr>
+                <tr id="ctl00_PageContent_ResetPassword_trCurrentPassword">
+				<td>当前密码</td>
+				<td>
+                        <input name="ctl00$PageContent$ResetPassword$txtPassword" type="password" id="ctl00_PageContent_ResetPassword_txtPassword" class="baseTextbox" autocomplete="off">
+                        
+                    </td>
+			</tr>
+			
+                <tr>
+                    <td>新密码</td>
+                    <td>
+                        <input name="ctl00$PageContent$ResetPassword$txtNewPassword" type="password" id="ctl00_PageContent_ResetPassword_txtNewPassword" class="baseTextbox" autocomplete="off">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>重新输入新密码</td>
+                    <td>
+                        <input name="ctl00$PageContent$ResetPassword$txtConfirmNewPassword" type="password" id="ctl00_PageContent_ResetPassword_txtConfirmNewPassword" class="baseTextbox" autocomplete="off">
+                        
+                    </td>
+                </tr>
+
+            </tbody></table>
+            <div style="height: 45px;">
+                <span id="ctl00_PageContent_ResetPassword_valPasswords" style="color:Red;visibility:hidden;"></span>
+                <input type="submit" name="ctl00$PageContent$ResetPassword$btnUpdate" value="更新" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$PageContent$ResetPassword$btnUpdate&quot;, &quot;&quot;, true, &quot;grpResetPassword&quot;, &quot;&quot;, false, false))" id="ctl00_PageContent_ResetPassword_btnUpdate" class="buttonBase buttonPrimary right">
+            </div>
+        
+		</div>
+
+        
+
+    </div>
+
+	</div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+
+            
+
+            <div class="clearboth"></div>
+        
+</div>
+    </div>
+
+    <div id="DataCheckPromptWrapper" style="display: none;">
+        Data review required
+    </div>
+    <input type="hidden" name="ctl00$PageContent$hdnForceDataCheck" id="hdnForceDataCheck">
+
+
+                </div>
+            </div>
+        </div>
+
+</section>
+    
+    <div id="ctl00_udProgress" style="display:none;" role="status" aria-hidden="true">
+	
+            <div id="progressBackgroundFilter">
+            </div>
+            <div id="processMessage">
+                <i class="fa-solid fa-loader fa-spin"></i>
+                <div id="progressText" class="none"></div>
+            </div>
+        
+</div>
+
+    
+        <div class="none" id="loadingFilter">
+            <div id="progressBackgroundFilter">
+            </div>
+            <div id="processMessage">
+                <i class="fa-solid fa-loader fa-spin"></i>
+            </div>
+        </div>
+
+    
+
+     <div id="ctl00_upnlFailedEmail">
+	    
+          	<div id="failedEmailAlert">
+                <div id="divFailedEmail" class="failedEmail">
+                    <div class="failedEmailContent">
+                        <div class="right">
+                            <a href="javascript:fade('divFailedEmail');" title="关闭"><img src="/images/icons/close.gif" alt="Close"></a>
+                        </div>
+                        <div>
+                            <div class="right paddingRight10 paddingTop5">
+                                <img id="ctl00_Image1" src="images/multipleFailedEmail.jpg" alt="Failed Email" style="border-width:0px;">
+                            </div>
+                            <div>
+                                尝试发送你邮件时出错
+                                <div class="paddingTop15">
+                                    <input type="submit" name="ctl00$btnMoreInfo" value="详细信息" id="ctl00_btnMoreInfo" class="primaryButton primaryColour">
+
+                                    <input type="submit" name="ctl00$btnClearWarning" value="明确这个警告" onclick="fade('divFailedEmail');" id="ctl00_btnClearWarning" class="primaryButton secondaryColour">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        
+</div>
+
+    <div class="none"></div>
+
+        <div id="modalNoticeContentDiv">
+            <div id="divNewNotice" class="modalNotice none">
+                <div class="modalNoticeContent">
+                    <div class="right marginLeft10">
+                        <a href="javascript:fade('divNewNotice');">
+                            <i class="fa-regular fa-xmark-large ignoreFaStyle"></i>
+                        </a>
+                    </div>
+
+                    <div style="display: inline-flex;">
+                        <i class="fa-regular fa-envelope fa30Size complete"></i>
+                        <div>
+                            <a style="text-decoration: none;" href="/default.aspx">门户</a>
+                            <br>
+                            <span id="senderName"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="staffRegister" class="portalModal" style="padding: 5px 10px 40px 10px; overflow: hidden;">
+            <a id="closeModal" href="javascript:closeModal('staffRegister');" title="关闭" class="modalClose">
+                <div><i class="fa-regular fa-xmark-large ignoreFaStyle"></i></div>
+            </a>
+
+            <div class="portalModalHeading" style="padding-top: 0px;">
+                <h2>缺勤原因</h2>
+            </div>
+
+            <div class="portalModalInner">
+                <table class="info tableStyle width100pc">
+                    <tbody><tr>
+                        <th style="vertical-align: top; text-align: left;">缺勤原因</th>
+                        <td>
+                            <div id="ctl00_ddlReason" class="RadComboBox RadComboBox_StyleFilter left width100pc js-SRReasons" style="width:160px;white-space:normal;">
+	<!-- 2021.3.1111.45 --><table summary="combobox" border="0" style="border-width:0;border-collapse:collapse;width:100%">
+		<tbody><tr>
+			<td class="rcbInputCell rcbInputCellLeft" style="width:100%;"><input name="ctl00$ddlReason" type="text" class="rcbInput radPreventDecorate rcbEmptyMessage" id="ctl00_ddlReason_Input" value="Select" autocomplete="off" readonly=""></td><td class="rcbArrowCell rcbArrowCellRight"><a id="ctl00_ddlReason_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;">select</a></td>
+		</tr>
+	</tbody></table><div class="rcbSlide" style="z-index:6000;display:none;"><div id="ctl00_ddlReason_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_StyleFilter "><div class="rcbScroll rcbWidth"></div></div></div><input id="ctl00_ddlReason_ClientState" name="ctl00_ddlReason_ClientState" type="hidden" autocomplete="off">
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="vertical-align: top; text-align: left;">附加注释</th>
+                        <td>
+                            <textarea name="ctl00$txtNotes" rows="2" cols="20" id="ctl00_txtNotes" class="width100pc height150 js-SRNotes"></textarea>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+            <div class="portalModalFooter" style="height: fit-content">
+                <!-- save and cancel buttons -->
+                <input type="submit" name="ctl00$btnSRSave" value="保存" onclick="javascript:saveStaffRegister();return false;" id="ctl00_btnSRSave" class="buttonBase buttonSecondary">
+                <input type="submit" name="ctl00$btnSRCancel" value="取消" onclick="javascript:closeModal('staffRegister', 'mask'); return false; ;" id="ctl00_btnSRCancel" class="buttonBase buttonSecondary marginRight10">
+            </div>
+        </div>
+
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_PageContent_ResetPassword_vsLogin"));
+var Page_Validators =  new Array(document.getElementById("ctl00_PageContent_ResetPassword_valPasswords"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_PageContent_ResetPassword_vsLogin = document.all ? document.all["ctl00_PageContent_ResetPassword_vsLogin"] : document.getElementById("ctl00_PageContent_ResetPassword_vsLogin");
+ctl00_PageContent_ResetPassword_vsLogin.displaymode = "SingleParagraph";
+var ctl00_PageContent_ResetPassword_valPasswords = document.all ? document.all["ctl00_PageContent_ResetPassword_valPasswords"] : document.getElementById("ctl00_PageContent_ResetPassword_valPasswords");
+ctl00_PageContent_ResetPassword_valPasswords.validationGroup = "grpResetPassword";
+ctl00_PageContent_ResetPassword_valPasswords.evaluationfunction = "CustomValidatorEvaluateIsValid";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+checkNewNotices();
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_PageContent_ResetPassword_vsLogin');
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        ;(function() {
+                        function loadHandler() {
+                            var hf = $get('ctl00_ctl13_TSSM');
+                            if (!hf._RSSM_init) { hf._RSSM_init = true; hf.value = ''; }
+                            hf.value += ';Telerik.Web.UI, Version=2021.3.1111.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:zh-CN:b406acc5-0028-4c73-8915-a9da355d848a:1c2121e';
+                            Sys.Application.remove_load(loadHandler);
+                        };
+                        Sys.Application.add_load(loadHandler);
+                    })();
+document.getElementById('ctl00_PageContent_ResetPassword_valPasswords').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_PageContent_ResetPassword_valPasswords'));
+}
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":null,"displayAfter":100,"dynamicLayout":true}, null, null, $get("ctl00_udProgress"));
+});
+
+var callBackFrameUrl='/WebResource.axd?d=On0gSK0L6VYXPo0PxlDenvXbku4VDQGaKmz3Xv8ELD5UnxZPiXf2j8uaWE8A1GX2FkCC5Lq2E4PHde3AxYju4xL5akc1&t=638628495619783110';
+WebForm_InitCallback();Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_height":0,"_skin":"StyleFilter","_uniqueId":"ctl00$ddlReason","clientStateFieldID":"ctl00_ddlReason_ClientState","collapseAnimation":"{\"type\":0,\"duration\":450}","emptyMessage":"Select","enableLoadOnDemand":true,"expandAnimation":"{\"type\":0,\"duration\":450}","itemData":[],"localization":"{\"AllItemsCheckedString\":\"All items checked\",\"ItemsCheckedString\":\"items checked\",\"CheckAllString\":\"Check All\"}","webServiceSettings":"{\"path\":\"/Services/StaffRegister.asmx\",\"method\":\"GetAbsenceTypes\"}"}, {"itemsRequesting":GetAbsenceItems,"load":OnClientLoad}, null, $get("ctl00_ddlReason"));
+});
+//]]>
+</script>
+</form>
+    
+    
+   
+    <div id="timeoutPage" class="printHide">
+        <div class="timeoutBackground">
+        </div>
+        <div class="timeoutContainer">
+            <div id="timeoutMessage" class="timeout none">
+                <h1>注意！</h1>
+                <p class="bold">
+                        <br><br>
+                        时间快到了
+                </p>
+                <p></p>
+                <p>如果不保持工作页面有效，您将丢失所有未保存的工作</p>
+                <div class="center">
+                    <br>
+                    <a href="javascript:hideTimeout()">单击此处关闭窗口</a>
+                </div>
+            </div>
+            <div id="updateErrorMessage" class="updateError none">
+                <img src="/images/warningTriangle.gif" width="80" height="70" class="left paddingRight10" alt="">
+                <div class="updateErrorMessageHolder">
+                    <p class="paddingTop10">在处理您的请求时发生错误，请再次尝试。</p>
+                    <p>如果您连续收到此错误信息，请确认您没有注销登录。</p>
+                </div>
+                <div class="center clearboth">
+                    <br>
+                    <a href="javascript:hideTimeout()">单击此处关闭窗口</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mask"></div>
+    
+    <script type="text/javascript">
+        var hasRun = false;
+
+        //this runs after telerik stuff is done loading. jquery window load & doc ready do not,
+        //so we must use add_load.
+
+        //putting this in functions.js results in intermittent 'sys is undefined' error, so have
+        //put it at end of page here.
+
+        //16/2/15 - 6872 AK - additionally... in IE8 it seems the doc ready is not guaranteed to execute before add load, 
+        //therefore I've hacked it to add a delay on IE8. Otherwise room booking/performance tracking filters
+        //will break, amongst other things. If anyone can come up with a neater fix, feel free to replace this
+        //11/11/2015 - 8231 SW - also helps resolve an issue in IE10 where a screen refresh kills the timetable widget.
+        //if ($.browser.msie && parseInt($.browser.version) < 9) {
+        if(getInternetExplorerVersion() !== -1 && (getInternetExplorerVersion() < 9 || getInternetExplorerVersion() == 10))
+        {
+            Sys.Application.add_load(function () { setTimeout(runOnLoadStuff, 1000); });
+        } else {
+            Sys.Application.add_load(runOnLoadStuff);
+        }
+
+        function runOnLoadStuff() {
+            setTimeout(function () {
+                if (!hasRun) {
+                    var i = onload_functions.length;
+                    while (i--) {
+                        eval(onload_functions[i]);
+                    }
+                    hasRun = true; //to prevent this running on partial postbacks
+                }
+            }, 100);
+        }
+
+        function GetAbsenceItems(sender, eventArgs) {
+            var context = eventArgs.get_context();
+            context["FilterString"] = eventArgs.get_text();
+        }
+
+        function saveStaffRegister() {
+            var combo = $find("ctl00_ddlReason");
+            var reasonText = combo.get_text();
+            var noteArea = $("#ctl00_txtNotes");
+            var notesText = noteArea.val();
+            sessionStorage.setItem('SRReasonText', reasonText);
+            sessionStorage.setItem('SRNotesText', notesText);
+            logStaffRegisterAction("", reasonText, notesText, "Out", true);
+        }
+
+        $(function () {
+            var optionIn = $('#ctl00_hdnStaffRegisterInFlag').val() === 'in' && sessionStorage.getItem('AutomatedLoginDone') !== 'yes';
+            if (optionIn) {
+                var flip = $('.js-flipswitch');
+                var flipinput = flip.find('.switch-input');
+                var reason = $('.js-setReason');
+                flipinput.attr('checked', true);
+                sessionStorage.setItem('IsLoggedIn', 'in');
+                reason.hide();
+                sessionStorage.setItem('AutomatedLoginDone', 'yes');
+            }
+
+            $('.rsContentWrapper').width('100%');
+            $('.rsContentScrollArea').width('100%');
+            $('.rsTopWrap').width('100%');
+            $('.rsHorizontalHeaderWrapper').children('div').width('100%');
+            $('[id^="tblTimeTable"]').width("100%");
+        });
+
+
+        function OnClientLoad(sender) {
+            sender.get_inputDomElement().readOnly = "true";
+        }
+
+    </script>
+
+
+</body></html>
