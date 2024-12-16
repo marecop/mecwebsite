@@ -1,43 +1,130 @@
-/* ========== dashboard.css ========== */
-
-body {
-  font-family: Arial, sans-serif;
+/* 全局样式 */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
+  box-sizing: border-box;
 }
 
-.header {
-  background-color: #007BFF;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* 导航栏样式 */
+.navbar {
+  background-color: #007bff;
   color: white;
-  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.header h1 {
-  margin: 0;
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
 }
 
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar .nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* 用户信息菜单 */
+.navbar .user-info {
+  position: relative;
+}
+
+.navbar .user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.navbar .user-info .dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: none;
+  text-align: left;
+}
+
+.navbar .user-info:hover .dropdown {
+  display: block;
+}
+
+.navbar .user-info .dropdown a {
+  padding: 10px 20px;
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.navbar .user-info .dropdown a:hover {
+  background-color: #f4f4f4;
+}
+
+/* 主体内容 */
 .container {
   padding: 20px;
 }
 
-button {
-  padding: 10px 15px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+.container section {
+  margin-bottom: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  background-color: #0056b3;
+.container section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.settings,
-.logout {
-  margin: 20px 0;
+.container section p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .navbar .nav-links li a {
+    font-size: 14px;
+  }
+
+  .container section h2 {
+    font-size: 20px;
+  }
+
+  .container section p {
+    font-size: 14px;
+  }
 }
