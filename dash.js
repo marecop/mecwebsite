@@ -1,32 +1,16 @@
-// 检查用户是否已登录
+// 检查登录状态
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!loggedInUser) {
-  // 未登录，跳转回登录页面
-  window.location.href = 'login.html';
+  window.location.href = 'login.html'; // 未登录时重定向到登录页面
 } else {
-  // 加载用户信息
-  document.getElementById('employee-name').textContent = loggedInUser.name;
-  document.getElementById('employee-position').textContent = `职位: ${loggedInUser.position}`;
+  // 设置用户信息
+  document.getElementById('user-avatar').src = loggedInUser.avatar;
+  document.getElementById('user-name').textContent = loggedInUser.name;
+  document.getElementById('user-role').textContent = loggedInUser.role;
 
-  // 加载时间表
-  const scheduleList = document.getElementById('schedule');
-  if (loggedInUser.schedule && Array.isArray(loggedInUser.schedule)) {
-    loggedInUser.schedule.forEach(item => {
-      const listItem = document.createElement('li');
-      listItem.textContent = item;
-      scheduleList.appendChild(listItem);
-    });
-  }
-
-  // 显示额外内容
-  const extraContent = document.getElementById('extra-content');
-  if (loggedInUser.extraContent) {
-    extraContent.innerHTML = `<p>${loggedInUser.extraContent}</p>`;
-  }
+  // 退出登录
+  document.getElementById('logout').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'login.html';
+  });
 }
-
-// 退出登录功能
-document.getElementById('logout-btn').addEventListener('click', () => {
-  localStorage.removeItem('loggedInUser');
-  window.location.href = 'login.html';
-});
