@@ -1,0 +1,2431 @@
+<html id="ctl00_MasterPageHtmlTag" dir="居留权" class=" js canvas canvastext draganddrop rgba multiplebgs svg inlinesvg svgclippaths t-chrome t-chrome131"><head id="ctl00_MasterPageHeadTag"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="../manifest.json"><title>
+	Attendance Details
+</title><link href="../introjs/introjs.css" rel="stylesheet">
+        <script src="../introjs/intro.js"></script>
+
+   <link href="/css/main?v=w-XiJcu4u7Q2RflMb9LXT6cqJLM4lamQDJtmzxR4z9s1" rel="stylesheet">
+<link href="/css/mainnew?v=gX9AQ8dOB88CxLAPKyc2lYqspJJwwYn-QulxEhMsfFk1" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/flipswitch.css"><link href="../CSS/font-awesome/all.css" rel="stylesheet"><link href="../CSS/font-awesome/v4-shims.css" rel="stylesheet"><link href="../Skins/Style/ComboBox/ComboBox.Style.css" rel="stylesheet"><link href="../Skins/StyleWhite/ComboBox/ComboBox.StyleWhite.css" rel="stylesheet"><link href="../Skins/StyleFilter/ComboBox/ComboBox.StyleFilter.css" rel="stylesheet"><script language="javascript" type="text/javascript">
+var _hdnUnsavedDataWarningClientID = 'ctl00_hdnUnsavedDataWarningEnabled';
+</script><script src="../JS/jquery-3.6.0.min.js"></script>
+
+        <script src="/JS/staffregister.js?v=2024.43.206"></script>
+
+       
+        <!-- Javascript that needs to be included before jQueryUI -->
+        <script src="/js/main?v=CsJ824xMfjgt0bX1q8Euud1L2DVSZKrpee5wX5fJCLs1"></script>
+
+        
+        
+        <script src="/JS/extensions.js?v=2024.43.206"></script>
+        <script src="/globalResources.axd?v=2024.43.206"></script>
+        <script src="/JS/AjaxHelpers.js?v=2024.43.206"></script>
+        <script src="/JS/TelerikHelpers.js?v=2024.43.206"></script>
+        <script src="/JS/functions.js?v=2024.43.206"></script>
+        <script src="/JS/freezeHeaders.js?v=2024.43.206"></script>
+        <script src="/JS/validation.js?v=2024.43.206"></script>
+        <script src="/JS/floatyScrollbar.js?v=2024.43.206"></script>
+        <script src="/JS/AutoKillAjax.js?v=2024.43.206"></script>
+        <script src="/JS/moment.min.js?v=2024.43.206"></script>
+        <script src="/JS/DMSEvents.js?v=2024.43.206"></script>
+        <script src="/JS/resizesensor.js?v=2024.43.206"></script>
+        <script src="/JS/qrcode.min.js?v=2024.43.206"></script>
+        <script src="/serviceWorkerInit.js?v=2024.43.206"></script>
+
+        
+        <script src="/JS/pwa/PushNotifications.js?v=2024.43.206"></script>
+        
+
+        <script>
+            var userAccountType = 'User'
+
+            
+
+            //$(window).on('beforeunload', function () {
+            //    $("body").fadeOut(300);
+
+            //});
+
+            
+
+            var walkThroughResources = {};
+            $(document).ready(function () {
+                walkThroughResources["done"] = '已完成';
+                walkThroughResources["next"] = '下一步';
+                walkThroughResources["back"] = '返回';
+
+                if ($('.js-navClose').hasClass('min')) {
+                    $('body').removeClass('navOpen').addClass('navMin');
+                } else {
+                    $('body').removeClass('navMin').addClass('navOpen');
+                }
+
+
+                /*   USER FILTER CONTROLS */
+
+                $('.userFilterControl').on('mouseover', function (e) {
+
+                    var e = $(e.currentTarget).children('label');
+
+                    if (e !== undefined) {
+
+                        if (e.attr('title') === undefined) {
+                            var $c = e
+                                .clone()
+                                .css({ display: 'inline', width: 'auto', visibility: 'hidden' })
+                                .appendTo('body');
+
+                            if ($c.width() > e.width()) {
+
+                                    console.log('Filter Label ellipsis - tooltip added');
+                                    e.attr('title', $c.text());
+                            }
+
+                            $c.remove();
+                        }
+                    }
+                });
+                /* ***************************************** */
+                window.addEventListener('resize', function (event) {
+
+
+                    if ($(window).width() < 1000) {
+                        $('.js-navClose').addClass('min');
+                        $('.js-navClose').removeClass('open');
+
+                        $('body').addClass('navMin');
+                        $('body').addClass('mobile');
+                        $('body').removeClass('navOpen');
+
+                        $('.js-phoneButton').removeClass('fa-arrow-left-to-line').addClass('fa-bars');
+
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').removeClass('fa-arrow-left-to-line');
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').addClass('fa-arrow-right-from-line');
+                    } else {
+                        $('body').removeClass('mobile');
+                    }
+                }, true);
+
+                var d = {
+                    'preferenceName': 'MasterPage.MenuStatus',
+                    'defaultValue': ''
+                };
+
+                if ($(window).width() < 1000) {
+                    var allowShrinkItem = !$('.menuSideBar').hasClass('min');
+                    $('body').addClass('mobile');
+                    if (allowShrinkItem) {
+                        expandShrinkNav(true);
+                    }
+                }
+
+                $('.js-NavGroupHeader').on('click', function () {
+                    var allowShrinkItem = !$('.menuSideBar').hasClass('min');
+
+                    expandShrinkNav(false);
+
+                    if ($(this).parent().children('ul').is(':visible') && allowShrinkItem) {
+                        $(this).parent().children('ul').slideUp();
+                        $(this).parent().removeClass('opened');
+                        $(this).find('.fa-chevron-down').show();
+                        $(this).find('.fa-chevron-up').hide();
+                    }
+                    else {
+                        $(this).parent().children('ul').slideDown(function () {
+                            setTimeout(function () {
+                                this.parentElement.scrollIntoView({ behavior: "smooth", block: "end" })
+                            }.bind(this), 100)
+                        });
+                        $(this).parent().addClass('opened');
+                        $(this).find('.fa-chevron-down').hide();
+                        $(this).find('.fa-chevron-up').show();
+
+                    }
+                });
+
+                $('.js-portalNavigationToggle').on('click', function () {
+                    var pref = '';
+                    if ($('.menuSideBar').hasClass('min') !== true) {
+                        pref = 'min';
+                    }
+
+                    if ($(window).width() > 1000) {
+                        setPreference('MasterPage.MenuStatus', pref);
+                    }
+                    expandShrinkNav(true);
+                });
+
+                $('.js-NavItemOpen').on('click', function () {
+                    expandShrinkNav(true);
+                });
+
+
+
+                function expandShrinkNav(allowShrink) {
+                    if ($('.menuSideBar').hasClass('min') === true) {
+                        //closed -> open
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').removeClass('fa-arrow-right-from-line');
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').addClass('fa-arrow-left-to-line');
+                        $('.js-navClose').removeClass('min').addClass('open');
+                        $('body').removeClass('navMin').addClass('navOpen');
+
+                        $('.js-phoneButton').removeClass('fa-bars').addClass('fa-arrow-left-to-line');
+
+                        //tooltipCenterBottom($('.menuSideBar'))
+
+                    }
+                    else if (allowShrink === true) {
+                        $('.js-navClose').removeClass('open').addClass('min');
+                        $('body').removeClass('navOpen').addClass('navMin');
+
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').removeClass('fa-arrow-left-to-line');
+                        $('.js-portalNavigationToggle').children('.js-desktopButton').addClass('fa-arrow-right-from-line');
+
+                        $('.js-phoneButton').removeClass('fa-arrow-left-to-line').addClass('fa-bars');
+
+                        //tooltipCenterRight($('.menuSideBar'));
+                    }
+                   
+                    modifyFilterClassesForQueryWidths();
+                    //wait for 2.5 secs so animations can resolve before fixing telerik widths
+                    setTimeout(function () {
+                        $('.rsContentWrapper').width('100%');
+                        $('.rsContentScrollArea').width('100%');
+                        $('.rsTopWrap').width('100%');
+                        $('.rsHorizontalHeaderWrapper').children('div').width('100%');
+                        $('[id^="tblTimeTable"]').width("100%");
+                    }, 2500);
+
+                }
+
+                new ResizeSensor($('.menuSideBar'), function () {
+                    setTimeout(modifyFilterClassesForQueryWidths, 200);
+                });
+
+                var subscribeButton = document.getElementById('subscribe');
+                if (subscribeButton !== null) {
+                    subscribeButton.onclick = function (event) {
+                        event.preventDefault();
+                        subscribeUser();
+                    };
+                }
+
+                var unsubscribeButton = document.getElementById('unsubscribe');
+                if (unsubscribeButton !== null) {
+                    unsubscribeButton.onclick = function (event) {
+                        event.preventDefault();
+                        unsubscribeUser();
+                    };
+                }
+            });
+
+            function setPreference(name, value) {
+                var postData = {
+                    "preferenceName": name,
+                    "preferenceValue": value
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "../../Services/UserServices.asmx/SetPreference",
+                    data: JSON.stringify(postData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+            }
+        </script>
+    <script language="javascript" type="text/javascript">window.onbeforeunload = closeIt;</script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            setTimeout(enableButtons, 2000); //have buttons show after a pause, because if you click them instantly it can cause ajax calls elsewhere on the page to blow up
+
+        });
+
+        function enableButtons() {
+            $('.js-delayed-button').slideDown();
+        }
+
+        var historicMarksheetID = 'PupilDetails';
+        var ptFiltersInitialised = false;
+
+        var openedPanes = [];
+        function processSelectionChanged(sender, eventArgs) {
+            if (eventArgs.get_propertyName() == "SelectedIndex") {
+
+                var index = sender.get_SelectedIndex();
+                var nameArray = $('input[id="accordionPanelNameArray"]').val();
+
+                var elements = $.unique(nameArray.split('|'));
+
+                for (i = 0; i < elements.length; i++) {
+                    var element = elements[i].split(',');
+                    if (element[0] == index) {
+                        var postData = {
+                            "preferenceName": "Portal_PupilDetails_SelectedPaneID",
+                            "preferenceValue": element[1]
+                        };
+
+                        $.ajax({
+                            type: "POST",
+                            url: "Services/UserServices.asmx/SetPreference",
+                            data: JSON.stringify(postData),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json"
+                        });
+
+                        console.log("opening pannel " + element[1]);
+
+                        return;
+                    }
+                }
+            }
+        };
+
+        function OpenPupilSMSModal(recipientNumber) {
+            $(".pupilSMSRecipNum").val(recipientNumber);
+            openModal('sendQuickPupilSMS', 'mask');
+        }
+
+        var confirmDelete = '此日记簿条目将被永久删除。您确认要继续？';
+        var confirmDeleteAttendance = '存储的额外信息将被永久删除。原有的出勤记录将被保留。您确定继续？';
+        var errorMsg = '在处理您的请求时发生错误，请再次尝试。';
+    </script>
+    <script src="/JS/Daybook.js?v=2024.43.206" type="text/javascript"></script>
+
+<link href="/Telerik.Web.UI.WebResource.axd?d=Db2ZRa0u9QJnOGajvtH9pwvryMpaD29q_EoAYiS7hvavwEaWDPLuYKD3X903Kvyy-mcASVPptCsT-U4fzuElGm64Muvy_4uL8mOIbvlDfUNmRZkTCGVG5W_rPNQL5cry0-cDdw2&amp;t=638628495619626917&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bTelerik.Web.UI%2c+Version%3d2021.3.1111.45%2c+Culture%3dneutral%2c+PublicKeyToken%3d121fae78165ba3d4%3azh-CN%3ab406acc5-0028-4c73-8915-a9da355d848a%3a1c2121e%3ae24b8e95%3ad7e35272%3a505983de%3a5a73c477%3a92b137ed%3a13a3fe6d%3a2a92a5af" type="text/css" rel="stylesheet"></head>
+<body id="ctl00_MasterPageBodyTag" class="mobile navMin">
+<div id="refresh-indicator">Pull down to refresh...</div>
+
+    <div id="disablingDiv"></div>
+    <form name="aspnetForm" method="post" action="./AttendanceDetails.aspx?ID=wbDPGBLaosgCAfitoDds7w%3d%3d" id="aspnetForm" class="fullHeight js-form">
+<div>
+<input type="hidden" name="ctl00_ctl13_TSSM" id="ctl00_ctl13_TSSM" value=";Telerik.Web.UI, Version=2021.3.1111.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:zh-CN:b406acc5-0028-4c73-8915-a9da355d848a:1c2121e:e24b8e95:d7e35272:505983de:5a73c477:92b137ed:13a3fe6d:2a92a5af">
+<input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value="">
+<input type="hidden" name="ColourPickerID" id="ColourPickerID" value="ctl00_PageContent_weChatQuickMsgModal_cpTemplates_colourPicker">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=C83_LzTupU-pWoTqss1Zzm8JI9cpoWNyQzlFRH_99EJdsU8_nog4uW9iXzBVUSHK92IJ4sBasEZpVYsgCeYjtHIn7hA1&amp;t=638628495619783110" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+function upDownControl(button, direction, textBox, allowNegative, min, max) {              
+                if(!isDisabled(button)) {    
+                    NumericUpDown(direction, textBox, allowNegative, true);
+                    SetFieldValue('ctl00_PageContent_pupilInfo_quickPoints_upDown_hdnHasValueChanged', '1');
+                    ValidatePointsValue(textBox, min, max);
+                }
+            }function CheckIs2DecimalPlaces(f) {{              
+                    var splitDecimal = f.value.toString().split('.');
+					if (splitDecimal.length>1) {
+						if (splitDecimal[1].length>2) {
+							f.value = splitDecimal[0] + '.' + splitDecimal[1].substring(0,2);
+						}
+					}
+            }}var __cultureInfo = {"name":"zh-CN","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"¥","NaNSymbol":"NaN","CurrencyNegativePattern":2,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"-∞","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"∞","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"上午","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402271999999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":false},"DateSeparator":"/","FirstDayOfWeek":1,"CalendarWeekRule":0,"FullDateTimePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027 H:mm:ss","LongDatePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027","LongTimePattern":"H:mm:ss","MonthDayPattern":"M月d日","PMDesignator":"下午","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"yyyy/M/d","ShortTimePattern":"H:mm","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"yyyy\u0027年\u0027M\u0027月\u0027","AbbreviatedDayNames":["周日","周一","周二","周三","周四","周五","周六"],"ShortestDayNames":["日","一","二","三","四","五","六"],"DayNames":["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],"AbbreviatedMonthNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"MonthNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""],"IsReadOnly":false,"NativeCalendarName":"公历","AbbreviatedMonthGenitiveNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"MonthGenitiveNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""]},"eras":[1,"公元",null,0]};//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=pfW1IV8j9tIMhIRwwo3TLAJKSVJG5-lVtqb2sUK4gr2UnprzRpGeZUI4AiG3LUZaDJV_HzundSXcMKipyEkXr9Rqx2mwHRuZrVFG0WLkmSoNllkP0&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=G4p4AucxW2umanS7OY4J9wVURzT41WC4HSjbjPUc3ZX6OLZv0ylb7R9chRLVh52RtRkAxUFpSVJnOejYz_01dRbsPxrHP_p6kZ2tSK9Kil8fa8iAp-kyNGMjoTlpRsbP0dd2ug2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=yVvW8OW8C0lAKRKguWdXQWJnTQYKtg8TM1sWOzhx9NgOJMiZc9RGlAHGq1g04Gm_3Q88XLgvtoPbItgMsQXLzJJ2HfoItdR63ycGO4cF1ivKoIJsQStVTeImnuYWjAd4RfVDnA2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=nOUGVAvtVk2o7UcQ3EtZp3jfMvAPbahDCzNIvDmkkZdsL_3UQqVGGCXm102mX1GvOUbAOmbXMdhzRLbfvce4fGQ-dlH64BY7d3oud7zCEekWmJpHSXWhKwxihT-SJa4feealggClDF_jvpfnYjvhubGnzZdjXOMvfKu0XUf-Ce-uhck20&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=RrBZh0rZSxWmU2VDL9YaLk-CTWWswDIGgBiZx76PKkK4S7Pq8AXD5V_lRDN802hmkiqsqrd-XZcPI-ZCYh9rarl8IDot3M7v9j0ISGA7VipfqG2xUKWnyVxhhxl40Gr7QSs0_A2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=lYHy62PK0PcaA341uRAwEKD_nRwgsTErWKGyimy424h2JkFHRzgERdju76QiK1wpHXeoC9GJiFiGPQtdmJ6cMCXUeFYseaV7iijOtfsDUC5RA_-2jFxx6rIeL0GTSnuQ-o2Z4A2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=zD_O4ws5_ryF22aH3Az13vP53qhoiXEii-FWsFsOeHDZxK8b8lOhpjE__M0EtaDV-4e7QOUDqkHC3l6bAmHTs81pKJ9DmfaZFKg7JOQU5PwMtA1oaKcPixDZiIRu6xUSPoTYao6eiB-I3DHpijBHRPuub8o1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Xf_ct_jMAVZWfGjHMENr5Ak8dEg4T-ppZ1LD7VmIl3IbOqFX6bGb2G-VeKtIh_69ei8O6ZShZNn7_eBg9pwphnVJZ8gRF8Y3LxMjtdwp0a_OsJ7xkE-g1ClmgjBoBt-z0_KWKaIuM3QdVyf8GwmZttop0A81&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=jW05OQIKmjNfapCCKyciIZtf4tupyyXj_hNnR7mMAb1KPtW8TbFN34Iu5RJ6TNOaoqHq4_C4C1bhN-oZig77IWJ5Ss8aj68r8G1r29VLucTZ-VoncT9UC9ITOIMW9kgKlUymbrccQ8_asjaFj8AnYxylSlnuZYMoF3o21RZbaoPkag_b0&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=mE9HOs4rfKDUFfne3XM4ErNmHYOVVNnaDXmGlxk9CRX3Pd2ApYRaU7WJ93KKtxP7oBxCxkDsboKBbAztwfgV7KtdSlMP0vES2SSYYLYsE_bCwDCbKUGBlhcZORosWc20iFgfEIIA-rWjZfSQk0LN2-advFo1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=_BMEIENXn0oAdFuX2G11XkmkTrGUVZmrzegR6tOxkN5IGIYEDnAEyeuYVq_xfys7raOKAfOnJxkeli8dZ5kUnodYzphhPVOTViJ8dY2MFXZshrHtDdsB7ksf8oWtjBK6zbmVT_j0VAMFaRmXvteGBt3MTdk1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=P8mNXkaODBdnyTVYzy25gsgGVux7GsU_5pZ30pXXToSn0nHLmVXxA7eyZGsNhrwTlfJ6EUkVl-zv_3Ga4EpPcFZx6jIHT6i0FawsWl7ohp2csGjQsJIzCmn9vYRnQYB050FfJ-Y4ITmDznf0beKfKKrVd7E1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=Y5TtWL6_Uav-FhILkr_DkPkHQb2RZGNWMFAu0gm5PP7faVbfrX3anDARQealErD0BiP5Wuiiq32zlWB6CvnHVEX_HexdShErKfYrh-lQlAE109A3PjJjvG21XdHOYK7rFg6Quv9aMd7SQ4Uk6SdRfHAsk181&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=ETimyD-BIQ3FNRV0XHfccV2ZGA0HB_7tQsxUfyeybOQExnn70HjquSe6SCMz7uWBjw7g8T32HnqGucwHrKSCZwMQINM3kERdyCMFjnwVrCd3VRjSE9b1p7RV1BLHx2GLV93LwWpYmy3VkSDWBFP5s4YEnfo1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=0RhMJ-Q3QTvQJk_x38HDenyLzfV8pu7VzSrtDvixL0SIy0_jtTBq4mpSfKJl5LyX0ocIShHzfam_Gj2bDqVjpXMA5xFNKl6CiVGrn_loPz8qifdF5NtjpbJwUXTwTXIavGtqf_PDzC-6VsDdSAdd-_vMqH41&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=_M82Rd9dG1BxE3yQN3U3ZhEjrXQZti11cyuauy_rMW9P_wndLyC-8PIvFwQbAP8VmyRvh3kr4zury-IPrl9wrVqWeY0O6KZxBgXnZDpKZ1psVK8ieNUA2SH5sq2J5Q8Yjooixo566j_8cUSwRtKwPa6yQYw1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=0nu0ygEVsCNSdK_tsvybOTPmxl9VrIqfEVrlgJzVnvluoQcxAYrjYtVPR9zdZZISAjxPX2TFG7AAJT18SsAii1jqXSWNVLF7kG_j2aTc9g6P5V28JEZTJtb1WNoNR50Ci6LkfH67fB2-NO6Nkcmr2pf42-I1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=jFmSK582829XgV_ek2UDk9BX9OZCZGU-jajNB3ed1pNZAXokJF9SU7wjEs2T9Eb8BpKjhphMPauJFJRCB0Cz9EBA0cSYQ2uoRCIaYtV24ltSTr760&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=JRlI3eog-u93PXZ4HrRai8njuum7l6u3xT02rRafXNHOjd5LnRoqPc4YxgUPeFTSQCgX1iF7G_831c6pP2c1q8kuX1PrVqxoh57XIEQ0VfFySDQ1JSTb0juDl6kPKVFyjP04Tg2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=1IgLfb5UzYs1DOWTpfQ2T4aTqJSB0ORH3A9lYq6x3AYZ288F8ihYHk893A5Q7pPVpWy5WGJSxwvj_5FVD8mmGf4RwmI4tobEgBsQDzM_tmABUltOtTw-rcIO2cSSjoZo61ZFTg2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=9OhOFf5gaWDcGafzBwvkGfKVP-YCNs2BZ2UiBjwYEdjl7WX638dsB7YCHX6Ua2ql6_-_gawrmibI_t6w1Yq34knjmpjwOrrojd3QEwg3mLI-fDZF36RQ79kRfEjpEsm_0FSmig2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=6tMo_ZshBYkuQYTGug8GynECUCL4GGGvLqMGuUDPtXYzZqmRsABTi1mDaWCoQ2O27_61_ZU_u8VRJokuAVp12r8PVeIPQKP3Wu483Wru38HrZLZO_Ggbij8wigM50efUX4F17w2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="D876B24A">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="fBjmFjSblufszhuZc+M8JjRi3PTjzJGMH/NVdsF8+trBErPI0nmbRFemMjlPGDDq6EKYBQkUu5LHO8YtwqZx4FVEoyQUigBr0zlSLTmpbzkTvlrgoU+rUaHRlouEIgfTJN1eA2hJWlif0t24+0n/+lOeEIc/8Uh2MADFelgGmIRSstB+97Y4eClTMKjIcQ/qWg7aYe8CsBSCoaZN60fMrgTXD8If1A5xuTP+nfLGoXthddTVxF/Y/uBnTNZiptAadQOglUX2RM/apMDdduURhECsv8JDXRv2X3ezk5S7tcm7YEuDjoGLq6NEbWHxKrV4W37/GxIXVbOsPQB8V6jJoPe4DnkNzmGsUzRv30QlCKZ5AXCAMr6TUgL7XTBFO5KGuw90EF/djwb25/TxkRDg/wmyjHsXdWEYFtze8p2ASJkNTL8z5IcKlR1PAK/Rnii1WaG+ni4SLgIYKyODQ/hZLCtNUZemwkF6LmXSnRYgfh0fPweuxF872/SJcQPgMb2xAqOWrgeiV33pu4QBrx8SXZccx7KA+9scBSVsYhOjlBqXNXW4S+DkoOAeVv1ubDjQ3flrYEfSlrwfMh4W6EbZ68TBKCaDfxOqcGdIlm6nhzb6acYKRK15n9VU18gLZbTbn1D7X/qV+3WJVrg9dCRNv7EUpYGvpqfWxfUAbI0KjApNl+eVpMSya5HNZOTEICalFKKHal2aaWfFVQyLUkFfXe4KXA5gwZpdqxSgfZc+EOqAo/Ss78cYqOmg8O94HI7FKxHX/qAYO5ufy9ODmdZVjgUbWDP5pbUmr71/YVeicjuA8Lg30YJ614FT8Y/JFLoDh2BAsUoeFTTM8ldcGHNBfR5W2t0=">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$PageContent$upnAccordionIndexTracker','','tctl00$upnlFailedEmail',''], [], [], 300, 'ctl00');
+//]]>
+</script>
+
+
+    <input type="hidden" name="ctl00$hdnUnsavedDataWarningEnabled" id="ctl00_hdnUnsavedDataWarningEnabled" value="false">
+    <input type="hidden" name="ctl00$hdnHorizontalScrollPosition" id="ctl00_hdnHorizontalScrollPosition">
+    <input type="hidden" name="ctl00$hdnVerticalScrollPosition" id="ctl00_hdnVerticalScrollPosition">
+    <input type="hidden" name="ctl00$hdnStaffRegisterInFlag" id="ctl00_hdnStaffRegisterInFlag" value="in">
+
+        <div class="progressContainer" style="display: none;">
+            <div class="progress-container">
+                <div class="top-border">
+                    <div class="top-border-color"></div>
+                </div>
+            </div>
+        </div>
+        
+    <header class="pageHeader">
+    <div id="page-header" class="printHide clearfix pageHeader">
+        <div class="portalHeaderInfo clearfix">
+                   
+                <div class="schoolLogo js-navClose min">
+                    <a href="/Default.aspx">
+                        <img alt="ULink College Guangzhou" title="ULink College Guangzhou" src="../DBImage.axd?type=school" onerror="$('.schoolLogo').find('img').hide()">
+                    </a>
+                </div>
+                <div class="portalNavigationToggleContainer">
+                    <div class="portalNavigationToggle js-portalNavigationToggle hand">
+                        <i class="fa-solid js-desktopButton fa-arrow-right-from-line"></i>
+                        <i class="fa-solid fa-bars js-phoneButton"></i>
+                         
+                    </div>
+                </div>
+
+            <div class="portalTypeContainer">
+                <span class="portalType">
+                    Parent 门户
+                </span>
+            </div>
+
+
+            <div class="portalInfoContainer">
+                <div class="portalHeaderSearch"><input type="text" style="width: 200px;"> </div>
+                
+                
+                <div class="logInInfo">
+                <div class="right">
+                    <div class="clearfix">
+                        <nav class="site-navigation sub-navigation nav">
+                            <ul>
+                                <li id="loggedInAs">
+   
+                                    <span id="ctl00_lblUserName"><div class="hideForMobile flexBox alignItemsCenter">
+<span id="text">当前用户:  Chunwang Huang</span><i class="fa fa-chevron-down userMenu"></i>
+</div>
+<div class="showForMobile">
+<span class="profileAvatar">CH</span>
+</div>
+</span>
+                                    <ul class="userNav rightMenu">
+                                        <li id="liCloseRightMenu" class="showForMobile">
+                                            <div class="flexToEnd flexBox">
+                                                <i class="fa-regular fa-xmark-large ignoreFaStyle" title="关闭"></i>
+                                            </div>
+                                        </li>
+                                        
+                                        
+                                        
+
+                                         <li id="liWalkthough" style="" title="重播此屏幕的介绍">
+                                           <div style="width:30px; display:inline-block"><i class="fa-solid fa-play"></i></div>
+                                           <div style="width:120px; display:inline-block">  介绍</div>
+                                        </li>
+                                        <li id="ctl00_liLogOut">
+                                            <a href="/Login.aspx?action=logout" onclick="javascript:sessionStorage.setItem('AutomatedLoginDone', 'no');sessionStorage.setItem('IsLoggedIn','');sessionStorage.removeItem('SRReasonText');sessionStorage.removeItem('SRNotesText');sessionStorage.removeItem('loginWith');">
+                                                <div style="width:30px; display:inline-block"> <i class="fa fa-sign-out"></i></div>
+                                                     <div style="width:120px; display:inline-block">登出</div>
+                                            </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="clearfix lastLoginInfo" style="padding-right:15px">
+                      <p>
+                          上一次登入: 2024年12月16日 20:11
+                      </p>
+                    </div>
+                </div>
+        </div>
+                                
+                
+              
+            </div>
+
+            </div>
+        </div>
+    </header>    
+        
+        
+    <section class="pageSection">
+    
+            <div class="menuSideBar js-navClose printHide min" style="position: relative;">
+                <nav class="site - navigation main - navigation portalnav clearfix mainNavigation">
+                    <div id="ctl00_menu" class="menuHolder"> <ul class="">
+<li class="">
+<a href="/default.aspx">
+<div class="navItemContainer" id="Root_Home" title="主页">
+<div class="navItem navItem20Percent  active"><i class=" fa-regular fa-house-chimney ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent  active">主页</div>
+<div class="navItem navItem10Percent  active">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="/MyDetails.aspx">
+<div class="navItemContainer" id="Root_MyDetails" title="我的个人资料">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-address-card ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">我的个人资料</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Root_Pupils" title="工人">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-people ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">工人</div>
+<div class="navItem navItem10Percent ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="">
+<li class="js-PupilNav ">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Pupils_Pupil3373">
+<div class="navItem navItem20Percent js-PupilNav "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent js-PupilNav ">谢雨钿-Haden Xie</div>
+<div class="navItem navItem10Percent js-PupilNav ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="js-PupilNav ">
+<li class="">
+<a href="hadendetail.html">
+<div class="navItemContainer" id="Pupil3373_PupilDetails">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">工人详情</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="hadendepartment.html">
+<div class="navItemContainer" id="Pupil3373_PupilSubjectsAndTeachers">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">部门及员工</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="hadentime.html">
+<div class="navItemContainer" id="Pupil3373_Timetable">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">时间表</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="hadenregister.html">
+<div class="navItemContainer" id="Pupil3373_AttendanceDetails">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">出勤率</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="hadenassesments.html">
+<div class="navItemContainer" id="Pupil3373_Assessments">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">报告</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="hadencomments.html">
+<div class="navItemContainer" id="Pupil3373_AssessmentReports">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">评价</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a href="hadendms.html">
+<div class="navItemContainer" id="Pupil3373_DMS">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">DMS</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+ </li>
+</ul>
+ </li>
+<li class="">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Root_Daybook" title="日记簿">
+<div class="navItem navItem20Percent "><i class=" fa-regular fa-table-tree ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">日记簿</div>
+<div class="navItem navItem10Percent ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="">
+<li class="">
+<a href="/ViewDaybook.aspx?tt=zeGGsHJ%2f4n2wAp3GENe%23ww%3d%3d">
+<div class="navItemContainer" id="Daybook_PupilDaybook">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">工人日记簿</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+ </li>
+<li class="">
+<a href="/MyCalendar.aspx">
+<div class="navItemContainer" id="Root_ParentMyCalendar" title="我的日历">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-calendar-days ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">我的日历</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a class="js-NavGroupHeader" href="#">
+<div class="navItemContainer" id="Root_Websites" title="网站">
+<div class="navItem navItem20Percent "><i class=" fa-solid fa-globe ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">网站</div>
+<div class="navItem navItem10Percent ">
+<i class="fa dropDownUp fa-chevron-down"></i>
+<i class="fa dropDownUp fa-chevron-up" style="display:none"></i>
+</div>
+</div>
+</a>
+ <ul class="">
+<li class="">
+<a target="_blank" href="https://ulinkcollege.sharepoint.com/sites/parent">
+<div class="navItemContainer" id="Websites_家长专用窗口">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">家长专用窗口</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+<li class="">
+<a target="_blank" href="https://www.ulinkcollege.com/">
+<div class="navItemContainer" id="Websites_学校官网">
+<div class="navItem navItem20Percent "><i class="  ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent ">学校官网</div>
+<div class="navItem navItem10Percent ">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+ </li>
+<li class="hidden js-mnuInstallPWA">
+<a href="#">
+<div class="navItemContainer" id="Root_InstallPWA" title="Install Engage App">
+<div class="navItem navItem20Percent hidden js-mnuInstallPWA"><i class=" fa-solid fa-mobile-screen-button ignoreFaStyle"></i></div>
+<div class="navItem navItem70Percent hidden js-mnuInstallPWA">Install Engage App</div>
+<div class="navItem navItem10Percent hidden js-mnuInstallPWA">
+</div>
+</div>
+</a>
+ </li>
+</ul>
+</div>
+                </nav>
+          <div dir="ltr" class="resize-sensor" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div class="resize-sensor-expand" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 10px; height: 706px;"></div></div><div class="resize-sensor-shrink" style="pointer-events: none; position: absolute; inset: 0px; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%;"><div style="position: absolute; left: 0px; top: 0px; transition: all; width: 200%; height: 200%;"></div></div></div></div>
+        
+
+        <div class="mainContent">
+            <div id="outerHolder">
+                <div id="contentHolder">
+                    
+                    <div id="contextMenuHolder" style="position: relative;"></div>
+                    
+    <div id="mask" class="none"></div>
+
+    <div id="ctl00_PageContent_upnAccordionIndexTracker">
+	
+            <input type="hidden" name="ctl00$PageContent$hdnAccordionIndex" id="ctl00_PageContent_hdnAccordionIndex">
+        
+</div>
+    <input type="hidden" name="ctl00$PageContent$hdnDaybookLoaded" id="ctl00_PageContent_hdnDaybookLoaded">
+    <div>
+      <div class="backLink none">
+            <a id="ctl00_PageContent_lnkBackLink" onclick="javascript: history.go(-1); return false;" href="https://ulinkcollege.engagehosted.cn/PupilDetails/AttendanceDetails.aspx?ID=wbDPGBLaosgCAfitoDds7w==">
+            <i class="fa-regular fa-arrow-left-long" title=""></i>回到上一页</a>
+        </div>
+        
+        <div id="ctl00_PageContent_pnlGotPupil">
+	
+            <div id="pupilDetails" class="clearfix">
+                
+
+<script>
+
+    var screenId = 'PupilsDetails_Pages';
+
+    var isReportComments = false;
+
+    $(document).ready(function () {
+
+        setTimeout(enableButtons, 2000); //have buttons show after a pause, because if you click them instantly it can cause ajax calls elsewhere on the page to blow up
+
+        var url = window.location.href;
+
+        if (url.toLowerCase().includes("reportcomments.aspx")) {
+            isReportComments = true;
+        }
+
+        if (!isReportComments) {
+            showWalkthroughButton(function () { startPageWalkthrough(true, []); });
+
+            if (userAccountType !== 'EngageSupport') {
+                getWalkthroughProgress(screenId).then(function (data) {
+                    var walkProgress = JSON.parse(data.d);
+                    startPageWalkthrough(false, walkProgress);
+                });
+            }
+        }
+
+        $('[id$="apPupilInfo_header"]').on('click', function () {
+            var opened = $(event.currentTarget).hasClass('toolbarOn');
+            saveUserPreference('PupilDetails_PupilInfo_Open', opened);
+        })
+    });
+
+
+    function enableButtons() {
+        $('.js-delayed-button').slideDown();
+    }
+
+    function walkthroughSteps() {
+        var introSteps = [{
+            title: '学生详情',
+            intro: '欢迎来到学生记录。'
+        },
+        {
+            key: '[id*="apPupilInfo_header"].toolbar',
+            title: '学生详情',
+            element: document.querySelector('[id*="apPupilInfo_header"].toolbarHeader'),
+            intro: '这里显示了学生信息的摘要。',
+            beforeAction: function () { $('[id*="apPupilInfo_header"].toolbarHeader')[0].scrollIntoView({ behavior: "smooth", inline: 'center', block: 'center' }); },
+            timeOut: 500
+        },
+        {
+            key: '[id*="apPupilInfo_header"].toolbarOn',
+            title: '学生详情',
+            element: document.querySelector('[id*="pupilInfo_apPupilInfo_content"] .contentContainer'),
+            intro: '这里显示了学生信息的摘要。',
+            beforeAction: function () { $('[id*="pupilInfo_apPupilInfo_content"] .contentContainer')[0].scrollIntoView({ behavior: "smooth", inline: 'center', block: 'center' }); },
+            timeOut: 500
+            }];
+
+        if ($('.introjs_PupilDetails').is(':visible')) {
+            introSteps.push({
+                title: '学生详情',
+                element: document.querySelectorAll('.contentContainer.introjs_PupilDetails h1')[document.querySelectorAll('.contentContainer.introjs_PupilDetails h1').length - 1],
+                intro: '可以在“学生详细信息”部分中找到更多信息。',
+                beforeAction: function () {
+                    $('.contentContainer')[0].scrollIntoView({ behavior: "smooth", inline: 'center', block: 'center' });
+                },
+                timeOut: 500
+            },
+                {
+                    title: '学生详情',
+                    element: document.querySelector('[id ^= "Pupils_Pupil"]').parentNode.parentNode,
+                    intro: '要查看学生记录的其他部分，可以从菜单中选择。',
+                    position: 'right',
+                    beforeAction: function () {
+                        if ($('.menuSideBar').hasClass('min')) {
+                            $('.portalNavigationToggle').trigger('click');
+                        }
+                        $('[id ^= "Pupils_Pupil"]')[0].scrollIntoView({ behavior: "smooth", inline: 'center', block: 'center' });
+                    },
+                    timeOut: 1000
+                },
+                {
+                    key: '[id^= "Pupil"][id$="_ContactDetails"]',
+                    title: '学生详情',
+                    element: document.querySelector('[id^= "Pupil"][id$="_ContactDetails"]'),
+                    intro: '例如，可以在“联系方式”部分中找到学生有关联系人的信息。',
+                    position: 'right',
+                    beforeAction: function () { $('[id^= "Pupil"][id$="_ContactDetails"]')[0].scrollIntoView({ behavior: "smooth", inline: 'center', block: 'center' }); },
+                    timeOut: 500
+                });
+        }
+
+        if ($('.introjs_ContactDetails').is(':visible')) {
+            introSteps.push(
+                {
+                    key: '.introjs_ContactDetails',
+                    title: '联系人详情',
+                    intro: 'Did you know you can prompt Parents to check if their child’s data is correct?'
+                },
+                {
+                    key: '.introjs_ContactDetails',
+                    title: '联系人详情',
+                    intro: 'Did you know Parents can update the data the school holds for them and their children?'
+                },
+                {
+                    key: '.introjs_ContactDetails',
+                    title: '联系人详情',
+                intro: 'Did you know you can use Data Review to capture who is re-enrolling for next year?'
+                },
+                {
+                    key: '.introjs_ContactDetails',
+                    title: '联系人详情',
+                intro: 'Did you know you can target the data you want reviewed or updated by Parents?'
+                },
+                {
+                    key: '.introjs_ContactDetails',
+                    title: '联系人详情',
+                intro: 'Explore more about Data Review here:<br/><br/><a target="_blank" class="hyperLink" href="https://educationhorizons.com/blog/how-to-collate-and-maintain-your-schools-data-for-easy-data-review-effortlessly-maintain-and-review-your-schools-data-today/?utm_source=In+Product&utm_medium=Pop+Up&utm_campaign=Engage+DYK+Data+Review&utm_id=EngageDYK">Effortlessly Maintain and Review Your School’s Data Today!</a>'
+                });
+        }
+
+        return introSteps;
+    }
+
+    var walkthrough = '';
+    function startPageWalkthrough(isReplay, walkProgress) {
+        if (window.location.href.indexOf("/PupilDetails/") === -1) {
+            return false;
+        }
+
+        walkthrough = introJs().setOptions({
+            steps: walkthroughSteps()
+        });
+
+        formatWalkthrough(walkthrough, screenId);
+
+        startWalkthroughProgress(isReplay, walkthrough, walkProgress, screenId);
+    }
+
+</script>
+
+ <div id="ctl00_PageContent_pupilInfo_aPupilInfo" style="height: auto; overflow: auto;">
+		<input type="hidden" name="ctl00$PageContent$pupilInfo$aPupilInfo_AccordionExtender_ClientState" id="ctl00_PageContent_pupilInfo_aPupilInfo_AccordionExtender_ClientState" value="0"><div id="ctl00_PageContent_pupilInfo_apPupilInfo_header" class="toolbarOn collapse-toolbar clearboth contentHeaderContainer toolbarHeader pupilInfoHeader">
+			
+                 <div class="FlexMiddleVAlign paddingTop15 paddingBottom15Only">
+                     <div>
+                         <h2 id="ctl00_PageContent_pupilInfo_apPupilInfo_header_h2Name" style="display: inline;">Xieyutian 谢雨钿 Haden</h2>
+                     </div>
+                     <div style="max-width: 50%;padding-left: 10px;">
+                         
+
+<style>
+        .rectangle-list ol {
+            counter-reset: li;
+            list-style: none;
+            *list-style: decimal;
+            font: 15px 'trebuchet MS', 'lucida sans';
+            padding: 0;
+            text-shadow: 0 1px 0 rgba(255,255,255,.5);
+            margin-top: -5px;
+        }
+
+        .rectangle-list ol ol {
+            margin: 0 0 0 2em;
+        }
+
+        .rectangle-list a {
+            position: relative;
+            display: block;
+            padding: .4em .4em .4em .8em;
+            *padding: .4em;
+            color: #444;
+        }
+
+        .rectangle-list a:before {
+            position: absolute;
+            left: -2.5em;
+            top: 50%;
+            margin-top: -1em;
+            height: 2em;
+            width: 2em;
+            line-height: 2em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .rectangle-list a:after {
+            position: absolute;
+            content: '';
+            border: .5em solid transparent;
+            left: -1em;
+            top: 50%;
+            margin-top: -.5em;
+        }
+
+        .rectangle-list a:hover:after {
+            left: -.5em;
+            border-left-color: #fa8072;
+        }
+        .js-iconholder * {
+            text-decoration: none !important;
+        }
+</style>
+<script>
+    $('.js-iconholder a').eq(0).attr('href', '#').attr('style', 'cursor: default !important;');
+</script>
+
+
+
+
+
+
+
+                     </div>
+                 </div>
+             
+		</div><div style="height: auto; overflow: auto; display: block;"><div id="ctl00_PageContent_pupilInfo_apPupilInfo_content" class="marginBottom15px pupilInfoContainer" style="display: block; height: auto; overflow: auto;">
+			
+                 <div class="contentContainer marginBottom0px">
+                     <div class="flexBox flexWrap">
+                         <div class="flexBox pupiDetailHeaderInfo">
+                     <div class="photoHolder printHide">
+                         <img id="ctl00_PageContent_pupilInfo_apPupilInfo_content_imgPupilImage" class="left pupil" src="Controls/DBImage.axd?type=pupil&amp;pid=wbDPGBLaosgCAfitoDds7w%3d%3d" style="border-width:1px;border-style:solid;width:70px;">
+                     </div>
+                     <div>
+                         <div class="left paddingBottom10 paddingLeft5 printHide pupil-info-container">
+
+                             <table>
+                                 
+                                 <tbody><tr>
+                                     <td><strong>年:&nbsp;</strong></td>
+                                     <td>
+                                         <span id="ctl00_PageContent_pupilInfo_apPupilInfo_content_lblYear">Grade 9</span></td>
+                                 </tr>
+                                 <tr id="ctl00_PageContent_pupilInfo_apPupilInfo_content_trForm">
+				<td style="align-content: baseline;"><strong>年级:&nbsp;</strong></td>
+				<td>
+                                         <span id="ctl00_PageContent_pupilInfo_apPupilInfo_content_lblForm">09D</span></td>
+			</tr>
+			
+                                 <tr id="ctl00_PageContent_pupilInfo_apPupilInfo_content_trFormTeacher">
+				<td style="align-content: baseline;"><strong>老师:&nbsp;</strong></td>
+				<td>
+                                         <a>Leo Kwong<div class="toolTipContent none">
+
+				</div></a></td>
+			</tr>
+			
+                                 <tr id="ctl00_PageContent_pupilInfo_apPupilInfo_content_trHouse">
+				<td><strong>房子:</strong></td>
+				<td>
+                                         <span id="ctl00_PageContent_pupilInfo_apPupilInfo_content_lblHouse"> </span></td>
+			</tr>
+			
+                                 
+                                 <tr class="hideForMobile">
+                                     <td><strong>年龄:</strong></td>
+                                     <td>
+                                         <span id="ctl00_PageContent_pupilInfo_apPupilInfo_content_lblAge">14 years 9 months</span></td>
+                                 </tr>
+                                 
+                                 <tr class="hideForMobile">
+                                     <td><strong>生日:</strong></td>
+                                     <td>
+                                         <span id="ctl00_PageContent_pupilInfo_apPupilInfo_content_lblDOB">2010年3月9日</span></td>
+                                 </tr>
+                                 
+                                 
+                             </tbody></table>
+                         </div>
+                         <div class="printText">
+                             <div class="left minwidth50pc nowrap">
+                                 <strong>名字:&nbsp;</strong>
+                                 Haden Xie
+                             </div>
+                             <div class="left minwidth50pc nowrap">
+                                 <strong>年:&nbsp;</strong>
+                                 Grade 9
+                             </div>
+                             <div class="left minwidth50pc nowrap">
+                                 <strong>年级:&nbsp;</strong>
+                                 09D
+                             </div>
+                         </div>
+                     </div>
+
+                         <!------------------------------------------------------------>
+</div>
+
+                         <div class="actionMenuContainer pupilDetailsActions">
+                             
+                         </div>
+                         <!------------------------------------------------------------->
+
+                     </div>
+                 </div>
+             
+		</div></div>
+	</div>
+
+
+
+
+
+<div class="portalModal fullMobileModal" id="ctl00_PageContent_pupilInfo_pupilNavigationChoices_modal">
+    <a title="Move Modal" class="modalMove hand">
+        <i class="fa-solid fa-up-down-left-right"></i>
+    </a>
+    <a onclick="closeModal('ctl00_PageContent_pupilInfo_pupilNavigationChoices_modal', 'mask')" title="关闭" class="modalClose hand">
+        <div><i class="fa-regular fa-xmark-large ignoreFaStyle" title="关闭"></i></div>
+    </a>
+            <div class="portalModalHeading">
+            <h2></h2>
+        </div>
+    
+    <div class="portalModalInner">
+        <div id="ctl00_PageContent_pupilInfo_pupilNavigationChoices_pnlModalContent">
+		<div class="js-navContent mainNavigation">
+			
+    
+		</div>
+	</div>
+    </div>
+
+    <div class="portalModalFooter" style="height: auto">
+        <div class="left portalModalMessages"></div>
+        <input type="button" id="btnSave" class="buttonBase buttonPrimary right marginRight10" value="保存">
+        <div id="ctl00_PageContent_pupilInfo_pupilNavigationChoices_pnlAdditionalButtons">
+
+	</div>
+        <input type="button" id="btnClose" onclick="closeModal('ctl00_PageContent_pupilInfo_pupilNavigationChoices_modal', 'mask')" class="buttonBase buttonSecondary right marginRight10" value="关闭">
+      
+    </div>
+</div>
+
+
+<input type="hidden" name="ctl00$PageContent$pupilInfo$quickPoints$hdnPupilIDs" id="ctl00_PageContent_pupilInfo_quickPoints_hdnPupilIDs" value="wbDPGBLaosgCAfitoDds7w==">
+<input type="hidden" name="ctl00$PageContent$pupilInfo$quickPoints$hdnDefaultTemplate" id="ctl00_PageContent_pupilInfo_quickPoints_hdnDefaultTemplate" value="你的分数已被[Senders Name]更新于：[Date Sent]；你的分数已被修改为[Point Awarded]，你目前总分为[Total Points]">
+<div id="ctl00_PageContent_pupilInfo_quickPoints_pnlQuickNotes" class="modal">
+		
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // prevent user clicking the Save button more than once
+            $("#ctl00_PageContent_pupilInfo_quickPoints_btnAddQuickPoints").on("click", function () {
+                if ($(this).hasClass("clicked")) {
+                    e.preventDefault();
+                    return false; // prevent second click from registering
+                } else {
+                    $(this).addClass("clicked"); // flag the button as clicked
+                    return true; // allow server side button click event to occur
+                }
+            });
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+
+            $(document).on('click', 'input[type="button"].js-quickPointsCloseButton', function () {
+                $(this).closest('.quickPointsContent').find('.js-quickPointsClose')[0].click();
+            });
+        });
+    </script>
+    <div class="modalBackground">&nbsp;</div>
+    <div class="quickPointsContainer">
+        <div class="quickPointsContent fullMobileModal customModal">
+            <div class="modalClose">
+                <a id="ctl00_PageContent_pupilInfo_quickPoints_lnkCloseModal" title="Close" class="js-quickPointsClose" href="javascript:hideModal('ctl00_PageContent_pupilInfo_quickPoints_pnlQuickNotes')">
+                     <i class="fa-regular fa-xmark-large ignoreFaStyle"></i>
+                </a>
+            </div>
+
+            <h2>快速点数</h2>
+            <div class="paddingBottomOnly60">
+                <table class="datatable width100pc greyBorder">
+                    <tbody><tr>
+                        <th class="width50 paddingTop7">分数</th>
+                        <td class="width80 padding3">
+                            <span id="ctl00_PageContent_pupilInfo_quickPoints_upDown_wrap" class="numericUpDownStyling">
+
+<img id="ctl00_PageContent_pupilInfo_quickPoints_upDown_imgDecrease" title="减少" class="nudArrowDown pdfHide middle hand " onclick="javascript:upDownControl(this, 'decrease', 'ctl00_PageContent_pupilInfo_quickPoints_upDown_txtNumericValue', 'True', -9999, 9999)" src="/images/StyleGuide/circle-arrow-down-solid.svg" style="height:16px;width:16px;border-width:0px;">
+
+<input name="ctl00$PageContent$pupilInfo$quickPoints$upDown$txtNumericValue" type="text" value="0" maxlength="9" id="ctl00_PageContent_pupilInfo_quickPoints_upDown_txtNumericValue" class="pdfHide input30 center numericValueField" onkeyup="NumbersOnly(this);SetFieldValue('ctl00_PageContent_pupilInfo_quickPoints_upDown_hdnHasValueChanged', '1');" onblur="ValidatePointsValue('ctl00_PageContent_pupilInfo_quickPoints_upDown_txtNumericValue', -9999, 9999)">
+<span class="none pdfShowInline">0</span>
+
+<input name="ctl00$PageContent$pupilInfo$quickPoints$upDown$hdnHasValueChanged" type="hidden" id="ctl00_PageContent_pupilInfo_quickPoints_upDown_hdnHasValueChanged" value="0" class="numericValueHasChanged">
+
+<img id="ctl00_PageContent_pupilInfo_quickPoints_upDown_imgIncrease" title="增加" class="nudArrowUp pdfHide middle hand " onclick="javascript:upDownControl(this, 'increase', 'ctl00_PageContent_pupilInfo_quickPoints_upDown_txtNumericValue', 'True', -9999, 9999)" src="/images/StyleGuide/circle-arrow-up-solid.svg" style="height:16px;width:16px;border-width:0px;">
+
+</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="width50 paddingTop7">说明</th>
+                        <td class="padding3">
+                            <input name="ctl00$PageContent$pupilInfo$quickPoints$tbPointsNotes" type="text" id="ctl00_PageContent_pupilInfo_quickPoints_tbPointsNotes" class="inputFullWidth baseTextbox"></td>
+                    </tr>
+                </tbody></table>
+
+            <div style="overflow-x: auto;">
+                <div class="js-div-qqnotice marginTop3" style="display: none;">
+                    <table class="info left width100pc marginTop15">
+                        <tbody>
+                            <tr>
+                                <th class="height20 paddingTop7">快速分数通知模板</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="info left width100pc">
+                        <tbody>
+                            <tr>
+                                <th colspan="2" class="height20 paddingTop7 width70pc subItem">
+                                    <div style="display: inline-flex; height: 100%; align-items: center;">
+                                        通知模板
+                                    </div>
+                                    <button class="buttonBase buttonLink right js-btn-reset-template" style="margin-top: -4px;"><i class="fa-solid fa-rotate-left"></i>重置模板</button></th>
+                                <th colspan="2" class="height20 paddingTop7 width30pc subItem hideForMobile" style="width: 30%;">可选择标签</th>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="whiteBackground mobileTableRow">
+                                    <div>
+                                        <textarea name="ctl00$PageContent$pupilInfo$quickPoints$txtQPTemplate" id="ctl00_PageContent_pupilInfo_quickPoints_txtQPTemplate" class="width97pc height200 margin5 noBorder js-notice-area mobileMargin0 ui-droppable" style="overflow-y: auto; -moz-resize: none; -ms-resize: none; -o-resize: none; resize: none;">你的分数已被[Senders Name]更新于：[Date Sent]；你的分数已被修改为[Point Awarded]，你目前总分为[Total Points]</textarea>
+                                    </div>
+                                    <small>(点击放置光标并拖动标签到模板)</small>
+                                </td>
+                                <td colspan="2" class="whiteBackground mobileTableRow">
+                                    <div class="dragitems">
+                                        <ul class="js-alltags">
+                                            <li id="node1" class="noticetag ui-draggable ui-draggable-handle">发送日期</li>
+                                            <li id="node2" class="noticetag ui-draggable ui-draggable-handle">发送人</li>
+                                            <li id="node3" class="noticetag ui-draggable ui-draggable-handle">得分</li>
+                                            <li id="node4" class="noticetag ui-draggable ui-draggable-handle">注释</li>
+                                            <li id="node5" class="noticetag ui-draggable ui-draggable-handle">总分</li>
+                                            <li id="node6" class="noticetag ui-draggable ui-draggable-handle">总正分</li>
+                                            <li id="node7" class="noticetag ui-draggable ui-draggable-handle">总负分</li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+                <table class="width100pc">
+                    <tbody><tr>
+                        <td class="padding3">
+                            <div class="left js-myclass-notice-checkbox" style="display: none;">
+                                
+                            </div>
+                            <div class="left js-details-notice-checkbox">
+                                
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody></table>  
+            </div>
+
+            <div class="portalModalFooter mobileMinus5LeftMargin">
+                            <input type="submit" name="ctl00$PageContent$pupilInfo$quickPoints$btnAddQuickPoints" value="保存" onclick="ConfirmUpdateToZero(event, 'ctl00_PageContent_pupilInfo_quickPoints_upDown_txtNumericValue','ctl00_PageContent_pupilInfo_quickPoints_btnAddQuickPoints');" id="ctl00_PageContent_pupilInfo_quickPoints_btnAddQuickPoints" class="buttonBase buttonPrimary marginRight5 right">
+                
+                <input type="button" class="buttonBase buttonSecondary js-quickPointsCloseButton" value="关闭">
+             </div>
+            </div>
+    </div>
+
+	</div>
+
+<script type="text/javascript">
+
+    $(function() {
+        $(".quickPointsContent input[type='checkbox']").prop("checked", false);
+
+        $(".js-alltags li").draggable({
+            appendTo: ".js-div-qqnotice",
+            helper: "clone",
+            cursor: "move",
+            revert: "invalid"
+        });
+        initDroppable($(".js-notice-area"));
+
+        function initDroppable($elements) {
+            $elements.droppable({
+                accept: ":not(.ui-sortable-helper)",
+                drop: function(event, ui) {
+                    var tempid = ui.draggable.text();
+                    var dropText;
+                    dropText = " [" + tempid + "] ";
+                    var droparea = $(".js-notice-area");
+                    var range1 = droparea[0].selectionStart;
+                    var range2 = droparea[0].selectionEnd;
+                    var val = droparea.val();
+                    var str1 = val.substring(0, range1);
+                    var str3 = val.substring(range2, val.length);
+                    droparea.val(str1 + dropText + str3);
+                }
+            });
+        }
+
+        $('.js-btn-reset-template').on('click', function(e) {
+            e.preventDefault();
+            var defaultText = $('#ctl00_PageContent_pupilInfo_quickPoints_hdnDefaultTemplate').val();
+
+            $('.js-notice-area').val(defaultText);
+        });
+    });
+
+    $(".quickPointsContent input[type='checkbox']").on('change', function () {
+        if (this.checked) {
+            $('.js-div-qqnotice').slideDown('slow', function() {
+                $(".js-notice-area").focus();
+            });
+        } else {
+            $('.js-div-qqnotice').slideUp('slow');
+        }
+    });
+
+    $(window).on('resize', function () {
+        var width = ($('.pageContainer').width() - 100);
+
+        $('.quickPointsContent').css({ width: width + 'px' });
+
+        var left = (($('.pageContainer').width() - $('.quickPointsContent').width()) - 20) / 2;
+
+        $('.quickPointsContent').css({ left: left + 'px', width: width + 'px' });
+
+        var height = ($('.pageContainer').height() - 40);
+        $('.quickPointsContent').css({ left: left + 'px', width: width + 'px', 'max-height': height + 'px', 'overflow-y': 'auto' });
+    });
+
+</script>
+
+<div class="showForMobile">
+    <div class="mobileBottomScreen mobileButtonsEvenly" style="z-index: 99;">
+         <a class="buttonBase buttonPrimary" onclick="copyAndDisplayPupilNavigation()">详细信息</a>
+    </div>
+</div>
+            </div>
+
+             <div class="contentContainer">
+                <h1>出勤率</h1>
+               
+                            <div id="pupilAttendance">
+                                <div class="flexTable">
+                                    <div class="column fullTable">
+                                        
+<!---->
+
+<script>
+
+    var gPupilID, newWeekStart, centered, dateTypeSelected;
+
+    function setCellControls(cell, data, position) {
+        'use strict';
+        var text, key, control, tooltip, image, textParts;
+
+        key = 'Column' + position;
+        text = data[key];
+
+        if (text === undefined || text === null || text === '') {
+            // no attendance data, or we're hiding unmarked attendance, so just return
+            return;
+        }
+
+        tooltip = $('<span>').addClass('center');
+
+        control = $('<span>').addClass('icontooltip pointer');
+
+        // unmarked, so add the image and tooltip
+        if (text === '?') {
+            image = $('<i>').prop('class', 'fa-solid fa-square-question fa20Size').prop('title', "无详细信息");
+
+            control.append(image);
+
+            $(cell).addClass('center');
+        } else {
+            // it's marked, so split the string into the various bits that we need
+            // [0] is the attendance mark
+            // [1] is the tooltip (and can contain <br />, hence use of innerHTML)
+            // [2] is the css class to apply
+            textParts = text.split('||');
+
+            control.text(textParts[0]);
+            control.prop('title', textParts[1]);
+
+            $(cell).addClass('center ' + textParts[2]);
+        }
+
+        control.append(tooltip);
+        $(cell).append(control);
+    }
+
+    function drawAttendanceSummary(data) {
+        'use strict';
+        var table, sessionColSpan, classColSpan, columnCount, containsWeekInfo, cell, row, key, i, y;
+
+        table = $('#tblAttendanceSummary');
+        table.addClass('paddingLeft10 paddingRight10');
+
+        // we need to empty the table before we do anything else
+        $.each(table.children(), function () {
+            $(this).remove();
+        });
+
+        columnCount = 0;
+        classColSpan = 0;
+        sessionColSpan = 0;
+        containsWeekInfo = false;
+
+        // work out how many attendance columns we have,
+        // and of those, how many are session columns,
+        // and how many are class columns
+        for (key in data[0]) {
+            if (data[0].hasOwnProperty(key)) {
+                if (key == 'WeekBeginning') {
+                    containsWeekInfo = true;
+                }
+                if (key === 'Column' + columnCount) {
+
+                    if (data[0][key] === 'session') {
+                        sessionColSpan++;
+                    }
+
+                    if (data[0][key] === 'class') {
+                        classColSpan++;
+                    }
+
+                    columnCount++;
+                }
+            }
+        }
+
+        row = $('<tr>').prop('id', 'rowSessionType').prop('class', 'rowSessionType');
+
+        // add a blank padding cell
+        cell = $('<td>').addClass("empty-cell");
+        row.append(cell);
+        if (containsWeekInfo) {
+            cell = $('<td>').addClass('hideForMobile');
+            row.append(cell);
+        }
+        // if we have sessions, add a session heading
+        if (sessionColSpan > 0) {
+            cell = $('<th>').prop('scope', 'col').prop('colspan', sessionColSpan).text("课期");
+            row.append(cell);
+        }
+
+        // if we have classes, add a class heading
+        if (classColSpan > 0) {
+            cell = $('<th>').prop('scope', 'col').prop('colspan', classColSpan).text("课堂");
+            row.append(cell);
+        }
+
+        table.append(row);
+
+        row = $('<tr>').prop('id', 'rowSessionHeadings').prop('class', 'rowSessionHeadings');
+
+        if (containsWeekInfo) {
+            cell = $('<th>').prop('scope', 'col').addClass('paddingLeft10 paddingRight10').text("星期起始");
+            row.append(cell);
+        }
+
+        cell = $('<th>').prop('scope', 'col').addClass('paddingLeft10 paddingRight10').text("某周某日");
+        row.append(cell);
+
+        // create the headings for each class and session
+        for (i = 0; i < columnCount; i++) {
+            cell = $('<th>').prop('scope', 'col').addClass('paddingLeft10 paddingRight10').text(data[1]['Column' + i]);
+            row.append(cell);
+        }
+
+        table.append(row);
+
+        // we're done with the first two rows, so lets get
+        // rid of them so we just have the attendance data
+        data.splice(0, 2);
+
+        // now create the bulk of the table
+        // here we create the rows for the day, and the cells
+        // for each of the attendance sessions, and populate
+        // the cells with the correct data, tooltips and images
+        for (i = 0; i < data.length; i++) {
+            row = $('<tr>');
+            row.addClass(i % 2 === 0 ? "even" : "odd");
+
+            //work out how many rows the header for week beginning should span
+            if (containsWeekInfo) {
+                var rowspan;
+
+                if (i === 0 || data[i - 1].WeekBeginning != data[i].WeekBeginning) {
+                    var wd;
+                    for (wd = 1; wd <= 7; wd++) {
+                        if (data.length > wd + i) {
+                            if (data[i].WeekBeginning != data[wd + i].WeekBeginning) {
+                                rowspan = wd
+                                break;
+                            }
+                        }
+                        else {
+                            rowspan = wd;
+                            break;
+                        }
+                    }
+                    if (rowspan == undefined) rowspan = 7;
+                    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    if (i > 0 && data[i - 1].WeekBeginning != data[i].WeekBeginning) {
+                        cell = $('<th rowspan = "' + rowspan + '" style="vertical-align: middle; border-top-color: white; border-top-width: 5px; border-top-style: solid;">').prop('scope', 'row').addClass('_hideForMobile').text((new Date(data[i].WeekBeginning)).toLocaleDateString("en-GB", options));
+                    }
+                    else {
+
+                        cell = $('<th rowspan = "' + rowspan + '" style="vertical-align: middle;">').prop('scope', 'row').text((new Date(data[i].WeekBeginning)).toLocaleDateString("en-GB", options));
+                    }
+
+                    row.append(cell);
+                }
+            }
+
+            if (i > 0 && data[i - 1].WeekBeginning != data[i].WeekBeginning) {
+                cell = $('<th style="border-top-color: white; border-top-width: 5px; border-top-style: solid;" >').prop('scope', 'row').text(data[i].DayOfWeek);
+            }
+            else {
+                cell = $('<th>').prop('scope', 'row').text(data[i].DayOfWeek);
+            }
+
+            cell.addClass('day-of-week');
+
+            row.append(cell);
+
+            for (y = 0; y < columnCount; y++) {
+                if (i > 0 && data[i - 1].WeekBeginning != data[i].WeekBeginning) {
+                    cell = $('<td  style="border-top-color: white; border-top-width: 5px; border-top-style: solid;">');
+                }
+                else {
+                    cell = $('<td>');
+                }
+                setCellControls(cell, data[i], y);
+                row.append(cell);
+            }
+
+            table.append(row);
+        }
+
+        // and finally we show our table and hide the spinner
+        $('#tblAttendanceSummary').fadeIn();
+        $('#infoText').fadeIn();
+        initTooltips();
+    }
+
+    function getFormattedWeekStart(weekStart) {
+        'use strict';
+        $.ajax({
+            type: 'POST',
+            url: '/Services/AttendanceServices.asmx/FormatDateTime',
+            data: JSON.stringify({ 'date': weekStart, 'displayType': 'LongDate' }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (msg) {
+                $('#weekStarting').text('星期起始: ' + msg.d);
+            }
+        });
+    }
+
+    function getPupilName(pupilID) {
+        $.ajax({
+            type: 'POST',
+            url: '/Services/CommonServices.asmx/GetPupilName',
+            data: JSON.stringify({ 'pupilID': pupilID }),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (msg) {
+                $('#pupilName').text(JSON.parse(msg.d));
+            }
+        });
+    }
+
+    function openAttendanceSummary(pupilID) {
+        'use strict';
+        var weekStart, showSessions, showClasses;
+
+        weekStart = $('input[id$="hdnClassAttendanceWeekStart"]').val();
+        showClasses = $('input[id$="hdnShowClasses"]').val();
+        showSessions = $('input[id$="hdnShowSessions"]').val();
+
+
+
+        if (isMobileDevice()) {            
+            $('#attendanceSummaryModal').addClass('expanded').show(100);            
+        }
+        else {
+            openModal('attendanceSummaryModal', 'mask');
+        }
+
+
+        centered = false;
+        gPupilID = pupilID;
+
+        var d = {
+            'preferenceName': 'Portal_AttendancePanel_AttendanceViewType',
+            'defaultValue': 'w'
+        };
+
+        function success(data) {
+            getPeriodData(data.d.toLowerCase());
+        };
+
+        function error(data) {
+            getPeriodData('w');
+        };
+
+        Helpers.ajaxCall('/Services/UserServices.asmx/GetPreference', d, success, error);
+
+        getPupilName(pupilID);
+
+
+    }
+
+    $(document).ready(function () {
+        'use strict';
+        var weekStart, showSessions, showClasses, pupilID, page;
+
+        page = document.URL.split('?')[0];
+
+        $('#attendanceSummaryModal').find("[id$='dwmty_attendance_lnkDay']").hide();
+        $('#attendanceSummaryModal').find("[id$='dwmty_attendance_lnkYear']").hide();
+        // $('#attendanceSummaryModal').find("[id*='dwmtyPicker']").attr("href", "#"); //stop the WMT buttons doing anything as calls will be handled in js
+        $('#attendanceSummaryModal').find(".dateToggle").attr("style", "display:inline-flex")
+        $('#attendanceSummaryModal').find("[id*='dwmty_attendance_lnk']").on("click", function (e) { changeAttendancePeriods(e.target.innerHTML); return false; });
+
+        if (page.split('/').pop().toLowerCase() !== 'attendancedetails.aspx') {
+            if (!isMobileDevice()) {
+                $('#attendanceSummaryModal').width(930);
+                $('#attendanceSummaryModal').css('left', 32);                
+
+            }
+
+            $('.js-YearSummaryTitle').hide();
+            $('.js-attendanceGroupType').hide();
+            //    $('#attendanceSummaryModal').css('max-width', '930px');
+        }
+
+        if (page.split('/').pop().toLowerCase() === 'attendancedetails.aspx') {
+            pupilID = $('input[id$="attendancePanel_hdnPupilID"]').val();
+            weekStart = $('input[id$="hdnClassAttendanceWeekStart"]').val();
+            showClasses = $('input[id$="hdnShowClasses"]').val();
+            showSessions = $('input[id$="hdnShowSessions"]').val();
+            centered = true;
+            // hide the modal specific controls, and make sure this only affects the attendance modal...
+            $('#attendanceSummaryModal').find('#closeModal').hide();
+            $('#attendanceSummaryModal').find('.portalModalHeading').hide();
+            $('.js-modalClose').hide();
+            
+            //$('#tblAttendanceSummaryWrapper').css('display', 'grid');
+            //$('#tblAttendanceSummaryWrapper').removeClass('minWidth600');
+            $('#attendanceSummaryContainer').css('display', 'grid').removeClass('minWidth600');
+
+            $('.js-toggleContent').css('display', 'flex');
+            $('.js-toggleContent').css('align-content', 'center');
+            $('.js-toggleContent').css('justify-content', 'center');
+
+
+
+
+            //  $("[id*='dwmtyPicker']").on("click", function () {alert(""); })
+            // and remove the rest of the portalModal classes
+            // show the container, and remove the portalModal class, 
+            // as here we don't use it as a modal
+            $('#attendanceSummaryModal').removeClass('portalModal').removeClass('blueVerticalGradient').show().width('100%').addClass('margin0Auto');
+
+            // We need to give a width here, so that we get scroll bars if required.
+            // If we don't set a fixed width for our min resolution, then we'll
+            // have multiple scroll bars. Also, IE doesn't return the correct
+            // result for window.screen.availWidth if you have multiple screen
+            // resolutions, while $(window).width() always returns roughly correct
+            // values (it returns the viewport, so scrollbars affect the value), 
+            // meaning it's safe to use <= 1024 here.
+            //if ($(window).width() <= 1024) {
+            //    $('#attendanceSummaryModal').width(900);
+            //} else {
+            //    $('#attendanceSummaryModal').width('100%');
+            //}
+            gPupilID = pupilID;
+
+        }
+
+        var d = {
+            'preferenceName': 'Portal_AttendancePanel_AttendanceViewType',
+            'defaultValue': 'w'
+        };
+
+        function success(data) {
+            getPeriodData(data.d.toLowerCase());
+            $('#prevPeriod').attr("href", "javascript: getPeriodData('previous " + data.d.toLowerCase() + "');")
+            $('#nextPeriod').attr("href", "javascript: getPeriodData('next " + data.d.toLowerCase() + "');")
+            dateTypeSelected = data.d.toLowerCase();
+        };
+
+        function error(data) {
+            getPeriodData('w');
+        };
+
+        Helpers.ajaxCall('/Services/UserServices.asmx/GetPreference', d, success, error);
+    });
+
+    function changeAttendancePeriods(dateType) {
+
+        var address = window.location.protocol + "//" + window.location.host + "/Services/AttendanceServices.asmx/GetCurrentDates";
+        var d = {
+            dateType: dateType
+        };
+
+        function success(data) {
+            showClasses = $('input[id$="hdnShowClasses"]').val();
+            showSessions = $('input[id$="hdnShowSessions"]').val();
+
+            if (JSON.parse(data.d).DrawAttendanceTable) {
+                $('input[id$="hdnClassAttendanceStart"]').val(JSON.parse(data.d).StartDate);
+                getAttendancePeriodDate(JSON.parse(data.d).StartDate, JSON.parse(data.d).EndDate, showSessions, showClasses);
+                $("#weekStarting").removeAttr("class");
+            }
+            else {
+                $('#weekStarting').text(JSON.parse(data.d).DisplayText);
+                $("#tblAttendanceSummary").hide();
+                $("#weekStarting").attr("class", "alert-error");
+            }
+
+            $('#weekStarting').text(JSON.parse(data.d).DisplayText);
+            dateTypeSelected = dateType;
+            $('#prevPeriod').attr("href", "javascript: getPeriodData('previous " + dateType + "');")
+            $('#nextPeriod').attr("href", "javascript: getPeriodData('next " + dateType + "');")
+        }
+
+        Helpers.ajaxCall(address, d, success, Helpers.ajaxFailure);
+
+        var d = {
+            'preferenceName': 'Portal_AttendancePanel_AttendanceViewType',
+            'preferenceValue': dateType
+        };
+
+        Helpers.ajaxCall('/Services/UserServices.asmx/SetPreference', d, function () { }, Helpers.ajaxFailure);
+    };
+
+    function getAttendancePeriodDate(startDate, endDate, showSessions, showClasses) {
+        if (typeof gPupilID != 'undefined') {
+            //$("#tblAttendanceSummaryWrapper").fadeTo("slow", 0.3);
+            $("#attendanceSummaryContainer").fadeTo("slow", 0.3);
+
+            'use strict';
+            $.ajax({
+                type: 'POST',
+                url: '/Services/AttendanceServices.asmx/GetPeriodAttendanceSummaryData',
+                data: JSON.stringify({ 'pupilID': gPupilID, 'selectectStartDate': startDate, 'selectedEndDate': endDate, 'showSessions': showSessions, 'showClasses': showClasses }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (msg) {
+                    drawAttendanceSummary(JSON.parse(msg.d));
+                    $('#loadAttendanceTable').fadeOut();
+                    //$("#tblAttendanceSummaryWrapper").fadeTo("slow", 1);
+                    $("#attendanceSummaryContainer").fadeTo("slow", 1);
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR.status + ' - ' + jqXHR.statusText + '\r\n\r\n' + jqXHR.responseText);
+                }
+            });
+        }
+    }
+
+    //get the date range to display
+    function getPeriodData(type) {
+        var d, showSessions, showClasses, params;
+
+
+        attendanceStart = $('input[id$="hdnClassAttendanceStart"]').val();
+
+        params = { 'suppliedDate': attendanceStart, 'type': type };
+
+        showClasses = $('input[id$="hdnShowClasses"]').val();
+        showSessions = $('input[id$="hdnShowSessions"]').val();
+
+        $.ajax({
+            async: false,
+            type: 'POST',
+            url: '/Services/AttendanceServices.asmx/GetPeriodDates',
+            data: JSON.stringify(params),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                //if the date range is before the current academic year then display an error and prevent table from being displayed, also store the end date so we can go back to the correct term
+                if (JSON.parse(data.d).DrawAttendanceTable) {
+                    getAttendancePeriodDate(JSON.parse(data.d).StartDate, JSON.parse(data.d).EndDate, showSessions, showClasses);
+                    $('#weekStarting').text(JSON.parse(data.d).DisplayText);
+                    $('input[id$="hdnClassAttendanceStart"]').val(JSON.parse(data.d).StartDate);
+                    $("#weekStarting").removeAttr("class");
+                    $("#tblAttendanceSummary").show();
+                }
+                else {
+                    $('#weekStarting').text(JSON.parse(data.d).DisplayText);
+                    $("#tblAttendanceSummary").hide();
+                    $("#weekStarting").attr("class", "alert-error")
+                    $('input[id$="hdnClassAttendanceStart"]').val(JSON.parse(data.d).EndDate);
+                }
+            }
+        });
+    };
+</script>
+
+
+<input type="hidden" name="ctl00$PageContent$attendancePanel$hdnPupilID" id="ctl00_PageContent_attendancePanel_hdnPupilID" value="wbDPGBLaosgCAfitoDds7w%3d%3d">
+<input type="hidden" name="ctl00$PageContent$attendancePanel$hdnShowClasses" id="ctl00_PageContent_attendancePanel_hdnShowClasses" value="True">
+<input type="hidden" name="ctl00$PageContent$attendancePanel$hdnShowSessions" id="ctl00_PageContent_attendancePanel_hdnShowSessions" value="True">
+<input type="hidden" name="ctl00$PageContent$attendancePanel$hdnClassAttendanceWeekStart" id="ctl00_PageContent_attendancePanel_hdnClassAttendanceWeekStart" value="2024/12/16 0:00:00">
+<input type="hidden" name="ctl00$PageContent$attendancePanel$hdnClassAttendanceStart" id="ctl00_PageContent_attendancePanel_hdnClassAttendanceStart" value="2024-12-16T00:00:00+08:00">
+<input type="hidden" name="ctl00$PageContent$attendancePanel$hdnClassAttendanceEnd" id="ctl00_PageContent_attendancePanel_hdnClassAttendanceEnd">
+
+<div id="attendanceSummaryModal" class="attendanceSummaryModal margin0Auto" style="width: 100%;">
+
+    <a id="closeModal" href="javascript:closeModal('attendanceSummaryModal', 'mask');" title="关闭" class="modalClose" style="display: none;">
+        <div><i class="fa-regular fa-xmark-large ignoreFaStyle"></i></div>
+    </a>
+
+    <div class="portalModalHeading" style="display: none;">
+        <h3 id="pupilName"></h3>
+    </div>
+
+    <div class="toggleBar">
+        <div>
+            <div class="js-toggleContent" style="display: flex; place-content: center;">
+                <div class="">
+                    <label for="email">Select a Date Range: </label>
+                    
+
+<div class="dateToggle paddingLeft5" style="display:inline-flex">
+    <!-- interesting note - if you don't have an ID on these, they will
+    in fact do a full postback instead of just the updatepanel.
+    Weirdly, a normal asp:Button works fine. Rubbish! -->
+    <a id="ctl00_PageContent_attendancePanel_dwmty_attendance_lnkDay" title="设置日期范围到今天" href="javascript:__doPostBack('ctl00$PageContent$attendancePanel$dwmty_attendance$lnkDay','')" style="display: none;">D</a>
+    <a id="ctl00_PageContent_attendancePanel_dwmty_attendance_lnkWeek" title="设置日期范围到本周" href="javascript:__doPostBack('ctl00$PageContent$attendancePanel$dwmty_attendance$lnkWeek','')">W</a>
+    <a id="ctl00_PageContent_attendancePanel_dwmty_attendance_lnkMonth" title="设置日期范围为本月" href="javascript:__doPostBack('ctl00$PageContent$attendancePanel$dwmty_attendance$lnkMonth','')">M</a>
+    <a id="ctl00_PageContent_attendancePanel_dwmty_attendance_lnkTerm" title="设置日期范围为本学期" href="javascript:__doPostBack('ctl00$PageContent$attendancePanel$dwmty_attendance$lnkTerm','')">T</a>
+    <a id="ctl00_PageContent_attendancePanel_dwmty_attendance_lnkYear" title="设置日期范围为现学年" href="javascript:__doPostBack('ctl00$PageContent$attendancePanel$dwmty_attendance$lnkYear','')" style="display: none;">Y</a>
+</div>
+                </div>
+
+
+                <div class="divWeekstarting">
+                    <a href="javascript: getPeriodData('previous w');" title="上一个" id="prevPeriod">
+                        <img src="../../images/styleguide/circle-arrow-left-solid-purple.svg" alt="Left Arrow" width="20" height="20"></a>
+
+                    <div class="weekStarting"><span id="weekStarting">2024年12月16日</span></div>
+
+                    <a href="javascript: getPeriodData('next w');" title="下一步" id="nextPeriod">
+                        <img src="../../images/styleguide/circle-arrow-right-solid-purple.svg" alt="Right Arrow" width="20" height="20"></a>
+                </div>
+                <!--
+                <div class="control userFilterControl">
+                    <label>
+                        Date Range</label>
+                    
+
+<script type="text/javascript">
+    appendScript('/JS/grid/filters/select2.js');
+    appendStyle('/css/grid/filters/select2.min.css');
+    appendScript('/js/controls/daterangepicker.js');
+    appendStyle('/css/controls/daterangepicker.css');
+
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequestHandler);
+
+    function DateRangeSwitchCtrl(clientID) {
+        return {
+            usingDayRange: function () {
+                return $('#' + clientID + '_dateRangeSwitchCtrl_txtUseDayRange').val();
+            },
+            dayRangeValue: function () {
+                return $('#' + clientID + '_dateRangeSwitchCtrl_txtDayRange').val();
+            },
+            getDateFromValue: function () {
+                return $('#' + clientID + '_dateRangeSwitchCtrl_txtDateFrom').val();
+            },
+            getDateToValue: function () {
+                return $('#' + clientID + '_dateRangeSwitchCtrl_txtDateTo').val();
+            },
+            setDateFromValue: function (date) {
+                $('#' + clientID + '_dateRangeSwitchCtrl_txtDateFrom').val(date);
+            },
+            setDateToValue: function (date) {
+                $('#' + clientID + '_dateRangeSwitchCtrl_txtDateTo').val(date);
+            },
+            setUpDownValue: function (value) {
+                $('#' + clientID + '_dateRangeSwitchCtrl_txtDayRange').val(value);
+            },
+            setUseDayRange: function (value) {
+                $('#' + clientID + '_dateRangeSwitchCtrl_txtUseDayRange').val(value);
+            },
+            initControls: function () {
+                initialiseSwitcherControls();
+            }
+        };
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initialiseSwitcherControls();
+    });
+
+    function endRequestHandler(sender, args) {
+        initialiseSwitcherControls();
+    }
+
+    function initDateRangeSwitchCtrl(clientId) {
+        moment.locale('zh-CN');
+
+        DateRangeSwitchCtrl(clientId);
+        buildDateRangeSwitchControl(clientId);
+
+        $('#' + clientId).off('apply.daterangepicker').on('apply.daterangepicker', function (ev, picker) {
+            // Format dates using moment.js with user's locale
+            $(String.format('#{0}_txtDateFrom', clientId)).val(picker.startDate.format(moment.localeData().longDateFormat('L')));
+            $(String.format('#{0}_txtDateTo', clientId)).val(picker.endDate.format(moment.localeData().longDateFormat('L')));
+        });
+    }
+
+    function initialiseSwitcherControls() {
+        // For each instance of the control on the page, call the initialize function
+        $('.js-dateRangeSwitchCtrl').each(function () {
+            initDateRangeSwitchCtrl(this.id);
+        });
+    }
+
+
+    function buildDateRangeSwitchControl(clientId) {
+
+        const cb = (start, end) => {
+            let dayRangeValue = parseInt($(String.format('#{0}_txtDayRange', clientId)).val());
+            let usingDayRange = $(String.format('#{0}_txtUseDayRange', clientId)).val().toLowerCase() === 'true';
+            if (usingDayRange) {
+                $('#' + clientId).find('span').html(String.format('Last {0} Days', dayRangeValue));
+            } else {
+                let formattedStart = start.format(moment.localeData().longDateFormat('L'));
+                let formattedEnd = end.format(moment.localeData().longDateFormat('L'));
+
+                if (formattedStart === moment(new Date('1753-01-01T00:00:00')).format(moment.localeData().longDateFormat('L')) &&
+                    formattedEnd === moment(new Date('9999-12-31T23:59:59')).format(moment.localeData().longDateFormat('L'))) {
+                    $('#' + clientId).find('span').html(Resources.All);
+                } else {
+                    $('#' + clientId).find('span').html(formattedStart + ' - ' + formattedEnd);
+                }
+            }
+        };
+
+        let usingDayRange = $(String.format('#{0}_txtUseDayRange', clientId)).val().toLowerCase() === 'true';
+        let dayRangeValue = 7;
+        let useAllOption = $(String.format('#{0}_txtUseAllOption', clientId)).val().toLowerCase() === 'true';
+
+        let dateFromInput = $(String.format('#{0}_txtDateFrom', clientId));
+        let dateFrom = '1753-01-01T00:00:00.0000000';
+
+        let start = dateFromInput.val() !== ''
+            ? moment(dateFromInput.val(), moment.localeData().longDateFormat('L'))
+            : moment(new Date(dateFrom));
+
+        let dateToInput = $(String.format('#{0}_txtDateTo', clientId));
+        let dateTo = '1753-01-01T23:59:59.0000000';
+
+    let end = dateToInput.val() !== ''
+        ? moment(dateToInput.val(), moment.localeData().longDateFormat('L'))
+        : moment(new Date(dateTo));
+
+    usingDayRange = $(String.format('#{0}_txtUseDayRange', clientId)).val().toLowerCase() === 'true';
+
+    let url = '/Services/FilterBarServices.asmx/GetSwitcherControlDateRanges';
+    if (useAllOption) {
+        url = '/Services/FilterBarServices.asmx/GetSwitcherControlDateRangesAllOption';
+    }
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            var ranges = JSON.parse(data.d);
+            for (var key in ranges) {
+                var translatedKey = Resources[key];
+
+                if (translatedKey) {
+                    ranges[translatedKey] = [moment(ranges[key][0]), moment(ranges[key][1])];
+                    if (key !== translatedKey) {
+                        delete ranges[key];
+                    }
+                }
+            }
+
+            $('#' + clientId).removeData('daterangepicker');
+
+            let pageElem = 'False'.toLowerCase() === 'true' ? ".page-content" : ".mainContent";
+
+            $('#' + clientId).daterangepicker({
+                mainContainer: pageElem,
+                startDate: start,
+                endDate: end,
+                usingDayRange: usingDayRange,
+                dayRangeValue: dayRangeValue,
+                ranges: ranges,
+                showDropdowns: true
+            }, cb);
+
+            cb(start, end, clientId);
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+    }
+
+</script>
+<style>
+    .select2-dropdown {
+        z-index: 10000 !important;
+    }
+    .drp-calendar .select2-container {
+        margin-right: 2%;
+        min-width: 70px !important;
+        max-width: 70px !important;
+    }
+</style>
+<input type="hidden" name="ctl00$PageContent$attendancePanel$DateRangeSwitchCtrl$dateRangeSwitchCtrl_txtUseDayRange" id="ctl00_PageContent_attendancePanel_DateRangeSwitchCtrl_dateRangeSwitchCtrl_txtUseDayRange" />
+<input type="hidden" name="ctl00$PageContent$attendancePanel$DateRangeSwitchCtrl$dateRangeSwitchCtrl_txtDayRange" id="ctl00_PageContent_attendancePanel_DateRangeSwitchCtrl_dateRangeSwitchCtrl_txtDayRange" />
+<input type="hidden" name="ctl00$PageContent$attendancePanel$DateRangeSwitchCtrl$dateRangeSwitchCtrl_txtDateFrom" id="ctl00_PageContent_attendancePanel_DateRangeSwitchCtrl_dateRangeSwitchCtrl_txtDateFrom" />
+<input type="hidden" name="ctl00$PageContent$attendancePanel$DateRangeSwitchCtrl$dateRangeSwitchCtrl_txtDateTo" id="ctl00_PageContent_attendancePanel_DateRangeSwitchCtrl_dateRangeSwitchCtrl_txtDateTo" />
+<input type="hidden" name="ctl00$PageContent$attendancePanel$DateRangeSwitchCtrl$dateRangeSwitchCtrl_txtUseAllOption" id="ctl00_PageContent_attendancePanel_DateRangeSwitchCtrl_dateRangeSwitchCtrl_txtUseAllOption" />
+
+<div class="dateRangeContainer">
+<div id="ctl00_PageContent_attendancePanel_DateRangeSwitchCtrl_dateRangeSwitchCtrl" class="js-dateRangeSwitchCtrl filterDateRange" style="background-color: #fff; padding-left: 5px; padding-top: 5px;">
+    <i class="fa fa-calendar"></i>&nbsp;
+        <span style="padding-left: 3px;"></span><i class="fa-regular fa-angle-down right" style="margin-top: 3px; margin-right: 8px;"></i>
+</div>
+</div>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </div>
+    <div id="portalModalInner" class="center" style="overflow: hidden;">
+        <div id="attendanceSummaryContainer" style="display: grid; opacity: 1;">
+            <p id="infoText" class="center none" style="display: block;">鼠标移到图标上获取更多信息</p>
+
+            <div id="tblAttendanceSummaryWrapper">
+                <table id="tblAttendanceSummary" class="none attendanceSummaryTable paddingLeft10 paddingRight10" style="display: table;"><tr id="rowSessionType" class="rowSessionType"><td class="empty-cell"></td><td class="hideForMobile"></td><th scope="col" colspan="1">课期</th><th scope="col" colspan="11">课堂</th></tr><tr id="rowSessionHeadings" class="rowSessionHeadings"><th scope="col" class="paddingLeft10 paddingRight10">星期起始</th><th scope="col" class="paddingLeft10 paddingRight10">某周某日</th><th scope="col" class="paddingLeft10 paddingRight10">Evening Self Study</th><th scope="col" class="paddingLeft10 paddingRight10">Homeroom/Assembly</th><th scope="col" class="paddingLeft10 paddingRight10">Period 1</th><th scope="col" class="paddingLeft10 paddingRight10">Period 2</th><th scope="col" class="paddingLeft10 paddingRight10">Period 3</th><th scope="col" class="paddingLeft10 paddingRight10">Lunch</th><th scope="col" class="paddingLeft10 paddingRight10">Period 4</th><th scope="col" class="paddingLeft10 paddingRight10">Period 5</th><th scope="col" class="paddingLeft10 paddingRight10">Period 6</th><th scope="col" class="paddingLeft10 paddingRight10">ASA</th><th scope="col" class="paddingLeft10 paddingRight10">ASA 2</th><th scope="col" class="paddingLeft10 paddingRight10">Evening Self Study</th></tr><tr class="even"><th rowspan="5" style="vertical-align: middle;" scope="row">16 December 2024</th><th scope="row" class="day-of-week">Monday</th><td class="center present"><span class="icontooltip pointer" title="Present">/<span class="center"></span></span></td><td></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: Physical Education/体育<br />分隔: Physical Education 09D<br />课堂: Physical Education 09D">/<span class="center"></span></span></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: Chinese/中文<br />分隔: Chinese 09D<br />课堂: Chinese 09D">/<span class="center"></span></span></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: English ESL2/英语<br />分隔: English ESL2 09B<br />课堂: English ESL2 09B">/<span class="center"></span></span></td><td></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: Spanish/西班牙语<br />分隔: Spanish 09A<br />课堂: Spanish 09A">/<span class="center"></span></span></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td></td><td></td><td></td></tr><tr class="odd"><th scope="row" class="day-of-week">Tuesday</th><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: Homeroom<br />分隔: Homeroom 09D<br />课堂: Homeroom 09D">/<span class="center"></span></span></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: English ESL2/英语<br />分隔: English ESL2 09B<br />课堂: English ESL2 09B">/<span class="center"></span></span></td><td class="center present"><span class="icontooltip pointer" title="Present<br />科目: Computer Science/计算机科学<br />分隔: Computer Science 09A<br />课堂: Computer Science 09A">/<span class="center"></span></span></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td></td><td></td><td></td></tr><tr class="even"><th scope="row" class="day-of-week">Wednesday</th><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class="odd"><th scope="row" class="day-of-week">Thursday</th><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr class="even"><th scope="row" class="day-of-week">Friday</th><td></td><td class="center"><span class="icontooltip pointer"><i class="fa-solid fa-square-question fa20Size" title="无详细信息"></i><span class="center"></span></span></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>
+            </div>
+
+        </div> 
+    </div>
+    <div id="portalModalFooter">
+        <div id="attendanceGroupContainer" class="bold attendanceGroupContainer">
+            
+            <div class="flex100 js-YearSummaryTitle"><p class="center bold">今天考勤汇总</p></div>
+            <div style="width:100%;" class="paddingBottomOnly10 js-attendanceGroupType"><div id="ctl00_PageContent_attendancePanel_cbAttendanceGroupType" class="RadComboBox RadComboBox_StyleFilter" style="width:160px;white-space:normal;">
+		<!-- 2021.3.1111.45 --><table summary="combobox" border="0" style="border-width:0;border-collapse:collapse;width:100%">
+			<tbody><tr class="rcbReadOnly">
+				<td class="rcbInputCell rcbInputCellLeft" style="width:100%;"><input name="ctl00$PageContent$attendancePanel$cbAttendanceGroupType" type="text" class="rcbInput radPreventDecorate" id="ctl00_PageContent_attendancePanel_cbAttendanceGroupType_Input" value="课堂考勤" readonly="readonly" autocomplete="off"></td><td class="rcbArrowCell rcbArrowCellRight"><a id="ctl00_PageContent_attendancePanel_cbAttendanceGroupType_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;">select</a></td>
+			</tr>
+		</tbody></table><div class="rcbSlide" style="z-index:6000;display:none;"><div id="ctl00_PageContent_attendancePanel_cbAttendanceGroupType_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_StyleFilter "><div class="rcbScroll rcbWidth"><ul class="rcbList"><li class="rcbItem">课期出勤率</li><li class="rcbItem">课堂考勤</li><li class="rcbItem">所有</li></ul></div></div></div><input id="ctl00_PageContent_attendancePanel_cbAttendanceGroupType_ClientState" name="ctl00_PageContent_attendancePanel_cbAttendanceGroupType_ClientState" type="hidden" autocomplete="off">
+	</div></div>
+            
+                    <div class="attendanceGroupWidget" style="background-color:#31D704" title="上/下箭头可以对今年的考勤与去年进行比较：
+Exam/考试
+Late/迟到
+Possibly Online
+Present">
+                        <div class="flexColumn50">
+                            <div class="flex100">
+                                <b> Present</b>
+                           </div> 
+                           <div class="flex100">
+                                <label class="fa fa-2x ">
+                           </label></div>
+                        </div>
+
+                        <div class="flexColumn50">
+                            <div class="flex100">
+                            99.73%
+                            </div>
+                        </div>
+                    
+                    <div class="attendanceGroupWidget" style="background-color:#E15F51" title="上/下箭头可以对今年的考勤与去年进行比较：
+Absent(Reason Unknown)/缺勤
+Late(More than 20 mins)/迟到超过20分钟
+Suspension/停课
+Truant/逃课
+Unapproved Leave/未经批准的休假
+Uniform Issue/校服问题">
+                        <div class="flexColumn50">
+                            <div class="flex100">
+                                <b> Absence</b>
+                           </div> 
+                           <div class="flex100">
+                                <label class="fa fa-2x ">
+                           </label></div>
+                        </div>
+
+                        <div class="flexColumn50">
+                            <div class="flex100">
+                            0.27%
+                            </div>
+                        </div>
+                    
+                
+                <div class="flex100 js-YearSummaryTitle">
+                    <p class="center bold">This Years Attendance Summary</p>
+                </div>
+            </div>
+            <div class="js-modalClose" style="display: none;">
+                <input type="button" onclick="javascript:closeModal('attendanceSummaryModal', 'mask');" class="buttonBase buttonSecondary" value="取消" style="position: absolute; right: 0px; bottom: 10px; margin-right: 20px;">
+            </div>
+        </div>
+        <div class="loadingHolder" style="height: unset !important">
+            <img src="/images/loading.gif" id="loadAttendanceTable" alt="" width="35" height="35" class="none">
+        </div>
+
+    </div>
+
+</div>
+
+                                    </div>
+                                </div>
+                               
+                                        <div class="flexMiddleAlign ">
+                                            Attendance Sessions
+                                            </div>
+                                        <div class="flexMiddleAlign ">
+                                            <div id="ctl00_PageContent_ddlPieTypes" class="RadComboBox RadComboBox_StyleFilter" style="width:160px;white-space:normal;">
+		<table summary="combobox" border="0" style="border-width:0;border-collapse:collapse;width:100%">
+			<tbody><tr class="rcbReadOnly">
+				<td class="rcbInputCell rcbInputCellLeft" style="width:100%;"><input name="ctl00$PageContent$ddlPieTypes" type="text" class="rcbInput radPreventDecorate" id="ctl00_PageContent_ddlPieTypes_Input" value="All items check" readonly="readonly" autocomplete="off"></td><td class="rcbArrowCell rcbArrowCellRight"><a id="ctl00_PageContent_ddlPieTypes_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;">select</a></td>
+			</tr>
+		</tbody></table><div class="rcbSlide" style="z-index:6000;display:none;"><div id="ctl00_PageContent_ddlPieTypes_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_StyleFilter "><div class="rcbScroll rcbWidth"><ul class="rcbList"><li class="rcbItem"><label><input type="checkbox" class="rcbCheckBox" checked="checked">Afternoon</label></li><li class="rcbItem"><label><input type="checkbox" class="rcbCheckBox" checked="checked">Evening Self Study</label></li><li class="rcbItem"><label><input type="checkbox" class="rcbCheckBox" checked="checked">Evening Self Study 2</label></li><li class="rcbItem"><label><input type="checkbox" class="rcbCheckBox" checked="checked">Morning</label></li></ul></div></div></div><input id="ctl00_PageContent_ddlPieTypes_ClientState" name="ctl00_PageContent_ddlPieTypes_ClientState" type="hidden" autocomplete="off" value="{&quot;logEntries&quot;:[],&quot;value&quot;:&quot;&quot;,&quot;text&quot;:&quot;All items checked&quot;,&quot;enabled&quot;:true,&quot;checkedIndices&quot;:[0,1,2,3],&quot;checkedItemsTextOverflows&quot;:false}">
+	</div>
+                                        </div>
+                                        <div class="flexTable">
+                                            <div class="column">
+                                                <div>
+                                                    
+
+<div id="chart">
+    <div><p class="bold">本学年的课期出勤率</p></div>
+    <div>
+        <div class="padding10 center left">
+            <div id="ctl00_PageContent_absencePie_attendancePie_ctl00" class="RadChart" style="height:200px;width:200px;">
+		<img alt="" style="border-width: 0px;" usemap="#imctl00_PageContent_absencePie_attendancePie_ctl00" src="ChartImage.axd?UseSession=true&amp;ChartID=91c63ab9-2980-43a7-8980-1becdb7f96a6_chart_ctl00$PageContent$absencePie$attendancePie$ctl00&amp;imageFormat=Png&amp;random=7a528f80-c5d6-4b72-9a61-e37c0982debc"><input id="ctl00_PageContent_absencePie_attendancePie_ctl00_ClientState" name="ctl00_PageContent_absencePie_attendancePie_ctl00_ClientState" type="hidden">
+	</div>
+        </div>
+        <div>
+            <table border="0">
+		<tbody><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=0,128,0&amp;imgWidth=20&amp;imgHeight=20" alt="Present" style="border-width:0px;"></td><td style="width:200px;">Present</td><td class="bold" style="width:20px;">92%</td>
+		</tr><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=128,0,0&amp;imgWidth=20&amp;imgHeight=20" alt="Absent(Reason Unknown)/缺勤" style="border-width:0px;"></td><td style="width:200px;">Absent(Reason Unknown)/缺勤</td><td class="bold" style="width:20px;">6%</td>
+		</tr><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=128,128,64&amp;imgWidth=20&amp;imgHeight=20" alt="Other Authorized/其他已批准的情况" style="border-width:0px;"></td><td style="width:200px;">Other Authorized/其他已批准的情况</td><td class="bold" style="width:20px;">3%</td>
+		</tr>
+	</tbody></table>
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div>
+                                                    
+
+<div id="chart">
+    <div><p class="bold">当前学年全部出勤率</p></div>
+    <div>
+        <div class="padding10 center left">
+            <div id="ctl00_PageContent_absencePieTotal_attendancePie_ctl00" class="RadChart" style="height:200px;width:200px;">
+		<img alt="" style="border-width: 0px;" usemap="#imctl00_PageContent_absencePieTotal_attendancePie_ctl00" src="ChartImage.axd?UseSession=true&amp;ChartID=cb7181c7-c6c7-4557-b8c7-0928e04838a5_chart_ctl00$PageContent$absencePieTotal$attendancePie$ctl00&amp;imageFormat=Png&amp;random=599913a6-486b-42ca-9fdc-b9df24c224e5"><input id="ctl00_PageContent_absencePieTotal_attendancePie_ctl00_ClientState" name="ctl00_PageContent_absencePieTotal_attendancePie_ctl00_ClientState" type="hidden">
+	</div>
+        </div>
+        <div>
+            <table border="0">
+		<tbody><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=0,128,0&amp;imgWidth=20&amp;imgHeight=20" alt="Present" style="border-width:0px;"></td><td style="width:200px;">Present</td><td class="bold" style="width:20px;">99%</td>
+		</tr><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=128,0,0&amp;imgWidth=20&amp;imgHeight=20" alt="Absent(Reason Unknown)/缺勤" style="border-width:0px;"></td><td style="width:200px;">Absent(Reason Unknown)/缺勤</td><td class="bold" style="width:20px;">1%</td>
+		</tr><tr>
+
+		</tr>
+	</tbody></table>
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="flexTable">
+                                            <div class="column">
+                                                <div>
+                                                    
+
+<div id="chart">
+    <div><p class="bold">缺勤天数</p></div>
+    <div>
+        <div class="padding10 center left">
+            <div id="ctl00_PageContent_absencePie2_attendancePie_ctl00" class="RadChart" style="height:200px;width:200px;">
+		<img alt="" style="border-width: 0px;" usemap="#imctl00_PageContent_absencePie2_attendancePie_ctl00" src="ChartImage.axd?UseSession=true&amp;ChartID=0fbb6b5e-3876-44e1-a848-05d4486080fb_chart_ctl00$PageContent$absencePie2$attendancePie$ctl00&amp;imageFormat=Png&amp;random=5dcd49b1-d8a2-42d1-97eb-58b407303f8e"><input id="ctl00_PageContent_absencePie2_attendancePie_ctl00_ClientState" name="ctl00_PageContent_absencePie2_attendancePie_ctl00_ClientState" type="hidden">
+	</div>
+        </div>
+        <div>
+            <table border="0">
+		<tbody><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=168,255,168&amp;imgWidth=20&amp;imgHeight=20" alt="Thursday" style="border-width:0px;"></td><td style="width:200px;">Thursday</td><td class="bold" style="width:20px;">33%</td>
+		</tr><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=212,212,212&amp;imgWidth=20&amp;imgHeight=20" alt="Tuesday" style="border-width:0px;"></td><td style="width:200px;">Tuesday</td><td class="bold" style="width:20px;">33%</td>
+		</tr><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=255,164,164&amp;imgWidth=20&amp;imgHeight=20" alt="Wednesday" style="border-width:0px;"></td><td style="width:200px;">Wednesday</td><td class="bold" style="width:20px;">33%</td>
+		</tr>
+	</tbody></table>
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                            <div class="column">
+                                                <div>
+                                                    
+
+<div id="chart">
+    <div><p class="bold">缺勤科目</p></div>
+    <div>
+        <div class="padding10 center left">
+            <div id="ctl00_PageContent_absencePie3_attendancePie_ctl00" class="RadChart" style="height:200px;width:200px;">
+		<img alt="" style="border-width: 0px;" usemap="#imctl00_PageContent_absencePie3_attendancePie_ctl00" src="ChartImage.axd?UseSession=true&amp;ChartID=8d229f16-72eb-4b52-9591-d736f5e0d482_chart_ctl00$PageContent$absencePie3$attendancePie$ctl00&amp;imageFormat=Png&amp;random=05a5a5c5-04dd-4b68-b16a-7de1d7caea36"><input id="ctl00_PageContent_absencePie3_attendancePie_ctl00_ClientState" name="ctl00_PageContent_absencePie3_attendancePie_ctl00_ClientState" type="hidden">
+	</div>
+        </div>
+        <div>
+            <table border="0">
+		<tbody><tr>
+			<td style="width:20px;"><img src="../Controls/LegendColour.axd?bgColour=0,0,0&amp;imgWidth=20&amp;imgHeight=20" alt="ASA" style="border-width:0px;"></td><td style="width:200px;">ASA</td><td class="bold" style="width:20px;">100%</td>
+		</tr>
+	</tbody></table>
+        </div>
+    </div>
+</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            </div>
+                 </div>
+        
+</div>
+    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+</div></section>
+    
+    <div id="ctl00_udProgress" style="display:none;" role="status" aria-hidden="true">
+	
+            <div id="progressBackgroundFilter">
+            </div>
+            <div id="processMessage">
+                <i class="fa-solid fa-loader fa-spin"></i>
+                <div id="progressText" class="none"></div>
+            </div>
+        
+</div>
+
+    
+        <div class="none" id="loadingFilter">
+            <div id="progressBackgroundFilter">
+            </div>
+            <div id="processMessage">
+                <i class="fa-solid fa-loader fa-spin"></i>
+            </div>
+        </div>
+
+    
+
+     <div id="ctl00_upnlFailedEmail">
+	    
+          	<div id="failedEmailAlert">
+                <div id="divFailedEmail" class="failedEmail">
+                    <div class="failedEmailContent">
+                        <div class="right">
+                            <a href="javascript:fade('divFailedEmail');" title="关闭"><img src="/images/icons/close.gif" alt="Close"></a>
+                        </div>
+                        <div>
+                            <div class="right paddingRight10 paddingTop5">
+                                <img id="ctl00_Image1" src="../images/multipleFailedEmail.jpg" alt="Failed Email" style="border-width:0px;">
+                            </div>
+                            <div>
+                                尝试发送你邮件时出错
+                                <div class="paddingTop15">
+                                    <input type="submit" name="ctl00$btnMoreInfo" value="详细信息" id="ctl00_btnMoreInfo" class="primaryButton primaryColour">
+
+                                    <input type="submit" name="ctl00$btnClearWarning" value="明确这个警告" onclick="fade('divFailedEmail');" id="ctl00_btnClearWarning" class="primaryButton secondaryColour">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        
+</div>
+
+    <div class="none"></div>
+
+        <div id="modalNoticeContentDiv">
+            <div id="divNewNotice" class="modalNotice none">
+                <div class="modalNoticeContent">
+                    <div class="right marginLeft10">
+                        <a href="javascript:fade('divNewNotice');">
+                            <i class="fa-regular fa-xmark-large ignoreFaStyle"></i>
+                        </a>
+                    </div>
+
+                    <div style="display: inline-flex;">
+                        <i class="fa-regular fa-envelope fa30Size complete"></i>
+                        <div>
+                            <a style="text-decoration: none;" href="/default.aspx">门户</a>
+                            <br>
+                            <span id="senderName"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="staffRegister" class="portalModal" style="padding: 5px 10px 40px 10px; overflow: hidden;">
+            <a id="closeModal" href="javascript:closeModal('staffRegister');" title="关闭" class="modalClose">
+                <div><i class="fa-regular fa-xmark-large ignoreFaStyle"></i></div>
+            </a>
+
+            <div class="portalModalHeading" style="padding-top: 0px;">
+                <h2>缺勤原因</h2>
+            </div>
+
+            <div class="portalModalInner">
+                <table class="info tableStyle width100pc">
+                    <tbody><tr>
+                        <th style="vertical-align: top; text-align: left;">缺勤原因</th>
+                        <td>
+                            <div id="ctl00_ddlReason" class="RadComboBox RadComboBox_StyleFilter left width100pc js-SRReasons" style="width:160px;white-space:normal;">
+	<table summary="combobox" border="0" style="border-width:0;border-collapse:collapse;width:100%">
+		<tbody><tr>
+			<td class="rcbInputCell rcbInputCellLeft" style="width:100%;"><input name="ctl00$ddlReason" type="text" class="rcbInput radPreventDecorate rcbEmptyMessage" id="ctl00_ddlReason_Input" value="Select" autocomplete="off" readonly=""></td><td class="rcbArrowCell rcbArrowCellRight"><a id="ctl00_ddlReason_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;">select</a></td>
+		</tr>
+	</tbody></table><div class="rcbSlide" style="z-index:6000;display:none;"><div id="ctl00_ddlReason_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_StyleFilter "><div class="rcbScroll rcbWidth"></div></div></div><input id="ctl00_ddlReason_ClientState" name="ctl00_ddlReason_ClientState" type="hidden" autocomplete="off">
+</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="vertical-align: top; text-align: left;">附加注释</th>
+                        <td>
+                            <textarea name="ctl00$txtNotes" rows="2" cols="20" id="ctl00_txtNotes" class="width100pc height150 js-SRNotes"></textarea>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </div>
+            <div class="portalModalFooter" style="height: fit-content">
+                <!-- save and cancel buttons -->
+                <input type="submit" name="ctl00$btnSRSave" value="保存" onclick="javascript:saveStaffRegister();return false;" id="ctl00_btnSRSave" class="buttonBase buttonSecondary">
+                <input type="submit" name="ctl00$btnSRCancel" value="取消" onclick="javascript:closeModal('staffRegister', 'mask'); return false; ;" id="ctl00_btnSRCancel" class="buttonBase buttonSecondary marginRight10">
+            </div>
+        </div>
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+checkNewNotices();Sys.WebForms.PageRequestManager.getInstance().add_endRequest(addDaybookLinkEndReq);;(function() {
+                        function loadHandler() {
+                            var hf = $get('ctl00_ctl13_TSSM');
+                            if (!hf._RSSM_init) { hf._RSSM_init = true; hf.value = ''; }
+                            hf.value += ';Telerik.Web.UI, Version=2021.3.1111.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:zh-CN:b406acc5-0028-4c73-8915-a9da355d848a:1c2121e:e24b8e95:d7e35272:505983de:5a73c477:92b137ed:13a3fe6d:2a92a5af';
+                            Sys.Application.remove_load(loadHandler);
+                        };
+                        Sys.Application.add_load(loadHandler);
+                    })();Sys.Application.add_init(function() {
+    $create(Sys.Extended.UI.AccordionBehavior, {"ClientStateFieldID":"ctl00_PageContent_pupilInfo_aPupilInfo_AccordionExtender_ClientState","FramesPerSecond":40,"HeaderCssClass":"toolbar collapse-toolbar clearboth contentHeaderContainer toolbarHeader marginBottom15px pupilInfoHeader","HeaderSelectedCssClass":"toolbarOn collapse-toolbar clearboth contentHeaderContainer toolbarHeader pupilInfoHeader","TransitionDuration":150,"id":"ctl00_PageContent_pupilInfo_aPupilInfo_AccordionExtender","requireOpenedPane":false,"suppressHeaderPostbacks":true}, null, null, $get("ctl00_PageContent_pupilInfo_aPupilInfo"));
+});
+
+var callBackFrameUrl='/WebResource.axd?d=On0gSK0L6VYXPo0PxlDenvXbku4VDQGaKmz3Xv8ELD5UnxZPiXf2j8uaWE8A1GX2FkCC5Lq2E4PHde3AxYju4xL5akc1&t=638628495619783110';
+WebForm_InitCallback();Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_height":0,"_skin":"StyleFilter","_text":"课堂考勤","_uniqueId":"ctl00$PageContent$attendancePanel$cbAttendanceGroupType","_value":"class","clientStateFieldID":"ctl00_PageContent_attendancePanel_cbAttendanceGroupType_ClientState","collapseAnimation":"{\"duration\":450}","expandAnimation":"{\"duration\":450}","itemData":[{"value":"session"},{"value":"class","selected":true},{"value":"all"}],"localization":"{\"AllItemsCheckedString\":\"All items checked\",\"ItemsCheckedString\":\"items checked\",\"CheckAllString\":\"Check All\"}","selectedIndex":1}, {"selectedIndexChanged":saveAttendanceGroup}, null, $get("ctl00_PageContent_attendancePanel_cbAttendanceGroupType"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_checkBoxes":true,"_dropDownWidth":0,"_height":0,"_postBackReference":"__doPostBack(\u0027ctl00$PageContent$ddlPieTypes\u0027,\u0027arguments\u0027)","_skin":"StyleFilter","_text":"All items check","_uniqueId":"ctl00$PageContent$ddlPieTypes","checkedIndices":[0,1,2,3],"clientStateFieldID":"ctl00_PageContent_ddlPieTypes_ClientState","collapseAnimation":"{\"type\":0,\"duration\":450}","expandAnimation":"{\"type\":0,\"duration\":450}","itemData":[{"value":"0002","selected":true,"checked":true},{"value":"0003","checked":true},{"value":"0004","checked":true},{"value":"0001","checked":true}],"localization":"{\"AllItemsCheckedString\":\"All items checked\",\"ItemsCheckedString\":\"items checked\",\"CheckAllString\":\"Check All\"}","selectedIndex":0}, null, null, $get("ctl00_PageContent_ddlPieTypes"));
+});
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":null,"displayAfter":100,"dynamicLayout":true}, null, null, $get("ctl00_udProgress"));
+});
+Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_height":0,"_skin":"StyleFilter","_uniqueId":"ctl00$ddlReason","clientStateFieldID":"ctl00_ddlReason_ClientState","collapseAnimation":"{\"type\":0,\"duration\":450}","emptyMessage":"Select","enableLoadOnDemand":true,"expandAnimation":"{\"type\":0,\"duration\":450}","itemData":[],"localization":"{\"AllItemsCheckedString\":\"All items checked\",\"ItemsCheckedString\":\"items checked\",\"CheckAllString\":\"Check All\"}","webServiceSettings":"{\"path\":\"/Services/StaffRegister.asmx\",\"method\":\"GetAbsenceTypes\"}"}, {"itemsRequesting":GetAbsenceItems,"load":OnClientLoad}, null, $get("ctl00_ddlReason"));
+});
+//]]>
+</script>
+</form>
+    
+    
+   
+    <div id="timeoutPage" class="printHide">
+        <div class="timeoutBackground">
+        </div>
+        <div class="timeoutContainer">
+            <div id="timeoutMessage" class="timeout none">
+                <h1>注意！</h1>
+                <p class="bold">
+                        <br><br>
+                        时间快到了
+                </p>
+                <p></p>
+                <p>如果不保持工作页面有效，您将丢失所有未保存的工作</p>
+                <div class="center">
+                    <br>
+                    <a href="javascript:hideTimeout()">单击此处关闭窗口</a>
+                </div>
+            </div>
+            <div id="updateErrorMessage" class="updateError none">
+                <img src="/images/warningTriangle.gif" width="80" height="70" class="left paddingRight10" alt="">
+                <div class="updateErrorMessageHolder">
+                    <p class="paddingTop10">在处理您的请求时发生错误，请再次尝试。</p>
+                    <p>如果您连续收到此错误信息，请确认您没有注销登录。</p>
+                </div>
+                <div class="center clearboth">
+                    <br>
+                    <a href="javascript:hideTimeout()">单击此处关闭窗口</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mask"></div>
+    
+    <script type="text/javascript">
+        var hasRun = false;
+
+        //this runs after telerik stuff is done loading. jquery window load & doc ready do not,
+        //so we must use add_load.
+
+        //putting this in functions.js results in intermittent 'sys is undefined' error, so have
+        //put it at end of page here.
+
+        //16/2/15 - 6872 AK - additionally... in IE8 it seems the doc ready is not guaranteed to execute before add load, 
+        //therefore I've hacked it to add a delay on IE8. Otherwise room booking/performance tracking filters
+        //will break, amongst other things. If anyone can come up with a neater fix, feel free to replace this
+        //11/11/2015 - 8231 SW - also helps resolve an issue in IE10 where a screen refresh kills the timetable widget.
+        //if ($.browser.msie && parseInt($.browser.version) < 9) {
+        if(getInternetExplorerVersion() !== -1 && (getInternetExplorerVersion() < 9 || getInternetExplorerVersion() == 10))
+        {
+            Sys.Application.add_load(function () { setTimeout(runOnLoadStuff, 1000); });
+        } else {
+            Sys.Application.add_load(runOnLoadStuff);
+        }
+
+        function runOnLoadStuff() {
+            setTimeout(function () {
+                if (!hasRun) {
+                    var i = onload_functions.length;
+                    while (i--) {
+                        eval(onload_functions[i]);
+                    }
+                    hasRun = true; //to prevent this running on partial postbacks
+                }
+            }, 100);
+        }
+
+        function GetAbsenceItems(sender, eventArgs) {
+            var context = eventArgs.get_context();
+            context["FilterString"] = eventArgs.get_text();
+        }
+
+        function saveStaffRegister() {
+            var combo = $find("ctl00_ddlReason");
+            var reasonText = combo.get_text();
+            var noteArea = $("#ctl00_txtNotes");
+            var notesText = noteArea.val();
+            sessionStorage.setItem('SRReasonText', reasonText);
+            sessionStorage.setItem('SRNotesText', notesText);
+            logStaffRegisterAction("", reasonText, notesText, "Out", true);
+        }
+
+        $(function () {
+            var optionIn = $('#ctl00_hdnStaffRegisterInFlag').val() === 'in' && sessionStorage.getItem('AutomatedLoginDone') !== 'yes';
+            if (optionIn) {
+                var flip = $('.js-flipswitch');
+                var flipinput = flip.find('.switch-input');
+                var reason = $('.js-setReason');
+                flipinput.attr('checked', true);
+                sessionStorage.setItem('IsLoggedIn', 'in');
+                reason.hide();
+                sessionStorage.setItem('AutomatedLoginDone', 'yes');
+            }
+
+            $('.rsContentWrapper').width('100%');
+            $('.rsContentScrollArea').width('100%');
+            $('.rsTopWrap').width('100%');
+            $('.rsHorizontalHeaderWrapper').children('div').width('100%');
+            $('[id^="tblTimeTable"]').width("100%");
+        });
+
+
+        function OnClientLoad(sender) {
+            sender.get_inputDomElement().readOnly = "true";
+        }
+
+    </script>
+
+
+<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body></html>
