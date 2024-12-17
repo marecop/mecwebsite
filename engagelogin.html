@@ -1,0 +1,1093 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="居留权" class=" js canvas canvastext draganddrop rgba multiplebgs svg inlinesvg svgclippaths t-chrome t-chrome131"><head id="ctl00_MasterPageHeadTag"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=yes"><meta name="format-detection" content="telephone=no"><title>
+	Engage
+</title><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/themes/pupilportal/PupilPortalMain.css" rel="stylesheet" type="text/css" media="all"><link href="https://ulinkcollege.engagehosted.cn/CSS/Print.css" rel="stylesheet" type="text/css" media="print"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/themes/pupilportal/pupilPortal.css" rel="stylesheet" type="text/css" media="all"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/themes/pupilportal/Primary.css" rel="stylesheet" type="text/css" media="all"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/themes/pupilportal/font-awesome.min.css" rel="stylesheet"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/bootstrap.min.css" rel="stylesheet" media="all"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/themes/pupilportal/bootstrap-theme.min.css" rel="stylesheet" media="all"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/bootstrap-responsive.min.css" rel="stylesheet"><link href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/bootstrap-multiselect.min.css" rel="stylesheet" media="all"><link rel="stylesheet" href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/blueimp-gallery.min.css" media="all"><link rel="stylesheet" href="https://ulinkcollege.engagehosted.cn/CSS/bootstrap/themes/pupilportal/editor.min.css" media="all">
+
+    <!--[if IE 9]>
+        <link rel="stylesheet" href="CSS/bootstrap/themes/pupilportal/ie9cssfixes.min.css" /><link rel="stylesheet" href="CSS/bootstrap/themes/pupilportal/ace-ie.min.css" />
+    <![endif]-->
+
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/jquery-3.6.0.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/plugins.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//globalResources.axd"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/extensions.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/AjaxHelpers.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/floatyScrollbar.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/TelerikHelpers.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/functions.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/validation.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/moment.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/AutoKillAjax.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/DMSEvents.js"></script>
+	<script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/FreezeHeaders.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/resizesensor.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//serviceWorkerInit.js"></script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn//JS/pwa/PushNotifications.js"></script>
+
+    <link href="https://ulinkcollege.engagehosted.cn//Skins/StyleFilter/ComboBox/ComboBox.StyleFilter.css" rel="stylesheet">
+    
+<script language="javascript" type="text/javascript">
+var _hdnUnsavedDataWarningClientID = 'ctl00_hdnUnsavedDataWarningEnabled';
+</script><script language="javascript" type="text/javascript">window.onbeforeunload = closeIt;</script>
+
+    <script type="text/javascript">
+        var setupOpen = false;
+
+        // initiate the scrollable
+        $(function () {
+            // fix collapse button being around the wrong way on sidebar
+            if ($('.sidebar').hasClass('menu-min')) {
+                $('.sidebar-collapse i').removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
+            }
+
+            // initialize scrollable with mousewheel support
+            $(".scrollable").scrollable({ vertical: true, mousewheel: true });
+
+            if (document.addEventListener && !window.requestAnimationFrame) {
+                topOfPage();
+            }
+            var userAgent = window.navigator.userAgent;
+
+            if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+                $('.sidebar').addClass('paddingTop20');
+            }
+        });
+
+        function topOfPage() {
+            // IE9 Tweak, Remove page up button if no vertical scrollbar
+            if ($("body").height() > $(window).height()) {
+                $('.btn-scroll-up').attr('style', 'visibility: visible;');
+            } else {
+                $('.btn-scroll-up').attr('style', 'visibility: hidden;');
+            }
+
+        }
+
+        function ToggleDropDown(dropdownID) {
+            var container = $('div[id$="setupContainer"]'), list = $('#setupList');
+
+            if (setupOpen === false) {
+                container.animate(
+                    {
+                        width: '+235',
+                        height: '+40',
+                        borderTopColor: '#000',
+                        borderLeftColor: '#000',
+                        borderBottomColor: '#000',
+                        borderRightColor: '#000',
+                        backgroundColor: '#fff'
+                    }, 'slow', function () {
+                        list.fadeIn('fast');
+                    }
+                );
+                setupOpen = true;
+            } else {
+                list.fadeOut('fast');
+                container.animate(
+                    {
+                        width: '24',
+                        height: '24',
+                        borderTopColor: 'transparent',
+                        borderLeftColor: 'transparent',
+                        borderBottomColor: 'transparent',
+                        borderRightColor: 'transparent',
+                        backgroundColor: 'transparent'
+                    }, 'slow'
+                );
+                setupOpen = false;
+            }
+        }
+
+        $(window).resize(function () {
+            if (document.addEventListener && !window.requestAnimationFrame) {
+                topOfPage();
+            }
+        });
+
+    </script>
+    <script language="javascript" type="text/javascript" src="https://ulinkcollege.engagehosted.cn/JS/bootstrap/themes/pupilportal/ace-extra.min.js"></script> 
+<style type="text/css">html{background-image: url('/UserUploads/Background/DJI_0953-1.jpg') !important; background-repeat: no-repeat !important; background-size: cover !important; object-fit:cover !important; background-position: top center !important; @media only screen and(min - device - width : 320px) and(max - device - width : 480px) }</style><style type="text/css">.login{background:rgba(255, 255, 255, 1)!important;}</style><link href="/Telerik.Web.UI.WebResource.axd?d=Db2ZRa0u9QJnOGajvtH9pwvryMpaD29q_EoAYiS7hvavwEaWDPLuYKD3X903Kvyy-mcASVPptCsT-U4fzuElGm64Muvy_4uL8mOIbvlDfUNmRZkTCGVG5W_rPNQL5cry0-cDdw2&amp;t=638628495619626917&amp;compress=1&amp;_TSM_CombinedScripts_=%3b%3bTelerik.Web.UI%2c+Version%3d2021.3.1111.45%2c+Culture%3dneutral%2c+PublicKeyToken%3d121fae78165ba3d4%3azh-CN%3ab406acc5-0028-4c73-8915-a9da355d848a%3a1c2121e" type="text/css" rel="stylesheet"></head>
+<body id="ctl00_MasterPageBodyTag" class="height100pc" data-version="pupilportal">
+
+    <form name="aspnetForm" method="post" action="./Login.aspx?ReturnUrl=%2fDefault.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="ctl00_ctl18_TSSM" id="ctl00_ctl18_TSSM" value=";Telerik.Web.UI, Version=2021.3.1111.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:zh-CN:b406acc5-0028-4c73-8915-a9da355d848a:1c2121e">
+<input type="hidden" name="ctl00_ScriptManager1_HiddenField" id="ctl00_ScriptManager1_HiddenField" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="https://ulinkcollege.engagehosted.cn/WebResource.axd?d=C83_LzTupU-pWoTqss1Zzm8JI9cpoWNyQzlFRH_99EJdsU8_nog4uW9iXzBVUSHK92IJ4sBasEZpVYsgCeYjtHIn7hA1&amp;t=638628495619783110" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+var __cultureInfo = {"name":"zh-CN","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"¥","NaNSymbol":"NaN","CurrencyNegativePattern":2,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"-∞","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"∞","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"上午","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402271999999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":false},"DateSeparator":"/","FirstDayOfWeek":1,"CalendarWeekRule":0,"FullDateTimePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027 H:mm:ss","LongDatePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027","LongTimePattern":"H:mm:ss","MonthDayPattern":"M月d日","PMDesignator":"下午","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"yyyy/M/d","ShortTimePattern":"H:mm","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"yyyy\u0027年\u0027M\u0027月\u0027","AbbreviatedDayNames":["周日","周一","周二","周三","周四","周五","周六"],"ShortestDayNames":["日","一","二","三","四","五","六"],"DayNames":["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],"AbbreviatedMonthNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"MonthNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""],"IsReadOnly":false,"NativeCalendarName":"公历","AbbreviatedMonthGenitiveNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"MonthGenitiveNames":["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月",""]},"eras":[1,"公元",null,0]};//]]>
+</script>
+
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=pfW1IV8j9tIMhIRwwo3TLAJKSVJG5-lVtqb2sUK4gr2UnprzRpGeZUI4AiG3LUZaDJV_HzundSXcMKipyEkXr9Rqx2mwHRuZrVFG0WLkmSoNllkP0&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=G4p4AucxW2umanS7OY4J9wVURzT41WC4HSjbjPUc3ZX6OLZv0ylb7R9chRLVh52RtRkAxUFpSVJnOejYz_01dRbsPxrHP_p6kZ2tSK9Kil8fa8iAp-kyNGMjoTlpRsbP0dd2ug2&amp;t=ffffffffe4ec58b9" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=yVvW8OW8C0lAKRKguWdXQWJnTQYKtg8TM1sWOzhx9NgOJMiZc9RGlAHGq1g04Gm_3Q88XLgvtoPbItgMsQXLzJJ2HfoItdR63ycGO4cF1ivKoIJsQStVTeImnuYWjAd4RfVDnA2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=nOUGVAvtVk2o7UcQ3EtZp3jfMvAPbahDCzNIvDmkkZdsL_3UQqVGGCXm102mX1GvOUbAOmbXMdhzRLbfvce4fGQ-dlH64BY7d3oud7zCEekWmJpHSXWhKwxihT-SJa4feealggClDF_jvpfnYjvhubGnzZdjXOMvfKu0XUf-Ce-uhck20&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=RrBZh0rZSxWmU2VDL9YaLk-CTWWswDIGgBiZx76PKkK4S7Pq8AXD5V_lRDN802hmkiqsqrd-XZcPI-ZCYh9rarl8IDot3M7v9j0ISGA7VipfqG2xUKWnyVxhhxl40Gr7QSs0_A2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=lYHy62PK0PcaA341uRAwEKD_nRwgsTErWKGyimy424h2JkFHRzgERdju76QiK1wpHXeoC9GJiFiGPQtdmJ6cMCXUeFYseaV7iijOtfsDUC5RA_-2jFxx6rIeL0GTSnuQ-o2Z4A2&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=zD_O4ws5_ryF22aH3Az13vP53qhoiXEii-FWsFsOeHDZxK8b8lOhpjE__M0EtaDV-4e7QOUDqkHC3l6bAmHTs81pKJ9DmfaZFKg7JOQU5PwMtA1oaKcPixDZiIRu6xUSPoTYao6eiB-I3DHpijBHRPuub8o1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=Xf_ct_jMAVZWfGjHMENr5Ak8dEg4T-ppZ1LD7VmIl3IbOqFX6bGb2G-VeKtIh_69ei8O6ZShZNn7_eBg9pwphnVJZ8gRF8Y3LxMjtdwp0a_OsJ7xkE-g1ClmgjBoBt-z0_KWKaIuM3QdVyf8GwmZttop0A81&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=jW05OQIKmjNfapCCKyciIZtf4tupyyXj_hNnR7mMAb1KPtW8TbFN34Iu5RJ6TNOaoqHq4_C4C1bhN-oZig77IWJ5Ss8aj68r8G1r29VLucTZ-VoncT9UC9ITOIMW9kgKlUymbrccQ8_asjaFj8AnYxylSlnuZYMoF3o21RZbaoPkag_b0&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=mE9HOs4rfKDUFfne3XM4ErNmHYOVVNnaDXmGlxk9CRX3Pd2ApYRaU7WJ93KKtxP7oBxCxkDsboKBbAztwfgV7KtdSlMP0vES2SSYYLYsE_bCwDCbKUGBlhcZORosWc20iFgfEIIA-rWjZfSQk0LN2-advFo1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=_BMEIENXn0oAdFuX2G11XkmkTrGUVZmrzegR6tOxkN5IGIYEDnAEyeuYVq_xfys7raOKAfOnJxkeli8dZ5kUnodYzphhPVOTViJ8dY2MFXZshrHtDdsB7ksf8oWtjBK6zbmVT_j0VAMFaRmXvteGBt3MTdk1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=P8mNXkaODBdnyTVYzy25gsgGVux7GsU_5pZ30pXXToSn0nHLmVXxA7eyZGsNhrwTlfJ6EUkVl-zv_3Ga4EpPcFZx6jIHT6i0FawsWl7ohp2csGjQsJIzCmn9vYRnQYB050FfJ-Y4ITmDznf0beKfKKrVd7E1&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/ScriptResource.axd?d=Y5TtWL6_Uav-FhILkr_DkPkHQb2RZGNWMFAu0gm5PP7faVbfrX3anDARQealErD0BiP5Wuiiq32zlWB6CvnHVEX_HexdShErKfYrh-lQlAE109A3PjJjvG21XdHOYK7rFg6Quv9aMd7SQ4Uk6SdRfHAsk181&amp;t=ffffffffdb75e8fc" type="text/javascript"></script>
+<script src="https://ulinkcollege.engagehosted.cn/WebResource.axd?d=O4UgH804eLpUBiHB4oNEhTt3ZrmznLrLks_P8l5h_FgGx1L9TtHKdnLJYuZN6Yn1mOTIPInEG_BvK9YxkOFGTJ--Zsc1&amp;t=638628495619783110" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2EE9ABB">
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="xWKkX7cqK9/rhotV7BavmF9CKCb1ZDXtX/3i+FThSwARdjAAQtG8aAS6spb/mkxyiuL6zSSDkn8Di6vF53nOa2+EiVztOwmLBY5rDD7uhfumzZlrCmCTYtRUB0T7CDpr2pP5fM8xEnDYOfoM1Qy0Xn+IVqANEiV4XJDO08r+uEewaTOPWs34lpLcwXR/WZllw1p32YUZ3k0OLmUKCyFHfBA4m0pOtDGQAfiaWlSp4WWM1f11yEJAzqZp1EsdrJH8vxIaSf9ND5ARjBvGxltmuP5rvIdtn1D5lyUW7hEd8l1uhN599OXz0KdRtFF2B25UplnHPL+0tsJHTcI5Q1IoD506I9H6+40XcFM31gIaA4prhKSdvOu0io+hGrui3X8wuTyhq4M42XvXHsbM9tz9TFDTe08LQZoRxjdBMsz6QbGZZ/EKqzbIddXK/IslG7znYHMwzA==">
+</div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+        <input type="hidden" name="ctl00$hdnUnsavedDataWarningEnabled" id="ctl00_hdnUnsavedDataWarningEnabled" value="false">
+        <input type="hidden" name="ctl00$hdnHorizontalScrollPosition" id="ctl00_hdnHorizontalScrollPosition">
+        <input type="hidden" name="ctl00$hdnVerticalScrollPosition" id="ctl00_hdnVerticalScrollPosition">
+        <input type="hidden" name="ctl00$hdnMaxFiles" id="ctl00_hdnMaxFiles" value="5">
+        <input type="hidden" name="ctl00$hdnMaxSize" id="ctl00_hdnMaxSize">
+
+        <div class="progressContainer" style="display:none;">
+            <div class="progress-container">
+                <div class="top-border">
+                    <div class="top-border-color"></div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div id="main-container" class="main-container">
+            <script type="text/javascript">
+                try {
+                    ace.settings.check('main-container', 'fixed');
+                } catch (e) {
+                }
+            </script>
+            
+
+            <div class="main-content">
+                <div class="main-content-inner">  
+                    
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="CSS/Login.css?v=2024.43.206" rel="stylesheet">
+    
+
+    <div id="ctl00_PageContent_pnlPupilPortal">
+	
+        <div class="login-layout">
+            <div class="main-container">
+                <div class="main-content">                   
+                    
+<div style="text-align: center;"></div>
+
+<input type="hidden" name="ctl00$PageContent$pupilloginControl$hdnMaxLoginAttempts" id="ctl00_PageContent_pupilloginControl_hdnMaxLoginAttempts" value="0">
+<input type="hidden" name="ctl00$PageContent$pupilloginControl$hdnToken" id="ctl00_PageContent_pupilloginControl_hdnToken">
+<input type="hidden" name="ctl00$PageContent$pupilloginControl$hdnLinkAccount" id="ctl00_PageContent_pupilloginControl_hdnLinkAccount" value="0">
+
+<style>
+    .txt1 {
+        font-family: Poppins-Regular;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #666666;
+    }
+
+    .txt2 {
+        font-family: Poppins-Regular;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333333;
+        text-transform: uppercase;
+    }
+    .flex-c-m {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+    .load-wrapp {
+    width: 100px;
+    height: 20px;
+    margin: 0 10px 10px 0;
+    padding: 20px 20px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.load-wrapp p {padding: 0 0 20px;}
+.load-wrapp:last-child {margin-right: 0;}
+
+.line {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #4b9cdb;
+}
+
+/* =Animate the stuff
+------------------------ */
+.load-1 .line:nth-last-child(1) {animation: loadingA 1.5s 1s infinite;}
+.load-1 .line:nth-last-child(2) {animation: loadingA 1.5s .5s infinite;}
+.load-1 .line:nth-last-child(3) {animation: loadingA 1.5s 0s infinite;}
+
+.load-2 .line:nth-last-child(1) {animation: loadingB 1.5s 1s infinite;}
+.load-2 .line:nth-last-child(2) {animation: loadingB 1.5s .5s infinite;}
+.load-2 .line:nth-last-child(3) {animation: loadingB 1.5s 0s infinite;}
+
+.load-3 .line:nth-last-child(1) {animation: loadingC .6s .1s linear infinite;}
+.load-3 .line:nth-last-child(2) {animation: loadingC .6s .2s linear infinite;}
+.load-3 .line:nth-last-child(3) {animation: loadingC .6s .3s linear infinite;}
+
+.load-4 .ring-1 {animation: loadingD 1.5s .3s cubic-bezier(.17,.37,.43,.67) infinite;}
+
+.load-5 .ball-holder {animation: loadingE 1.3s linear infinite;}
+
+.load-6 .letter {
+    animation-name: loadingF;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+}
+
+.l-1 {animation-delay: .48s;}
+.l-2 {animation-delay: .6s;}
+.l-3 {animation-delay: .72s;}
+.l-4 {animation-delay: .84s;}
+.l-5 {animation-delay: .96s;}
+.l-6 {animation-delay: 1.08s;}
+.l-7 {animation-delay: 1.2s;}
+.l-8 {animation-delay: 1.32s;}
+.l-9 {animation-delay: 1.44s;}
+.l-10 {animation-delay: 1.56s;}
+
+.load-7 .square {animation: loadingG 1.5s cubic-bezier(.17,.37,.43,.67) infinite;}
+
+.load-8 .line {animation: loadingH 1.5s cubic-bezier(.17,.37,.43,.67) infinite;}
+
+.load-9 .spinner {animation: loadingI 2s linear infinite;}
+.load-9 .bubble-1, .load-9 .bubble-2 {animation: bounce 2s ease-in-out infinite;}
+.load-9 .bubble-2 {animation-delay: -1.0s;}
+
+.load-10 .bar {animation: loadingJ 2s cubic-bezier(.17,.37,.43,.67) infinite;}
+
+@keyframes loadingA {
+    0 {height: 15px;}
+    50% {height: 35px;}
+    100% {height: 15px;}
+}
+
+@keyframes loadingB {
+    0 {width: 15px;}
+    50% {width: 35px;}
+    100% {width: 15px;}
+}
+
+@keyframes loadingC {
+    0 {transform: translate(0,0);}
+    50% {transform: translate(0,15px);}
+    100% {transform: translate(0,0);}
+}
+
+@keyframes loadingD {
+    0 {transform: rotate(0deg);}
+    50% {transform: rotate(180deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes loadingE {
+    0 {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes loadingF {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes loadingG {
+    0% {transform: translate(0,0) rotate(0deg);}
+    50% {transform: translate(70px,0) rotate(360deg);}
+    100% {transform: translate(0,0) rotate(0deg);}
+}
+
+@keyframes loadingH {
+    0% {width: 15px;}
+    50% {width: 35px; padding: 4px;}
+    100% {width: 15px;}
+}
+
+@keyframes loadingI {
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes bounce  {
+  0%, 100% {transform: scale(0.0);}
+  50% {transform: scale(1.0);}
+}
+
+    @keyframes loadingJ {
+        0%,100% {
+            transform: translate(0,0);
+        }
+
+        50% {
+            transform: translate(80px,0);
+            background-color: #f5634a;
+            width: 25px;
+        }
+    }
+    .loginFeedback > h3 {
+        margin: 10px 20px;
+    }
+
+    .loginLink {
+        color: var(--school-primary-color);
+    }
+
+    .entry-social {
+        margin-bottom: 15px;
+        color: rgb(126, 126, 126);
+        display: block;
+        font-family: 'Open Sans',Tahoma, Verdana, Arial, sans-serif, Faruma, Faseyha;
+        font-size: 14px;
+        font-weight: normal;
+        height: auto;
+        line-height: 16px;
+        width: 325px;
+        float: left;
+        border: solid 0px #aaa;
+        text-align: center;
+    }
+
+        .entry-social div {
+            display: block;
+            width: auto;
+            margin: 6px 0 0 0;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: var(--global-border-radius)
+        }
+
+            .entry-social div a {
+                border-radius: var(--global-border-radius);
+                border: 1px solid;
+            }
+
+        .entry-social a {
+            text-decoration: none;
+            display: block;
+            padding-left: 10px;
+            font-weight: bold;
+            transition: background-color .3s;
+            padding: 7px 10px 7px 32px;
+        }
+
+        .entry-social .firefly {
+        }
+
+            .entry-social .firefly a {
+                background: #CB2027 url('../images/icons/firefly.png') no-repeat 10px center;
+                border-color: #CB2027;
+            }
+
+                .entry-social .firefly a:hover {
+                    background-color: rgb(174, 28, 35);
+                }
+
+            .entry-social .firefly .fontwhite {
+                color: #fff !important;
+            }
+
+        .entry-social .gplus {
+        }
+
+            .entry-social .gplus a {
+                color: #fff !important;
+                background: rgb(79,134,236) url('../images/icons/icon-google-small.png') no-repeat 10px center;
+                border-color: rgb(79,134,236);
+            }
+
+                .entry-social .gplus a:hover {
+                    background-color: rgb(52 116 237);
+                }
+
+
+
+        .entry-social .managebac a {
+            background: #ffffff url('../images/icons/managebac.png') no-repeat 5px center;
+            border-color: lightgray;
+        }
+
+        .entry-social .managebac {
+            color: #777 !important;
+            width: 180px;
+        }
+
+        .entry-social .managebac {
+        }
+
+            .entry-social .managebac a:hover {
+                background-color: rgb(227 246 255);
+            }
+
+
+        .entry-social .saml {
+            color: #fff !important;
+        }
+
+            .entry-social .saml a {
+                color: #fff !important;
+                background: rgb(28,107,163) url('../images/StyleGuide/lock-keyhole.svg') no-repeat 5px center;
+                border-color: rgb(28,107,163);
+                background-size: 18px;
+                background-position-x: 9px;
+                min-height: 16px;
+            }
+
+                .entry-social .saml a:hover {
+                    background-color: #3F4C6B;
+                }
+</style>
+<script type="text/javascript">
+
+        //stop multiple login clicks
+    var loginInProgress = false;
+    function checkLogin() {
+        if (!loginInProgress) {
+            loginInProgress = true;
+            return true;
+        }
+        return false;
+    }
+var waitingDialog = waitingDialog || (function ($) {
+    'use strict';
+
+	// Creating modal dialog's DOM
+	var $dialog = $(
+		'<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+		'<div class="modal-dialog modal-m">' +
+		'<div class="modal-content">' +
+			'<div class="modal-header"><h3 style="margin:0;"></h3></div>' +
+			'<div class="modal-body">' +
+				'<div class="progress progress-striped active" style="margin-bottom:0;"><div class="progress-bar" style="width: 100%"></div></div>' +
+			'</div>' +
+		'</div></div></div>');
+
+	return {
+		show: function (message, options) {
+			// Assigning defaults
+			if (typeof options === 'undefined') {
+				options = {};
+			}
+			if (typeof message === 'undefined') {
+				message = 'Loading';
+			}
+			var settings = $.extend({
+				dialogSize: 'm',
+				progressType: '',
+				onHide: null // This callback runs after the dialog was hidden
+			}, options);
+
+			// Configuring dialog
+			$dialog.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+			$dialog.find('.progress-bar').attr('class', 'progress-bar');
+			if (settings.progressType) {
+				$dialog.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+			}
+			$dialog.find('h3').text(message);
+			// Adding callbacks
+			if (typeof settings.onHide === 'function') {
+				$dialog.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+					settings.onHide.call($dialog);
+				});
+			}
+			// Opening dialog
+			$dialog.modal();
+		},
+		/**
+		 * Closes dialog
+		 */
+		hide: function () {
+			$dialog.modal('hide');
+		}
+	};
+
+})(jQuery);
+
+    function displayMFA(username) {
+        if (username.toLowerCase() === 'engagesupport') {
+            $('.js-trMFA').show();
+        }
+        else {
+            $('.js-trMFA').hide();
+        }
+    }
+
+    function displayPMFA(username) {
+        if (username.toLowerCase() === 'engagesupport') {
+            $('.js-ppMfa').addClass('block');
+        }
+        else {
+            $('.js-ppMfa').removeClass('block');
+        }
+    }
+
+    $(document).ready(function () {
+        let isPwa = (('standalone' in window.navigator) && (window.navigator.standalone) || window.matchMedia('(display-mode: standalone)').matches);
+        $('[id$="hdnIsPWALogin"]').val(isPwa);
+
+        if ($('[id$="txtUN"]').length > 0) {
+            displayMFA($('[id$="txtUN"]').val().toLowerCase());
+
+            $('[id$="txtUN"]').on('keyup', function () {
+                displayMFA(event.currentTarget.value.toLowerCase());
+            });
+
+            if ($('[id*=txtUN]').val().length === 0) focusOnUserName();
+        }
+
+        if ($('[id$="txtPUN"]').length > 0) {
+            displayPMFA($('[id$="txtPUN"]').val().toLowerCase());
+
+            $('[id$="txtPUN"]').on('keyup', function () {
+                displayPMFA(event.currentTarget.value.toLowerCase());
+            });
+        }
+
+
+        if ($('#ctl00_PageContent_pupilloginControl_hdnIsPupilPortal').val() == 1) {
+            $('.rcbInput').attr('style', 'background: transparent !important; color: #777;font-family: Arial;');
+            $('.js-language-select').attr('style', 'width: 100%;').addClass('form-control').after('<i class="ace-icon fa fa-globe"></i>');
+            $('.js-language-select').parent().find('span:first').attr('style', 'display: none;');
+            $('.js-language-select table td:first').attr('class', '');
+            $('.js-language-select table td:last').attr('class', '');
+            $('.js-language-select table td:last a').attr('class', 'none').html('');
+        }
+
+
+        $('#tdUN').on('click', function () { focusOnUserName() })
+        $('#tdPwd').on('click', function () { focusOnPassword() })
+
+    });
+
+
+    function focusOnUserName() {
+        $('[id*=txtUN]').focus();
+    }
+
+    function focusOnPassword() {
+        $('[id*=txtPwd]').focus();
+    }
+</script>
+
+<input type="hidden" name="ctl00$PageContent$pupilloginControl$hdnIsPWALogin" id="ctl00_PageContent_pupilloginControl_hdnIsPWALogin" value="false">
+<input type="hidden" name="ctl00$PageContent$pupilloginControl$hdnIsPupilPortal" id="ctl00_PageContent_pupilloginControl_hdnIsPupilPortal" value="1">
+
+
+
+
+
+
+
+
+
+
+<div id="ctl00_PageContent_pupilloginControl_pnlPupilPortal">
+		
+    <div class="row paddingTop45">
+
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="login-container">
+                <div class="space-6"></div>
+                <div class="position-relative">
+                    <div class="login-box visible widget-box no-border" id="login-box">
+                        <div class="widget-body">
+                            <div class="widget-main" style="background-color: #fff !important;">
+                                <div class="widget-content">
+                                    <div class="row-fluid">
+                                        <div class="align-center span12">
+                                            <img src="/images/dfLogo.gif" id="ctl00_PageContent_pupilloginControl_PPLogo" alt="Engage Logo" class="loginImg" title="ULink College Guangzhou">
+                                        </div>
+                                    </div>
+                                    <div class="row-fluid">
+                                        <h4 class="header blue bigger center paddingBottom5">
+                                            Engage学生入口
+                                        </h4>
+                                    </div>
+                                    <div class="row-fluid">
+                                        
+                                    </div>
+                                   
+                                    <div class="row-fluid marginBottom5">
+                                        
+                                        
+                                    </div>
+
+                                    
+
+                                        <label class="block clearfix">
+                                            <span class="block input-icon input-icon-right">
+                                                
+			
+        <span id="ctl00_PageContent_pupilloginControl_languageSelectPupil_lblLanguageLabel" style="display: none;">语言</span>
+    
+			
+        <div id="ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage" class="RadComboBox RadComboBox_StyleFilter js-language-select width100pc form-control" style="width: 100%;">
+				<!-- 2021.3.1111.45 --><table summary="combobox" border="0" style="border-width:0;border-collapse:collapse;width:100%">
+					<tbody><tr class="rcbReadOnly">
+						<td class="" style="width:100%;"><input name="ctl00$PageContent$pupilloginControl$languageSelectPupil$ddlLanguage" type="text" class="rcbInput radPreventDecorate" id="ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage_Input" value="简体中文" readonly="readonly" autocomplete="off" style="background: transparent !important; color: #777;font-family: Arial;"></td><td class=""><a id="ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage_Arrow" style="overflow: hidden;display: block;position: relative;outline: none;" class="none"></a></td>
+					</tr>
+				</tbody></table><div class="rcbSlide" style="z-index:6000;display:none;"><div id="ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage_DropDown" class="RadComboBoxDropDown RadComboBoxDropDown_StyleFilter "><div class="rcbScroll rcbWidth"><ul class="rcbList"><li class="rcbItem">Select</li><li class="rcbItem">UK English</li><li class="rcbItem">Enlisch - Großbritannien </li><li class="rcbItem">العربية</li><li class="rcbItem">简体中文</li><li class="rcbItem">Bahasa Indonesia</li><li class="rcbItem">한국어</li><li class="rcbItem">South African</li><li class="rcbItem">Español Chileno</li><li class="rcbItem">Español Latino Americana</li><li class="rcbItem">Español</li><li class="rcbItem">US English</li><li class="rcbItem">Tiếng Việt</li><li class="rcbItem">Australian English</li><li class="rcbItem">Bahasa Melayu</li><li class="rcbItem">ภาษาไทย</li><li class="rcbItem">Français</li></ul></div></div></div><input id="ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage_ClientState" name="ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage_ClientState" type="hidden" autocomplete="off">
+			</div><i class="ace-icon fa fa-globe"></i>
+    
+		
+		
+
+                                            </span>
+                                        </label>
+                                    
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input name="ctl00$PageContent$pupilloginControl$txtPUN" id="ctl00_PageContent_pupilloginControl_txtPUN" class="form-control baseTextbox" type="text" autocomplete="off" placeholder="用户名">
+                                            <i class="ace-icon fa fa-user"></i>
+                                        </span>
+                                    </label>
+
+                                    <label class="block clearfix">
+                                        <span class="block input-icon input-icon-right">
+                                            <input name="ctl00$PageContent$pupilloginControl$txtPPass" id="ctl00_PageContent_pupilloginControl_txtPPass" class="form-control baseTextbox" type="password" autocomplete="off" placeholder="密码">
+                                            <i class="ace-icon fa fa-lock"></i>
+                                        </span>
+                                    </label>
+
+                                    <label class="clearfix js-ppMfa none">
+                                        <span class="block input-icon input-icon-right">
+                                            <input name="ctl00$PageContent$pupilloginControl$txtPMfa" id="ctl00_PageContent_pupilloginControl_txtPMfa" class="form-control baseTextbox" type="text" autocomplete="off">
+                                            <i class="ace-icon fa fa-lock"></i>
+                                        </span>
+                                    </label>
+
+                                    <div class="loginFeedback">
+                                        
+                                        
+                                    </div>
+                                    <div class="row-fluid marginBottom20 marginTop15">
+                                        <a id="ctl00_PageContent_pupilloginControl_lnkForgotPasswordPupil" class="right" href="javascript:__doPostBack('ctl00$PageContent$pupilloginControl$lnkForgotPasswordPupil','')">忘记密码？</a>
+                                    </div>
+
+                                    <div class="row-fluid">
+                                        <input type="submit" name="ctl00$PageContent$pupilloginControl$btnPupilLogin" value="登录" onclick=" return checkLogin(); ;" id="ctl00_PageContent_pupilloginControl_btnPupilLogin" class="width-35 pull-right btn btn-mini btn-primary">
+                                    </div>
+                                    <div class="row-fluid js-rememberMe-info" style="display: none;">
+                                        <div class="alert alert-info">
+                                            点击<b>“保持登录状态”</b>将意味着您下次使用Portal时不用输入用户名和密码。请您在确定没有其他人可以访问此计算机前提下，使用此选项。
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="row-fluid">
+                                        <div id="ctl00_PageContent_pupilloginControl_pnlSSOPupil" class="marginLeftMinus4">
+			
+                                            <hr>
+                                            <table style="margin: 0 auto; width: 50%;">
+                                                <tbody><tr>
+                                                    <td colspan="5">
+                                                        <div class="center">
+
+                                                            <div class="js-ssoconnecting" style="display: none; margin: 0 auto; width: 50%;">
+                                                                <div class="load-wrapp">
+                                                                    <div class="load-3">
+                                                                        <div class="line"></div>
+                                                                        <div class="line"></div>
+                                                                        <div class="line"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-c-m js-ssopanel">
+
+                                                                <div class="entry-social">
+                                                                    
+
+                                                                    
+                                                                    
+                                                                    <div id="ctl00_PageContent_pupilloginControl_divSamlPupil" class="saml width100pc">
+                                                                        <a onclick="javascript:$('.js-ssopanel').hide(); $('.js-ssoconnecting').show();" id="ctl00_PageContent_pupilloginControl_btnSamlPupil" class="fontwhite" href="javascript:__doPostBack('ctl00$PageContent$pupilloginControl$btnSamlPupil','')">Sign in with Microsoft</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody></table>
+                                        
+		</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label label-inverse arrowed-in-right arrowed right" style="padding-top: 3px;">
+                        <span id="ctl00_PageContent_pupilloginControl_PPVersion">v. 2024.43.206</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+	</div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    
+</div>
+ 
+                </div>
+
+                <div class="btn-scroll-up width100pc">
+                    <span class="btn-send-message left marginLeft10 js-btn-send-hidden" style="display: none; margin-bottom: 6px;">
+                        <button class="btn btn-minier btn-inverse js-btn-send-message" type="button">
+                            <span class="bigger-110">发送</span>
+                            <i class="ace-icon fa fa-send-o icon-on-right"></i>
+                        </button>
+                    </span>
+                    <a class="btn-scroll-up btn btn-sm btn-inverse" id="btn-scroll-up" href="#">
+                        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+                    </a>
+                </div>
+            </div>                
+  
+            <div id="navigationContainer" style="display: none;">
+                
+            </div>
+                                         
+            <div id="outerHolder">
+                <div id="contentHolder">
+                    
+                </div>
+            </div>
+
+            
+
+            <div id="modalNoticeContentDiv" class="printHide">
+                <div id="divNewNotice" class="modalNotice none">
+                    <div class="modalNoticeContent">
+                        <div class="right">
+                            <a href="javascript:hide('divNewNotice');" title="关闭">
+                                <img src="/images/icons/close.gif" alt="Close"></a>
+                        </div>
+
+                        <div>
+                            <div class="left width100">
+                                <a style="text-decoration: none;" href="/default.aspx">门户
+                                    <br>
+                                    <span id="senderName"></span></a>
+                            </div>
+                            <div class="right paddingRight10 paddingTop5">
+                                <img id="ctl00_imgNewNotice" src="/images/newNotice.jpg" alt="New Notice" style="border-width:0px;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div id="timeoutPage" class="printHide">
+                <div class="timeoutBackground">
+                </div>
+
+                <div class="timeoutContainer">
+                    <div id="timeoutMessage" class="center none rounded-corners" style="width: 300px; margin-left: -147px;">
+                        <div class="widget-box-secondary rounded-corners">
+                            <div class="widget-main">
+                                <div class="widget-content">
+                                    <h1>注意！</h1>
+                                    <p>
+                                        <strong>
+                                            介于安全原因，如果您在15分钟内没有使用网站的情况下将会被自动登出
+                                            <br>
+                                            <br>
+                                            时间快到了</strong>
+                                    </p>
+                                    <p>
+                                        为保证此工作页面有效，请保存现有工作项或转到门户其他网页，工作页面将被延长15分钟
+                                    </p>
+                                    <p>
+                                        如果不保持工作页面有效，您将丢失所有未保存的工作
+                                    </p>
+                                    <div class="center">
+                                        <br>
+                                        <a href="javascript:hideTimeout()">
+                                            单击此处关闭窗口</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="updateErrorMessage" class="center none" style="width: 300px; margin-left: -147px;">
+                        <div class="widget-box-secondary rounded-corners">
+                            <div class="widget-main">
+                                <div class="widget-content">
+                                    <img src="/images/warningTriangle.gif" width="80" height="70" class="left paddingRight10" alt="">
+                                    <div class="align-left">
+                                        <span class="paddingTop10">
+                                            在处理您的请求时发生错误，请再次尝试。
+                                        </span>
+                                        <br>
+                                        <br>
+                                        <span>
+                                            如果您连续收到此错误信息，请确认您没有注销登录。
+                                        </span>
+                                    </div>
+                                    <div class="center">
+                                        <br>
+                                        <a href="javascript:hideTimeout()">
+                                            单击此处关闭窗口</a>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="id-confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+            
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title">确认删除</h4>
+                        </div>
+            
+                        <div class="modal-body"></div>
+                
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-mini" data-dismiss="modal">取消</button>
+                            <a class="btn btn-danger btn-mini js-message-delete">删除</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="modal fade" id="id-generic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+            
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body" style="overflow-y: auto;"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-mini" data-dismiss="modal">是</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="dmsPPUploadModal" class="modal fade js-ppdmsUpload" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content" style="width: auto;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body" style="overflow-y: auto;"></div>
+                        <div class="modal-footer height35"></div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div id="dmsPPMoveCategoryModal" class="modal fade js-ppdmsMove" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer height35"></div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div id="dmsPPCheckinModal" class="modal fade js-ppdmsCheckin" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer height35"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>   
+    
+
+<script type="text/javascript">
+//<![CDATA[
+(function() {var fn = function() {$get("ctl00_ScriptManager1_HiddenField").value = '';Sys.Application.remove_init(fn);};Sys.Application.add_init(fn);})();;(function() {
+                        function loadHandler() {
+                            var hf = $get('ctl00_ctl18_TSSM');
+                            if (!hf._RSSM_init) { hf._RSSM_init = true; hf.value = ''; }
+                            hf.value += ';Telerik.Web.UI, Version=2021.3.1111.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4:zh-CN:b406acc5-0028-4c73-8915-a9da355d848a:1c2121e';
+                            Sys.Application.remove_load(loadHandler);
+                        };
+                        Sys.Application.add_load(loadHandler);
+                    })();WebForm_AutoFocus('ctl00_PageContent_pupilloginControl_txtPUN');
+var callBackFrameUrl='/WebResource.axd?d=On0gSK0L6VYXPo0PxlDenvXbku4VDQGaKmz3Xv8ELD5UnxZPiXf2j8uaWE8A1GX2FkCC5Lq2E4PHde3AxYju4xL5akc1&t=638628495619783110';
+WebForm_InitCallback();Sys.Application.add_init(function() {
+    $create(Telerik.Web.UI.RadComboBox, {"_dropDownWidth":0,"_height":0,"_postBackReference":"__doPostBack(\u0027ctl00$PageContent$pupilloginControl$languageSelectPupil$ddlLanguage\u0027,\u0027arguments\u0027)","_skin":"StyleFilter","_text":"简体中文","_uniqueId":"ctl00$PageContent$pupilloginControl$languageSelectPupil$ddlLanguage","_value":"CHN","clientStateFieldID":"ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage_ClientState","collapseAnimation":"{\"type\":0,\"duration\":450}","expandAnimation":"{\"type\":0,\"duration\":450}","itemData":[{},{"value":"ENG"},{"value":"Englisch"},{"value":"ARQ"},{"value":"CHN","selected":true},{"value":"IND"},{"value":"KOR"},{"value":"SA"},{"value":"es-CL"},{"value":"SPA-LA"},{"value":"SPA"},{"value":"US"},{"value":"VN"},{"value":"AUENG"},{"value":"MY"},{"value":"TH"},{"value":"FRN"}],"localization":"{\"AllItemsCheckedString\":\"All items checked\",\"ItemsCheckedString\":\"items checked\",\"CheckAllString\":\"Check All\"}","selectedIndex":4}, null, null, $get("ctl00_PageContent_pupilloginControl_languageSelectPupil_ddlLanguage"));
+});
+//]]>
+</script>
+</form>
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+        <div class="slides"></div>
+        <h3 class="title width90pc"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+    
+    <div id="mask"></div>
+   
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/bootstrap.min.js"></script>  
+    <script language="javascript" type="text/javascript" src="/JS/jquery.placeholder.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/themes/pupilportal/ace-elements.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/themes/pupilportal/ace.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/jquery.blueimp-gallery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/themes/pupilportal/editor.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/themes/pupilportal/PupilMailbox.source.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/touchPunch.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/pointer_events_polyfill.js"></script>
+    <script language="javascript" type="text/javascript" src="/JS/bootstrap/themes/pupilportal/WaitforAjax.js"></script>
+    <script type="text/javascript">
+        var hasRun = false;
+
+        //this runs after telerik stuff is done loading. jquery window load & doc ready do not,
+        //so we must use add_load.
+
+        //putting this in functions.js results in intermittent 'sys is undefined' error, so have
+        //put it at end of page here.
+
+        //16/2/15 - 6872 AK - additionally... in IE8 it seems the doc ready is not guaranteed to execute before add load, 
+        //therefore I've hacked it to add a delay on IE8. Otherwise room booking/performance tracking filters
+        //will break, amongst other things. If anyone can come up with a neater fix, feel free to replace this
+        //11/11/2015 - 8231 SW - also helps resolve an issue in IE10 where a screen refresh kills the timetable widget.
+        //if ($.browser.msie && parseInt($.browser.version) < 9) {
+        if(getInternetExplorerVersion() != -1 && (getInternetExplorerVersion() < 9 || getInternetExplorerVersion() == 10))
+        {
+            Sys.Application.add_load(function () { setTimeout(runOnLoadStuff, 1000); });
+        } else {
+            Sys.Application.add_load(runOnLoadStuff);
+        }
+
+        function runOnLoadStuff() {
+            var runOnLoadStuffAttempt = 0;
+
+            var tryRunningStuff = setInterval(function () {
+                    runOnLoadStuffAttempt++;
+
+                    if (!hasRun) {
+                        var i = onload_functions.length;
+                        while (i--) {
+                            eval(onload_functions[i]);
+                        }
+                    }
+
+                    if (runOnLoadStuffAttempt > 4 || onload_functions.length > 0) {
+                        hasRun = true; //to prevent this running on partial postbacks
+                        clearInterval(tryRunningStuff);
+                    }
+                },
+                200);
+
+            $('.fa-solid').removeClass('fa-solid').addClass('fa');
+            $('.fa-regular').removeClass('fa-regular').addClass('fa');
+            $('.fa-light').removeClass('fa-light').addClass('fa');
+            $('.fa-thin').removeClass('fa-thin').addClass('fa');
+            $('.fa-duotone').removeClass('fa-duotone').addClass('fa');
+        }
+
+        var elem = document.getElementById("links");
+        if (typeof elem !== 'undefined' && elem !== null) {
+            document.getElementById("links").onclick = function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement,
+                    link = target.src ? target.parentNode : target,
+                    options = { index: link, event: event },
+                    links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            };
+        }
+
+        // IPAD double click a:hover fix
+        $(document).ready(function () {
+            $('a.js-ipadclickfix').on('click touchend', function (e) {
+                var el = $(this);
+                var link = el.attr('href');
+                window.location = link;
+            });
+            $('.primaryButton').removeClass('primaryButton secondaryColour').addClass('btn btn-primary btn-mini');
+        });
+    </script>
+
+
+</body></html>
